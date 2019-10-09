@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WPF_Sekwencjomat.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VLC_DLL_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WINDOW_LOCATION" Type="System.Windows.Rect" Scope="User">
+      <Value Profile="(Default)">100,100,800,450</Value>
+    </Setting>
+    <Setting Name="WINDOWS_MAXIMIZED" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SETTINGS_ORDER_TAG" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SequentialForRating</Value>
+    </Setting>
+    <Setting Name="REFVIDEO_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PAUSEVIDEO_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LIST_OF_FILES" Type="System.Collections.Genric.List&lt;System.String&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

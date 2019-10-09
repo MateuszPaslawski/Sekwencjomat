@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="WPF_Sekwencjomat.PlayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_Sekwencjomat"
+             mc:Ignorable="d"  FontFamily="Google Sans"
+             xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MinWidth="100" MinHeight="100">
+            <wpf:VlcControl x:Name="VLC_Control" Background="Black"/>
+            <Label x:Name="Label_Countdown" Visibility="Hidden" Content="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" FontWeight="Bold"/>
+        </Grid>
+
+        <DockPanel x:Name="DP_Navigation" Grid.Row="1" LastChildFill="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1">
+                <Image Source="Resources/icons8-opened-folder-48.png" Stretch="None"/>
+            </Button>-->
+
+            <Button ToolTip="Pauza" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PAUSE_Button_Click_2" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
+                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-pause-button-40.png" Stretch="None"/>
+            </Button>
+
+            <Button ToolTip="Rozpocznij odtwarzanie sekwencji od początku" Click="PLAY_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
+                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+            </Button>
+
+            <Button ToolTip="Zatrzymaj odtwarzanie sekwencji" Click="STOP_Button_Click_1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
+                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-no-entry-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+            </Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

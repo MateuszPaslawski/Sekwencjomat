@@ -1,0 +1,81 @@
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.exe.config
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.exe
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.pdb
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\FilesControl.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\LoadingWindow.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\PlayerControl.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\SearchingVLCDLLsWindow.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\SettingsControl.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\App.g.cs
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat_MarkupCompile.cache
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat_MarkupCompile.lref
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\App.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\FilesControl.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\LoadingWindow.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\MainWindow.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\PlayerControl.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Windows\SearchingVLCDLLsWindow.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\SettingsControl.baml
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.g.resources
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.Properties.Resources.resources
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.Fody.CopyLocal.cache
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.exe
+C:\Users\Admin\source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.pdb
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csprojAssemblyReference.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\FilesControl.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Startup\LoadingWindow.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Main\MainWindow.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\PlayerControl.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Dialogs\SearchingVLCDLLsWindow.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\SettingsControl.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\App.g.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat_MarkupCompile.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat_MarkupCompile.lref
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.exe
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.pdb
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.exe.config
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.exe
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\WPF_Sekwencjomat.pdb
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\App.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\FilesControl.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Startup\LoadingWindow.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Main\MainWindow.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\PlayerControl.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Views\Dialogs\SearchingVLCDLLsWindow.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Controls\SettingsControl.baml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.g.resources
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.Properties.Resources.resources
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.GenerateResource.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.CoreCompileInputs.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.Fody.CopyLocal.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\bin\Debug\MediaToolkit.1.1.0.1.Fakes.fakesconfig
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csprojFakesResolveAssemblyReference.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\fakes.args
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Costura.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Costura.xml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\MediaToolkit.1.1.0.1.Fakes.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\MediaToolkit.1.1.0.1.Fakes.fakesconfig
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\MediaToolkit.1.1.0.1.Fakes.pdb
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\MediaToolkit.1.1.0.1.Fakes.xml
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\MediaToolkit.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Vlc.DotNet.Core.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Vlc.DotNet.Core.Interops.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\b\Vlc.DotNet.Wpf.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.ah
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.ch
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.cs
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.csproj
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.fakes
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\f.fakesconfig
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\f.csproj.CopyComplete
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\f.csproj.CoreCompileInputs.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\f.csproj.FileListAbsolute.txt
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\f.csprojAssemblyReference.cache
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\MediaToolkit.1.1.0.1.Fakes.dll
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\Fakes\mt\o\MediaToolkit.1.1.0.1.Fakes.pdb
+C:\Users\Admin\VS Source\repos\WPF\WPF_Sekwencjomat\WPF_Sekwencjomat\obj\Debug\WPF_Sekwencjomat.csproj.CopyComplete

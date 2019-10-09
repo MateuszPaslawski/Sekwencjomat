@@ -1,0 +1,1058 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaToolkit.1.1.0.1.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:MediaToolkit.Fakes.ShimConversionCompleteEventArgs">
+            <summary>Shim type of MediaToolkit.ConversionCompleteEventArgs</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.#ctor(MediaToolkit.ConversionCompleteEventArgs)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.BitrateGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Bitrate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.BitrateSetNullableOfDouble">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Bitrate(Nullable`1&lt;Double&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.FpsGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.FpsSetDouble">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.FrameGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Frame()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.FrameSetInt64">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Frame(Int64 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.ProcessedDurationGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_ProcessedDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.ProcessedDurationSetTimeSpan">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_ProcessedDuration(TimeSpan value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.SizeKbGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_SizeKb()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.SizeKbSetInt32">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_SizeKb(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.TotalDurationGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_TotalDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.AllInstances.TotalDurationSetTimeSpan">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_TotalDuration(TimeSpan value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.BitrateGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Bitrate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.BitrateSetNullableOfDouble">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Bitrate(Nullable`1&lt;Double&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.ConstructorTimeSpanTimeSpanInt64DoubleInt32NullableOfDouble">
+            <summary>Sets the shim of ConversionCompleteEventArgs.ConversionCompleteEventArgs(TimeSpan processed, TimeSpan totalDuration, Int64 frame, Double fps, Int32 sizeKb, Nullable`1&lt;Double&gt; bitrate)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.FpsGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.FpsSetDouble">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.FrameGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_Frame()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.FrameSetInt64">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_Frame(Int64 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.ProcessedDurationGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_ProcessedDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.ProcessedDurationSetTimeSpan">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_ProcessedDuration(TimeSpan value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.SizeKbGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_SizeKb()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.SizeKbSetInt32">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_SizeKb(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.TotalDurationGet">
+            <summary>Sets the shim of ConversionCompleteEventArgs.get_TotalDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConversionCompleteEventArgs.TotalDurationSetTimeSpan">
+            <summary>Sets the shim of ConversionCompleteEventArgs.set_TotalDuration(TimeSpan value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimConvertProgressEventArgs">
+            <summary>Shim type of MediaToolkit.ConvertProgressEventArgs</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConvertProgressEventArgs.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConvertProgressEventArgs.#ctor(MediaToolkit.ConvertProgressEventArgs)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.BitrateGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Bitrate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.BitrateSetNullableOfDouble">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Bitrate(Nullable`1&lt;Double&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.FpsGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.FpsSetDouble">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.FrameGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Frame()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.FrameSetInt64">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Frame(Int64 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.ProcessedDurationGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_ProcessedDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.ProcessedDurationSetTimeSpan">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_ProcessedDuration(TimeSpan value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.SizeKbGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_SizeKb()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.SizeKbSetInt32">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_SizeKb(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.TotalDurationGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_TotalDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.AllInstances.TotalDurationSetTimeSpan">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_TotalDuration(TimeSpan value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConvertProgressEventArgs.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimConvertProgressEventArgs.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.BitrateGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Bitrate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.BitrateSetNullableOfDouble">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Bitrate(Nullable`1&lt;Double&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.ConstructorTimeSpanTimeSpanInt64DoubleInt32NullableOfDouble">
+            <summary>Sets the shim of ConvertProgressEventArgs.ConvertProgressEventArgs(TimeSpan processed, TimeSpan totalDuration, Int64 frame, Double fps, Int32 sizeKb, Nullable`1&lt;Double&gt; bitrate)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.FpsGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.FpsSetDouble">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.FrameGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_Frame()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.FrameSetInt64">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_Frame(Int64 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.ProcessedDurationGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_ProcessedDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.ProcessedDurationSetTimeSpan">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_ProcessedDuration(TimeSpan value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.SizeKbGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_SizeKb()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.SizeKbSetInt32">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_SizeKb(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.TotalDurationGet">
+            <summary>Sets the shim of ConvertProgressEventArgs.get_TotalDuration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimConvertProgressEventArgs.TotalDurationSetTimeSpan">
+            <summary>Sets the shim of ConvertProgressEventArgs.set_TotalDuration(TimeSpan value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimEngine">
+            <summary>Shim type of MediaToolkit.Engine</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngine.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngine.#ctor(MediaToolkit.Engine)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimEngine.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConversionCompleteEventAddEventHandlerOfConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.add_ConversionCompleteEvent(EventHandler`1&lt;ConversionCompleteEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConversionCompleteEventRemoveEventHandlerOfConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.remove_ConversionCompleteEvent(EventHandler`1&lt;ConversionCompleteEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConvertMediaFileMediaFile">
+            <summary>Sets the shim of Engine.Convert(MediaFile inputFile, MediaFile outputFile)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConvertMediaFileMediaFileConversionOptions">
+            <summary>Sets the shim of Engine.Convert(MediaFile inputFile, MediaFile outputFile, ConversionOptions options)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConvertProgressEventAddEventHandlerOfConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.add_ConvertProgressEvent(EventHandler`1&lt;ConvertProgressEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.ConvertProgressEventRemoveEventHandlerOfConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.remove_ConvertProgressEvent(EventHandler`1&lt;ConvertProgressEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.CustomCommandString">
+            <summary>Sets the shim of Engine.CustomCommand(String ffmpegCommand)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.GenerateStartInfoString">
+            <summary>Sets the shim of Engine.GenerateStartInfo(String arguments)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.GetMetadataMediaFile">
+            <summary>Sets the shim of Engine.GetMetadata(MediaFile inputFile)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.GetThumbnailMediaFileMediaFileConversionOptions">
+            <summary>Sets the shim of Engine.GetThumbnail(MediaFile inputFile, MediaFile outputFile, ConversionOptions options)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.OnConversionCompleteConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.OnConversionComplete(ConversionCompleteEventArgs e)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.AllInstances.OnProgressChangedConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.OnProgressChanged(ConvertProgressEventArgs e)</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngine.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngine.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngine.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.Constructor">
+            <summary>Sets the shim of Engine.Engine()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConstructorString">
+            <summary>Sets the shim of Engine.Engine(String ffMpegPath)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConversionCompleteEventAddEventHandlerOfConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.add_ConversionCompleteEvent(EventHandler`1&lt;ConversionCompleteEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConversionCompleteEventRemoveEventHandlerOfConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.remove_ConversionCompleteEvent(EventHandler`1&lt;ConversionCompleteEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConvertMediaFileMediaFile">
+            <summary>Sets the shim of Engine.Convert(MediaFile inputFile, MediaFile outputFile)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConvertMediaFileMediaFileConversionOptions">
+            <summary>Sets the shim of Engine.Convert(MediaFile inputFile, MediaFile outputFile, ConversionOptions options)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConvertProgressEventAddEventHandlerOfConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.add_ConvertProgressEvent(EventHandler`1&lt;ConvertProgressEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.ConvertProgressEventRemoveEventHandlerOfConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.remove_ConvertProgressEvent(EventHandler`1&lt;ConvertProgressEventArgs&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.CustomCommandString">
+            <summary>Sets the shim of Engine.CustomCommand(String ffmpegCommand)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.GenerateStartInfoString">
+            <summary>Sets the shim of Engine.GenerateStartInfo(String arguments)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.GetMetadataMediaFile">
+            <summary>Sets the shim of Engine.GetMetadata(MediaFile inputFile)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.GetThumbnailMediaFileMediaFileConversionOptions">
+            <summary>Sets the shim of Engine.GetThumbnail(MediaFile inputFile, MediaFile outputFile, ConversionOptions options)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.OnConversionCompleteConversionCompleteEventArgs">
+            <summary>Sets the shim of Engine.OnConversionComplete(ConversionCompleteEventArgs e)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngine.OnProgressChangedConvertProgressEventArgs">
+            <summary>Sets the shim of Engine.OnProgressChanged(ConvertProgressEventArgs e)</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimEngineBase">
+            <summary>Shim type of MediaToolkit.EngineBase</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngineBase.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngineBase.#ctor(MediaToolkit.EngineBase)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.ShimEngineBase.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.AllInstances.Dispose">
+            <summary>Sets the shim of EngineBase.Dispose()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.AllInstances.DisposeBoolean">
+            <summary>Sets the shim of EngineBase.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.AllInstances.EnsureDirectoryExists">
+            <summary>Sets the shim of EngineBase.EnsureDirectoryExists()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.AllInstances.EnsureFFmpegFileExists">
+            <summary>Sets the shim of EngineBase.EnsureFFmpegFileExists()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.AllInstances.EnsureFFmpegIsNotUsed">
+            <summary>Sets the shim of EngineBase.EnsureFFmpegIsNotUsed()</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngineBase.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngineBase.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.ShimEngineBase.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.Constructor">
+            <summary>Sets the shim of EngineBase.EngineBase()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.ConstructorString">
+            <summary>Sets the shim of EngineBase.EngineBase(String ffMpegPath)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.Dispose">
+            <summary>Sets the shim of EngineBase.Dispose()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.DisposeBoolean">
+            <summary>Sets the shim of EngineBase.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.EnsureDirectoryExists">
+            <summary>Sets the shim of EngineBase.EnsureDirectoryExists()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.EnsureFFmpegFileExists">
+            <summary>Sets the shim of EngineBase.EnsureFFmpegFileExists()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.EnsureFFmpegIsNotUsed">
+            <summary>Sets the shim of EngineBase.EnsureFFmpegIsNotUsed()</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.ShimEngineBase.KillFFmpegProcesses">
+            <summary>Sets the shim of EngineBase.KillFFmpegProcesses()</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.StubConversionCompleteEventArgs">
+            <summary>Stub type of MediaToolkit.ConversionCompleteEventArgs</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubConversionCompleteEventArgs.#ctor(System.TimeSpan,System.TimeSpan,System.Int64,System.Double,System.Int32,System.Nullable{System.Double})">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConversionCompleteEventArgs.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubConversionCompleteEventArgs.InitializeStub">
+            <summary>Initializes a new instance of type StubConversionCompleteEventArgs</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConversionCompleteEventArgs.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConversionCompleteEventArgs.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.StubConvertProgressEventArgs">
+            <summary>Stub type of MediaToolkit.ConvertProgressEventArgs</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubConvertProgressEventArgs.#ctor(System.TimeSpan,System.TimeSpan,System.Int64,System.Double,System.Int32,System.Nullable{System.Double})">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConvertProgressEventArgs.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubConvertProgressEventArgs.InitializeStub">
+            <summary>Initializes a new instance of type StubConvertProgressEventArgs</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConvertProgressEventArgs.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubConvertProgressEventArgs.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.StubEngine">
+            <summary>Stub type of MediaToolkit.Engine</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngine.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngine.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngine.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngine.Dispose">
+            <summary>Sets the stub of EngineBase.Dispose()</summary>
+        </member>
+        <member name="F:MediaToolkit.Fakes.StubEngine.Dispose01">
+            <summary>Sets the stub of EngineBase.Dispose()</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngine.InitializeStub">
+            <summary>Initializes a new instance of type StubEngine</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngine.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngine.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Fakes.StubEngineBase">
+            <summary>Stub type of MediaToolkit.EngineBase</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngineBase.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngineBase.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngineBase.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngineBase.Dispose">
+            <summary>Sets the stub of EngineBase.Dispose()</summary>
+        </member>
+        <member name="F:MediaToolkit.Fakes.StubEngineBase.Dispose01">
+            <summary>Sets the stub of EngineBase.Dispose()</summary>
+        </member>
+        <member name="M:MediaToolkit.Fakes.StubEngineBase.InitializeStub">
+            <summary>Initializes a new instance of type StubEngineBase</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngineBase.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Fakes.StubEngineBase.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMediaFile">
+            <summary>Shim type of MediaToolkit.Model.MediaFile</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMediaFile.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMediaFile.#ctor(MediaToolkit.Model.MediaFile)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMediaFile.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.AllInstances.FilenameGet">
+            <summary>Sets the shim of MediaFile.get_Filename()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.AllInstances.FilenameSetString">
+            <summary>Sets the shim of MediaFile.set_Filename(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.AllInstances.MetadataGet">
+            <summary>Sets the shim of MediaFile.get_Metadata()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.AllInstances.MetadataSetMetadata">
+            <summary>Sets the shim of MediaFile.set_Metadata(Metadata value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMediaFile.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMediaFile.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.Constructor">
+            <summary>Sets the shim of MediaFile.MediaFile()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.ConstructorString">
+            <summary>Sets the shim of MediaFile.MediaFile(String filename)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.FilenameGet">
+            <summary>Sets the shim of MediaFile.get_Filename()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.FilenameSetString">
+            <summary>Sets the shim of MediaFile.set_Filename(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.MetadataGet">
+            <summary>Sets the shim of MediaFile.get_Metadata()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMediaFile.MetadataSetMetadata">
+            <summary>Sets the shim of MediaFile.set_Metadata(Metadata value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata">
+            <summary>Shim type of MediaToolkit.Model.Metadata</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.#ctor(MediaToolkit.Model.Metadata)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.AudioDataGet">
+            <summary>Sets the shim of Metadata.get_AudioData()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.AudioDataSetMetadataAudio">
+            <summary>Sets the shim of Metadata.set_AudioData(Audio value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.DurationGet">
+            <summary>Sets the shim of Metadata.get_Duration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.DurationSetTimeSpan">
+            <summary>Sets the shim of Metadata.set_Duration(TimeSpan value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.VideoDataGet">
+            <summary>Sets the shim of Metadata.get_VideoData()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AllInstances.VideoDataSetMetadataVideo">
+            <summary>Sets the shim of Metadata.set_VideoData(Video value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AudioDataGet">
+            <summary>Sets the shim of Metadata.get_AudioData()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.AudioDataSetMetadataAudio">
+            <summary>Sets the shim of Metadata.set_AudioData(Audio value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.Constructor">
+            <summary>Sets the shim of Metadata.Metadata()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.DurationGet">
+            <summary>Sets the shim of Metadata.get_Duration()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.DurationSetTimeSpan">
+            <summary>Sets the shim of Metadata.set_Duration(TimeSpan value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio">
+            <summary>Shim type of MediaToolkit.Model.Metadata+Audio</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.#ctor(MediaToolkit.Model.Metadata.Audio)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.BitRateKbsGet">
+            <summary>Sets the shim of Audio.get_BitRateKbs()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.BitRateKbsSetInt32">
+            <summary>Sets the shim of Audio.set_BitRateKbs(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.ChannelOutputGet">
+            <summary>Sets the shim of Audio.get_ChannelOutput()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.ChannelOutputSetString">
+            <summary>Sets the shim of Audio.set_ChannelOutput(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.FormatGet">
+            <summary>Sets the shim of Audio.get_Format()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.FormatSetString">
+            <summary>Sets the shim of Audio.set_Format(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.SampleRateGet">
+            <summary>Sets the shim of Audio.get_SampleRate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.AllInstances.SampleRateSetString">
+            <summary>Sets the shim of Audio.set_SampleRate(String value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.BitRateKbsGet">
+            <summary>Sets the shim of Audio.get_BitRateKbs()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.BitRateKbsSetInt32">
+            <summary>Sets the shim of Audio.set_BitRateKbs(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.ChannelOutputGet">
+            <summary>Sets the shim of Audio.get_ChannelOutput()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.ChannelOutputSetString">
+            <summary>Sets the shim of Audio.set_ChannelOutput(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.Constructor">
+            <summary>Sets the shim of Audio.Audio()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.FormatGet">
+            <summary>Sets the shim of Audio.get_Format()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.FormatSetString">
+            <summary>Sets the shim of Audio.set_Format(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.SampleRateGet">
+            <summary>Sets the shim of Audio.get_SampleRate()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimAudio.SampleRateSetString">
+            <summary>Sets the shim of Audio.set_SampleRate(String value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo">
+            <summary>Shim type of MediaToolkit.Model.Metadata+Video</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.#ctor(MediaToolkit.Model.Metadata.Video)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.BitRateKbsGet">
+            <summary>Sets the shim of Video.get_BitRateKbs()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.BitRateKbsSetNullableOfInt32">
+            <summary>Sets the shim of Video.set_BitRateKbs(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.ColorModelGet">
+            <summary>Sets the shim of Video.get_ColorModel()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.ColorModelSetString">
+            <summary>Sets the shim of Video.set_ColorModel(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FormatGet">
+            <summary>Sets the shim of Video.get_Format()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FormatSetString">
+            <summary>Sets the shim of Video.set_Format(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FpsGet">
+            <summary>Sets the shim of Video.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FpsSetDouble">
+            <summary>Sets the shim of Video.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FrameSizeGet">
+            <summary>Sets the shim of Video.get_FrameSize()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.AllInstances.FrameSizeSetString">
+            <summary>Sets the shim of Video.set_FrameSize(String value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.BitRateKbsGet">
+            <summary>Sets the shim of Video.get_BitRateKbs()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.BitRateKbsSetNullableOfInt32">
+            <summary>Sets the shim of Video.set_BitRateKbs(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.ColorModelGet">
+            <summary>Sets the shim of Video.get_ColorModel()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.ColorModelSetString">
+            <summary>Sets the shim of Video.set_ColorModel(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.Constructor">
+            <summary>Sets the shim of Video.Video()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FormatGet">
+            <summary>Sets the shim of Video.get_Format()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FormatSetString">
+            <summary>Sets the shim of Video.set_Format(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FpsGet">
+            <summary>Sets the shim of Video.get_Fps()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FpsSetDouble">
+            <summary>Sets the shim of Video.set_Fps(Double value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FrameSizeGet">
+            <summary>Sets the shim of Video.get_FrameSize()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.ShimVideo.FrameSizeSetString">
+            <summary>Sets the shim of Video.set_FrameSize(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.VideoDataGet">
+            <summary>Sets the shim of Metadata.get_VideoData()</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.ShimMetadata.VideoDataSetMetadataVideo">
+            <summary>Sets the shim of Metadata.set_VideoData(Video value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Model.Fakes.StubMediaFile">
+            <summary>Stub type of MediaToolkit.Model.MediaFile</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.StubMediaFile.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.StubMediaFile.#ctor(System.String)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.StubMediaFile.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Model.Fakes.StubMediaFile.InitializeStub">
+            <summary>Initializes a new instance of type StubMediaFile</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.StubMediaFile.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Model.Fakes.StubMediaFile.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.ShimConversionOptions">
+            <summary>Shim type of MediaToolkit.Options.ConversionOptions</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimConversionOptions.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimConversionOptions.#ctor(MediaToolkit.Options.ConversionOptions)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.BaselineProfileGet">
+            <summary>Sets the shim of ConversionOptions.get_BaselineProfile()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.BaselineProfileSetBoolean">
+            <summary>Sets the shim of ConversionOptions.set_BaselineProfile(Boolean value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.CustomHeightGet">
+            <summary>Sets the shim of ConversionOptions.get_CustomHeight()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.CustomHeightSetNullableOfInt32">
+            <summary>Sets the shim of ConversionOptions.set_CustomHeight(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.CustomWidthGet">
+            <summary>Sets the shim of ConversionOptions.get_CustomWidth()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.CustomWidthSetNullableOfInt32">
+            <summary>Sets the shim of ConversionOptions.set_CustomWidth(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.CutMediaTimeSpanTimeSpan">
+            <summary>Sets the shim of ConversionOptions.CutMedia(TimeSpan seekToPosition, TimeSpan length)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.SourceCropGet">
+            <summary>Sets the shim of ConversionOptions.get_SourceCrop()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.AllInstances.SourceCropSetCropRectangle">
+            <summary>Sets the shim of ConversionOptions.set_SourceCrop(CropRectangle value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.BaselineProfileGet">
+            <summary>Sets the shim of ConversionOptions.get_BaselineProfile()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.BaselineProfileSetBoolean">
+            <summary>Sets the shim of ConversionOptions.set_BaselineProfile(Boolean value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimConversionOptions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimConversionOptions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.Constructor">
+            <summary>Sets the shim of ConversionOptions.ConversionOptions()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.CustomHeightGet">
+            <summary>Sets the shim of ConversionOptions.get_CustomHeight()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.CustomHeightSetNullableOfInt32">
+            <summary>Sets the shim of ConversionOptions.set_CustomHeight(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.CustomWidthGet">
+            <summary>Sets the shim of ConversionOptions.get_CustomWidth()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.CustomWidthSetNullableOfInt32">
+            <summary>Sets the shim of ConversionOptions.set_CustomWidth(Nullable`1&lt;Int32&gt; value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.CutMediaTimeSpanTimeSpan">
+            <summary>Sets the shim of ConversionOptions.CutMedia(TimeSpan seekToPosition, TimeSpan length)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.SourceCropGet">
+            <summary>Sets the shim of ConversionOptions.get_SourceCrop()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimConversionOptions.SourceCropSetCropRectangle">
+            <summary>Sets the shim of ConversionOptions.set_SourceCrop(CropRectangle value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.ShimCropRectangle">
+            <summary>Shim type of MediaToolkit.Options.CropRectangle</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimCropRectangle.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimCropRectangle.#ctor(MediaToolkit.Options.CropRectangle)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.HeightGet">
+            <summary>Sets the shim of CropRectangle.get_Height()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.HeightSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Height(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.WidthGet">
+            <summary>Sets the shim of CropRectangle.get_Width()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.WidthSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Width(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.XGet">
+            <summary>Sets the shim of CropRectangle.get_X()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.XSetInt32">
+            <summary>Sets the shim of CropRectangle.set_X(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.YGet">
+            <summary>Sets the shim of CropRectangle.get_Y()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.AllInstances.YSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Y(Int32 value)</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimCropRectangle.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.ShimCropRectangle.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.Constructor">
+            <summary>Sets the shim of CropRectangle.CropRectangle()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.HeightGet">
+            <summary>Sets the shim of CropRectangle.get_Height()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.HeightSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Height(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.WidthGet">
+            <summary>Sets the shim of CropRectangle.get_Width()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.WidthSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Width(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.XGet">
+            <summary>Sets the shim of CropRectangle.get_X()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.XSetInt32">
+            <summary>Sets the shim of CropRectangle.set_X(Int32 value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.YGet">
+            <summary>Sets the shim of CropRectangle.get_Y()</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.ShimCropRectangle.YSetInt32">
+            <summary>Sets the shim of CropRectangle.set_Y(Int32 value)</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.StubConversionOptions">
+            <summary>Stub type of MediaToolkit.Options.ConversionOptions</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.StubConversionOptions.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubConversionOptions.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.StubConversionOptions.InitializeStub">
+            <summary>Initializes a new instance of type StubConversionOptions</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubConversionOptions.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubConversionOptions.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Options.Fakes.StubCropRectangle">
+            <summary>Stub type of MediaToolkit.Options.CropRectangle</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.StubCropRectangle.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubCropRectangle.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Options.Fakes.StubCropRectangle.InitializeStub">
+            <summary>Initializes a new instance of type StubCropRectangle</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubCropRectangle.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Options.Fakes.StubCropRectangle.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:MediaToolkit.Util.Fakes.ShimDocument">
+            <summary>Shim type of MediaToolkit.Util.Document</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimDocument.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimDocument.#ctor(MediaToolkit.Util.Document)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="T:MediaToolkit.Util.Fakes.ShimDocument.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimDocument.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimDocument.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimDocument.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimDocument.Constructor">
+            <summary>Sets the shim of Document.Document()</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimDocument.DecompressStringString">
+            <summary>Sets the shim of Document.Decompress(String resource, String toPath)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimDocument.IsFileLockedFileInfo">
+            <summary>Sets the shim of Document.IsFileLocked(FileInfo file)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimDocument.IsLockedString">
+            <summary>Sets the shim of Document.IsLocked(String filePath)</summary>
+        </member>
+        <member name="T:MediaToolkit.Util.Fakes.ShimExtensions">
+            <summary>Shim type of MediaToolkit.Util.Extensions</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimExtensions.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimExtensions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.ShimExtensions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.CopyToStreamStream">
+            <summary>Sets the shim of Extensions.CopyTo(Stream input, Stream output)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.FormatInvariantStringObjectArray">
+            <summary>Sets the shim of Extensions.FormatInvariant(String value, Object[] args)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.IsNullOrWhiteSpaceString">
+            <summary>Sets the shim of Extensions.IsNullOrWhiteSpace(String value)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.RemoveEnumString">
+            <summary>Sets the shim of Extensions.Remove(Enum enumerable, String text)</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.ShimExtensions.ToLowerEnum">
+            <summary>Sets the shim of Extensions.ToLower(Enum enumerable)</summary>
+        </member>
+        <member name="T:MediaToolkit.Util.Fakes.StubDocument">
+            <summary>Stub type of MediaToolkit.Util.Document</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.StubDocument.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.StubDocument.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:MediaToolkit.Util.Fakes.StubDocument.InitializeStub">
+            <summary>Initializes a new instance of type StubDocument</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.StubDocument.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:MediaToolkit.Util.Fakes.StubDocument.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute">
+            <summary>Stub type of System.Runtime.CompilerServices.ExtensionAttribute</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.Equals(System.Object)">
+            <summary>Sets the stub of Attribute.Equals(Object obj)</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.EqualsObject">
+            <summary>Sets the stub of Attribute.Equals(Object obj)</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.GetHashCode">
+            <summary>Sets the stub of Attribute.GetHashCode()</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.GetHashCode01">
+            <summary>Sets the stub of Attribute.GetHashCode()</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.InitializeStub">
+            <summary>Initializes a new instance of type StubExtensionAttribute</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.IsDefaultAttribute">
+            <summary>Sets the stub of Attribute.IsDefaultAttribute()</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.IsDefaultAttribute01">
+            <summary>Sets the stub of Attribute.IsDefaultAttribute()</summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.Match(System.Object)">
+            <summary>Sets the stub of Attribute.Match(Object obj)</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.MatchObject">
+            <summary>Sets the stub of Attribute.Match(Object obj)</summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.TypeId">
+            <summary>Sets the stub of Attribute.get_TypeId()</summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.Fakes.StubExtensionAttribute.TypeIdGet">
+            <summary>Sets the stub of Attribute.get_TypeId()</summary>
+        </member>
+    </members>
+</doc>
