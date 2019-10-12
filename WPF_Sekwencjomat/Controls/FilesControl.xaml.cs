@@ -135,7 +135,7 @@ namespace WPF_Sekwencjomat
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog() { Multiselect = true, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg; *.mkv" }; 
+            OpenFileDialog fd = new OpenFileDialog() { Multiselect = true, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg; *.mkv; *.flv" }; 
 
             if (fd.ShowDialog() == true)
             {
@@ -155,7 +155,7 @@ namespace WPF_Sekwencjomat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg" };
+            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
             if (fd.ShowDialog() == true)
             {
                 TextBox_RefPath.Text = fd.FileName;
@@ -164,7 +164,7 @@ namespace WPF_Sekwencjomat
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg" };
+            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
             if (fd.ShowDialog() == true)
             {
                 TextBox_PauserPath.Text = fd.FileName;
