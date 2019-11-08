@@ -55,7 +55,7 @@ namespace WPF_Sekwencjomat
 
                 foreach (var item in FilePathList)
                 {
-                    if (CurrentFilesInDataGrid.Contains(item)) { continue; }
+                    if (CurrentFilesInDataGrid.Contains(item) || !File.Exists(item)) { continue; }
 
                     Stopwatch sw = new Stopwatch();
                     sw.Start();
@@ -67,21 +67,20 @@ namespace WPF_Sekwencjomat
 
                     CurrentFilesInDataGrid.Add(item);
                     FileInfo fi = new FileInfo(item);
-
-                    MediaFile mi = new MediaFile() { Filename = item };
+                    MediaFile mf = new MediaFile() { Filename = item };
 
                     using (mediaInfoEngine)
                     {
-                        mediaInfoEngine.GetMetadata(mi);
+                        mediaInfoEngine.GetMetadata(mf);
                     }
 
                     FileClass fc = new FileClass();
 
                     try
                     {
-                        if (mi.Metadata.VideoData.BitRateKbs != null)
+                        if (mf.Metadata.VideoData.BitRateKbs != null)
                         {
-                            fc.FileBitrate = mi.Metadata.VideoData.BitRateKbs.Value;
+                            fc.FileBitrate = mf.Metadata.VideoData.BitRateKbs.Value;
                         }
                         else
                         {
@@ -91,11 +90,11 @@ namespace WPF_Sekwencjomat
                         fc.FilePath = fi.FullName;
                         fc.FileExtension = fi.Extension;
                         fc.FileSize = Utils.BytesToString(fi.Length);
-                        fc.FileFormat = mi.Metadata.VideoData.Format;
-                        fc.FileColorModel = mi.Metadata.VideoData.ColorModel;
-                        fc.FileFPS = mi.Metadata.VideoData.Fps;
-                        fc.FileFrameSize = mi.Metadata.VideoData.FrameSize;
-                        fc.FileDuration = mi.Metadata.Duration.ToString($"hh\\:mm\\:ss");
+                        fc.FileFormat = mf.Metadata.VideoData.Format;
+                        fc.FileColorModel = mf.Metadata.VideoData.ColorModel;
+                        fc.FileFPS = mf.Metadata.VideoData.Fps;
+                        fc.FileFrameSize = mf.Metadata.VideoData.FrameSize;
+                        fc.FileDuration = mf.Metadata.Duration.ToString($"hh\\:mm\\:ss");
 
                         ListOfFileClass.Add(fc);
 
@@ -103,7 +102,6 @@ namespace WPF_Sekwencjomat
                         {
                             DG_Main.Items.Add(fc);
                         }));
-
                     }
                     catch (Exception exc)
                     {
@@ -115,9 +113,6 @@ namespace WPF_Sekwencjomat
                         sw.Stop();
                         timeLeft += sw.Elapsed;
                     }
-
-                    
-
                 }
             });
             Utils.ResetCurrentInfo();

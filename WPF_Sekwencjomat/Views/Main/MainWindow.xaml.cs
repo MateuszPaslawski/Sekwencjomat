@@ -17,8 +17,8 @@ namespace WPF_Sekwencjomat
     public partial class MainWindow : Window
     {
         public FilesControl FilesControlObject;
-        public SettingsControl SettingsControlObject;
         public PlayerControl PlayerControlObject;
+        public SettingsControl SettingsControlObject;
 
         #region Metody
         private void MakeButtonPressedOnLeft(object sender)
@@ -35,8 +35,8 @@ namespace WPF_Sekwencjomat
                     }
                 }
                 Button btn = sender as Button;
-                btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFE1F4FF"));
-                btn.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFBEE6FD"));
+                btn.Background = Utils.GetBrushFromString("#FFE1F4FF");
+                btn.BorderBrush = Utils.GetBrushFromString("#FFBEE6FD");
             }
         }
 
@@ -97,7 +97,6 @@ namespace WPF_Sekwencjomat
             {
                 IsEnabled = false;
 
-
                 Properties.Settings s = Properties.Settings.Default;
 
                 SettingsControlObject.CheckVLCFolderDLLs(s.VLC_DLL_PATH);
@@ -139,9 +138,16 @@ namespace WPF_Sekwencjomat
 
         public MainWindow()
         {
-            Visibility = Visibility.Hidden;
             InitializeComponent();
             
+        }
+
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Visibility = Visibility.Hidden;
+
             FilesControlObject = new FilesControl();
             SettingsControlObject = new SettingsControl();
             PlayerControlObject = new PlayerControl();
@@ -152,19 +158,9 @@ namespace WPF_Sekwencjomat
             LoadUserSettings();
 
             if (!SettingsControlObject.CheckVLCFolderDLLs(Properties.Settings.Default.VLC_DLL_PATH))
-            {
                 new SearchingVLCDLLsWindow().ShowDialog();
-            }
 
             Visibility = Visibility.Visible;
-
-        }
-
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

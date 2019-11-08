@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace WPF_Sekwencjomat
@@ -18,9 +19,7 @@ namespace WPF_Sekwencjomat
             foreach (RadioButton item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UG_PlaybackOrderControl.Children)
             {
                 if (item.IsChecked == true)
-                {
                     ret = item.Tag.ToString().ToLower();
-                }
             }
             return ret;
         }
@@ -82,11 +81,11 @@ namespace WPF_Sekwencjomat
             return SortedList;
         }
 
-        public static List<FileClass> FileClassSequentialForRating(List<FileClass> inputList, string reference_path, string pause_path)
+        public static List<FileClass> FileClassSequentialForRating(List<FileClass> inputList, string referencePath, string pausePath)
         {
-            if (reference_path.Trim() == string.Empty || pause_path.Trim() == string.Empty)
+            if (referencePath.Trim() == string.Empty || pausePath.Trim() == string.Empty)
             {
-                MessageBox.Show($"Brak lub niewłaściwa ścieżka do pliku referencyjnego bądź przerywnika!\n\nPlik referencyjny: {reference_path}\nPlik przerywnika: {pause_path}");
+                MessageBox.Show($"Brak lub niewłaściwa ścieżka do pliku referencyjnego bądź przerywnika!\n\nPlik referencyjny: {referencePath}\nPlik przerywnika: {pausePath}");
                 return null;
             }
 
@@ -99,9 +98,9 @@ namespace WPF_Sekwencjomat
 
             foreach (FileClass item in both)
             {
-                final.Add(new FileClass() { FilePath = reference_path });
+                final.Add(new FileClass() { FilePath = referencePath });
                 final.Add(item);
-                final.Add(new FileClass() { FilePath = pause_path});
+                final.Add(new FileClass() { FilePath = pausePath});
             }
 
             return final;
@@ -147,6 +146,11 @@ namespace WPF_Sekwencjomat
             mw.Cursor = Cursors.Arrow;
             mw.LBL_Status.Content = $"Status [ Gotowy ]";
             mw.ProgressBar_Status.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        public static SolidColorBrush GetBrushFromString (string colorString)
+        {
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorString));
         }
     }
 }

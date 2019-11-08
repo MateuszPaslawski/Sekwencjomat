@@ -5,6 +5,8 @@
              StartupUri="Views/Main/MainWindow.xaml">
     <Application.Resources>
         
+        
+        
         <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FFF3F9FF"/>
