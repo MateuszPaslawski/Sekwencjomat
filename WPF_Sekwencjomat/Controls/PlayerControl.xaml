@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MinWidth="100" MinHeight="100">
-            <wpf:VlcControl x:Name="VLC_Control" Background="Black"/>
+            <wpf:VlcControl x:Name="VLC_Control" Background="Black" PreviewMouseDoubleClick="VLC_Control_PreviewMouseDoubleClick"/>
             <Label x:Name="Label_Countdown" Visibility="Hidden" Content="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" FontWeight="Bold"/>
         </Grid>
 
@@ -24,15 +24,15 @@
             </Button>-->
 
             <Button ToolTip="Pauza" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PAUSE_Button_Click_2" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-pause-button-40.png" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-pause-button-40.png" Stretch="None"/>
             </Button>
 
             <Button ToolTip="Rozpocznij odtwarzanie sekwencji od początku" Click="PLAY_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
             </Button>
 
             <Button ToolTip="Zatrzymaj odtwarzanie sekwencji" Click="STOP_Button_Click_1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-no-entry-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-no-entry-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
             </Button>
         </DockPanel>
     </Grid>

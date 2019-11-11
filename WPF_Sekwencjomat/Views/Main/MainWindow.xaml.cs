@@ -20,7 +20,7 @@ namespace WPF_Sekwencjomat
         public PlayerControl PlayerControlObject;
         public SettingsControl SettingsControlObject;
 
-        #region Metody
+        #region Metody Użytkownika
         private void MakeButtonPressedOnLeft(object sender)
         {
             if (!(sender is Button)) { return; }
@@ -35,31 +35,35 @@ namespace WPF_Sekwencjomat
                     }
                 }
                 Button btn = sender as Button;
-                btn.Background = Utils.GetBrushFromString("#FFE1F4FF");
-                btn.BorderBrush = Utils.GetBrushFromString("#FFBEE6FD");
+                btn.Background = Helper.GetBrushFromHex("#FFE1F4FF");
+                btn.BorderBrush = Helper.GetBrushFromHex("#FFBEE6FD");
             }
         }
 
-        public void ChangeNavigationVisibility()
+        public void ChangeNavigationVisibility(bool makeVisible)
         {
             bool condition = 
                 (StackPanel_ButtonsLeft.Visibility == Visibility.Visible) 
                 && 
-                (StackPanel_ButtonsLeft.Visibility == Visibility.Visible);
+                (Border_BottomStatusBar.Visibility == Visibility.Visible);
 
-            if (condition)
+            if (condition && !makeVisible)
             {
                 SV_MainDisplay.Content = PlayerControlObject;
                 MakeButtonPressedOnLeft(Button_PlayerObjectNavigator);
                 Background = new SolidColorBrush(Colors.Black);
                 StackPanel_ButtonsLeft.Visibility = Visibility.Collapsed;
                 Border_BottomStatusBar.Visibility = Visibility.Collapsed;
+                WindowState = WindowState.Normal;
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
             }
             else
             {
                 Background = new SolidColorBrush(Colors.White);
                 StackPanel_ButtonsLeft.Visibility = Visibility.Visible;
                 Border_BottomStatusBar.Visibility = Visibility.Visible;
+                WindowStyle = WindowStyle.SingleBorderWindow;
             }
         }
 
@@ -76,7 +80,7 @@ namespace WPF_Sekwencjomat
                 if (WindowState == WindowState.Maximized) { s.WINDOWS_MAXIMIZED = true; }
                 else { s.WINDOWS_MAXIMIZED = false; }
 
-                s.SETTINGS_ORDER_TAG = Utils.GetPlaybackOrder();
+                s.SETTINGS_ORDER_TAG = Helper.GetPlaybackOrder();
 
                 s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
                 s.PAUSEVIDEO_PATH = FilesControlObject.TextBox_PauserPath.Text;
@@ -97,35 +101,35 @@ namespace WPF_Sekwencjomat
             {
                 IsEnabled = false;
 
-                Properties.Settings s = Properties.Settings.Default;
+                Properties.Settings settings = Properties.Settings.Default;
 
-                SettingsControlObject.CheckVLCFolderDLLs(s.VLC_DLL_PATH);
+                SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
 
-                Top = s.WINDOW_LOCATION.Top;
-                Left = s.WINDOW_LOCATION.Left;
-                Width = s.WINDOW_LOCATION.Width;
-                Height = s.WINDOW_LOCATION.Height;
-
-                if (s.WINDOWS_MAXIMIZED) { WindowState = WindowState.Maximized; }
-
-                Utils.SetPlaybackOrder(s.SETTINGS_ORDER_TAG);
-
-                if (File.Exists(s.REFVIDEO_PATH))
+                if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
                 {
-                    FilesControlObject.TextBox_RefPath.Text = s.REFVIDEO_PATH;  
+                    Top = settings.WINDOW_LOCATION.Top;
+                    Left = settings.WINDOW_LOCATION.Left;
+                    Width = settings.WINDOW_LOCATION.Width;
+                    Height = settings.WINDOW_LOCATION.Height;
                 }
 
-                if (File.Exists(s.PAUSEVIDEO_PATH))
+                if (settings.WINDOWS_MAXIMIZED) { WindowState = WindowState.Maximized; }
+
+                Helper.SetPlaybackOrder(settings.SETTINGS_ORDER_TAG);
+
+                if (File.Exists(settings.REFVIDEO_PATH))
                 {
-                    FilesControlObject.TextBox_PauserPath.Text = s.PAUSEVIDEO_PATH;
+                    FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
                 }
 
-                await FilesControlObject.FileDataToGrid(s.LIST_OF_FILES.ToArray());
+                if (File.Exists(settings.PAUSEVIDEO_PATH))
+                {
+                    FilesControlObject.TextBox_PauserPath.Text = settings.PAUSEVIDEO_PATH;
+                }
 
+                await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
             }
-
             catch { }
-
             finally
             {
                 IsEnabled = true;
@@ -139,7 +143,6 @@ namespace WPF_Sekwencjomat
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
 
@@ -161,6 +164,8 @@ namespace WPF_Sekwencjomat
                 new SearchingVLCDLLsWindow().ShowDialog();
 
             Visibility = Visibility.Visible;
+            Topmost = true;
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -188,9 +193,15 @@ namespace WPF_Sekwencjomat
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.F12)
+            switch (e.Key)
             {
-                ChangeNavigationVisibility();
+                case Key.F12:
+                    ChangeNavigationVisibility(false);
+                    break;
+
+                case Key.Escape:
+                    ChangeNavigationVisibility(true);
+                    break;
             }
         }
     }

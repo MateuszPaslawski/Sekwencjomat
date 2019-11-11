@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         
         <GroupBox Margin="5" Header="Opcje Odtwarzania" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <UniformGrid x:Name="UG_PlaybackOrderControl" Margin="10" Columns="2">
+            <UniformGrid x:Name="UniformGrid_PlaybackOrderControl" Margin="10" Columns="2">
                 <RadioButton Tag="BitrateAscending" Content="Bitrate Rosnąco"  Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
                 <RadioButton Tag="BitrateDescending" Content="Bitrate Malejąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
                 <RadioButton Tag="ResolutionAscending" Content="Rozdzielczość Rosnąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
@@ -30,13 +30,13 @@
         <GroupBox Margin="5" Grid.Row="1" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Image x:Name="IMG_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/icons8-delete-20.png" Stretch="None"/>
+                    <Image x:Name="IMG_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/icons8-delete-20.png" Stretch="None"/>
                     <Label Content="Ścieżka programu VLC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox.Header>
             <DockPanel Margin="10" LastChildFill="True">
-                <Button Click="Button_Click" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                    <Image Source="/WPF_Sekwencjomat;component/Resources/icons8-vlc-24.png" Stretch="None"/>
+                <Button Click="Button_Click" Margin="-1,0" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" BorderBrush="#FFABADB3" Background="{x:Null}">
+                    <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-vlc-24.png" Stretch="None"/>
                 </Button>
                 <TextBox IsReadOnly="True" MinWidth="200" x:Name="TBX_VLCPath" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             </DockPanel>

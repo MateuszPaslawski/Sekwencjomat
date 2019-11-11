@@ -13,7 +13,7 @@ namespace WPF_Sekwencjomat
         //SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
         private readonly FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
         private readonly List<Button> ListOfButtons = new List<Button>();
-        private List<FileClass> ListOfFileClass = new List<FileClass>();
+        private List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
         private int CurrentPlayingFileIndex = 0;
 
         public void StopPlayer()
@@ -26,17 +26,17 @@ namespace WPF_Sekwencjomat
 
             Dispatcher.Invoke(() =>
             {
-                Utils.SetCurrentInfo($"Odtwarzanie {ListOfFileClass.Count} sekwencji zostało zakończone.", false);
+                Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
             });
 
             CurrentPlayingFileIndex = 0;
-            ListOfFileClass = new List<FileClass>(FilesControlObject.ListOfFileClass);
+            ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
             MakePlaybackOrder();
         }
 
         public bool CheckBeforeStartPlaying()
         {
-            if (Utils.GetPlaybackOrder() == "sequentialforrating")
+            if (Helper.GetPlaybackOrder() == "sequentialforrating")
             {
                 if (File.Exists(FilesControlObject.TextBox_PauserPath.Text)
                     && File.Exists(FilesControlObject.TextBox_RefPath.Text))
@@ -81,25 +81,25 @@ namespace WPF_Sekwencjomat
 
         private void MakePlaybackOrder()
         {
-            switch (Utils.GetPlaybackOrder())
+            switch (Helper.GetPlaybackOrder())
             {
                 case "random":
-                    ListOfFileClass = Utils.ShuffleList(ListOfFileClass);
+                    ListOfMediaFilePropeties = Helper.ShuffleList(ListOfMediaFilePropeties);
                     break;
                 case "bitrateascending":
-                    ListOfFileClass = Utils.FileClassListAscendingBitrate(ListOfFileClass);
+                    ListOfMediaFilePropeties = Helper.AscendingBitrate(ListOfMediaFilePropeties);
                     break;
                 case "bitratedescending":
-                    ListOfFileClass = Utils.FileClassListDescendingBitrate(ListOfFileClass);
+                    ListOfMediaFilePropeties = Helper.DescendingBitrate(ListOfMediaFilePropeties);
                     break;
                 case "resolutionascending":
-                    ListOfFileClass = Utils.FileClassListAscendingResolution(ListOfFileClass);
+                    ListOfMediaFilePropeties = Helper.AscendingResolution(ListOfMediaFilePropeties);
                     break;
                 case "resolutiondescending":
-                    ListOfFileClass = Utils.FileClassListDescendingResolution(ListOfFileClass);
+                    ListOfMediaFilePropeties = Helper.DescendingResolution(ListOfMediaFilePropeties);
                     break;
                 case "sequentialforrating":
-                    ListOfFileClass = Utils.FileClassSequentialForRating(ListOfFileClass, FilesControlObject.TextBox_RefPath.Text, FilesControlObject.TextBox_PauserPath.Text);
+                    ListOfMediaFilePropeties = Helper.SequentialWithRefFile(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text, FilesControlObject.TextBox_PauserPath.Text);
                     break;
             }
         }
@@ -118,13 +118,13 @@ namespace WPF_Sekwencjomat
         {
             if (VLC_Control.SourceProvider.MediaPlayer != null)
             {
-                if (FilesControlObject.ListOfFileClass.Count < 1 || CheckBeforeStartPlaying() == false)
+                if (FilesControlObject.ListOfMediaFilePropeties.Count < 1 || CheckBeforeStartPlaying() == false)
                 {
                     DisableAllNavigation();
                 }
                 else
                 {
-                    ListOfFileClass = new List<FileClass>(FilesControlObject.ListOfFileClass);
+                    ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
                     MakePlaybackOrder();
 
                     VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
@@ -139,7 +139,7 @@ namespace WPF_Sekwencjomat
         {
             CurrentPlayingFileIndex++;
 
-            if (CurrentPlayingFileIndex >= ListOfFileClass.Count)
+            if (CurrentPlayingFileIndex >= ListOfMediaFilePropeties.Count)
             {
                 ThreadPool.QueueUserWorkItem(x =>
                 {
@@ -149,22 +149,22 @@ namespace WPF_Sekwencjomat
 
                 Dispatcher.Invoke(() =>
                 {
-                    Utils.SetCurrentInfo($"Odtwarzanie {ListOfFileClass.Count} sekwencji zostało zakończone.", false);
+                    Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
                 });
 
                 CurrentPlayingFileIndex = 0;
                 return;
             }
-            else if (CurrentPlayingFileIndex < ListOfFileClass.Count)
+            else if (CurrentPlayingFileIndex < ListOfMediaFilePropeties.Count)
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Utils.SetCurrentInfo($"Odtwarzanie pliku: {ListOfFileClass[CurrentPlayingFileIndex].FilePath}", false);
+                    Helper.ChangeStatusControl($"Odtwarzanie pliku: {ListOfMediaFilePropeties[CurrentPlayingFileIndex].Path}", false);
                 });
 
                 ThreadPool.QueueUserWorkItem(x =>
                 {
-                    VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfFileClass[CurrentPlayingFileIndex].FilePath));
+                    VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFilePropeties[CurrentPlayingFileIndex].Path));
                 });
             }
         }
@@ -181,18 +181,18 @@ namespace WPF_Sekwencjomat
                 }
             }
 
-            ListOfFileClass = new List<FileClass>(FilesControlObject.ListOfFileClass);
+            ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
             MakePlaybackOrder();
-            if (ListOfFileClass == null) { return; }
+            if (ListOfMediaFilePropeties == null) { return; }
             CurrentPlayingFileIndex = 0;
 
             ThreadPool.QueueUserWorkItem(x =>
             {
                 VLC_Control.SourceProvider.MediaPlayer.Audio.Volume = 20;
-                VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfFileClass[0].FilePath));
+                VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFilePropeties[0].Path));
             });
 
-            Utils.SetCurrentInfo($"Odtwarzanie pliku: {ListOfFileClass[0].FilePath}", false);
+            Helper.ChangeStatusControl($"Odtwarzanie pliku: {ListOfMediaFilePropeties[0].Path}", false);
         }
 
         private void PAUSE_Button_Click_2(object sender, RoutedEventArgs e)
@@ -220,6 +220,11 @@ namespace WPF_Sekwencjomat
                 MessageBoxResult mb = MessageBox.Show("Zatrzymać odtwarzanie sekwencji?", "Czy aby napewno?", MessageBoxButton.YesNo);
                 if (mb == MessageBoxResult.Yes) { StopPlayer(); }
             }
+        }
+
+        private void VLC_Control_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

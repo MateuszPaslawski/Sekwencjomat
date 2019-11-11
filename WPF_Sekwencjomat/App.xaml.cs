@@ -10,6 +10,5 @@ namespace WPF_Sekwencjomat
 {
     public partial class App : Application
     {
-
     }
 }

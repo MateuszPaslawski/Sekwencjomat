@@ -5,8 +5,6 @@
              StartupUri="Views/Main/MainWindow.xaml">
     <Application.Resources>
         
-        
-        
         <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FFF3F9FF"/>
@@ -30,15 +28,15 @@
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" TargetName="border" Value="#99BEE6FD"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#993C7FB1"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#993C7FB1"/>-->
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" TargetName="border" Value="#FF78C1EC"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>-->
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                     <Setter Property="Background" TargetName="border" Value="#99BCDDEE"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="#99245A83"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#99245A83"/>-->
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
                     <!--<Setter Property="Background" TargetName="border" Value="{x:Null}"/>

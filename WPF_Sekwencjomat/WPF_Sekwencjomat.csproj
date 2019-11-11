@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WPF_Sekwencjomat</RootNamespace>
     <AssemblyName>WPF_Sekwencjomat</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -56,108 +56,8 @@
     <StartupObject>WPF_Sekwencjomat.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icons8-video-playlist-30.png.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|AnyCPU'">
-    <OutputPath>bin\x86\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|x64'">
-    <OutputPath>bin\x64\x86\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|x86'">
-    <OutputPath>bin\x86\x86\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|AnyCPU'">
-    <OutputPath>bin\x64\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|x64'">
-    <OutputPath>bin\x64\x64\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|x86'">
-    <OutputPath>bin\x86\x64\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <ApplicationIcon>Album.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
@@ -197,24 +97,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\FileClass.cs" />
-    <Compile Include="Views\Startup\LoadingWindow.xaml.cs">
-      <DependentUpon>LoadingWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml.cs">
-      <DependentUpon>SearchingVLCDLLsWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Classes\MediaFile.cs" />
     <Compile Include="Controls\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Utils.cs" />
+    <Compile Include="Classes\Helper.cs" />
     <Page Include="Controls\FilesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Startup\LoadingWindow.xaml">
+    <Page Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\Main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -227,15 +121,14 @@
     <Compile Include="Controls\FilesControl.xaml.cs">
       <DependentUpon>FilesControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml.cs">
+      <DependentUpon>SearchingVLCDLLsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Controls\PlayerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,20 +168,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icons8-air-play-40.png" />
-    <Resource Include="Resources\icons8-automatic-40.png" />
-    <Resource Include="Resources\icons8-next-40.png" />
-    <Resource Include="Resources\icons8-opened-folder-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-circled-play-40.png" />
-    <Resource Include="Resources\icons8-pause-button-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-add-folder-40.png" />
-    <Resource Include="Resources\icons8-folder-tree-40.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 i x64%29</ProductName>
@@ -301,38 +180,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icons8-checkmark-20.png" />
-    <Resource Include="Resources\icons8-delete-20.png" />
-    <Resource Include="Resources\icons8-folder-tree-20.png" />
-    <Resource Include="Resources\icons8-video-playlist-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-vlc-24.png" />
-    <Resource Include="Resources\icons8-vlc-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-no-entry-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-documentary-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-video-playlist-30.png.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-plus-20.png" />
-    <Resource Include="Resources\icons8-plus-40.png" />
-    <Resource Include="Resources\icons8-plus-math-20.png" />
-    <Resource Include="Resources\icons8-plus-math-40.png" />
-    <Resource Include="Resources\icons8-plus-sign-20.png" />
-    <Resource Include="Resources\icons8-plus-sign-40.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-magnifying-glass-with-plus-20.png" />
-    <Resource Include="Resources\icons8-magnifying-glass-with-plus-40.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Views\Shutdown\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Album.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ico\Album\Album.ico" />
+    <Resource Include="Resources\png\icons8-add-folder-40.png" />
+    <Resource Include="Resources\png\icons8-air-play-40.png" />
+    <Resource Include="Resources\png\icons8-automatic-40.png" />
+    <Resource Include="Resources\png\icons8-checkmark-20.png" />
+    <Resource Include="Resources\png\icons8-circled-play-40.png" />
+    <Resource Include="Resources\png\icons8-delete-20.png" />
+    <Resource Include="Resources\png\icons8-documentary-40.png" />
+    <Resource Include="Resources\png\icons8-folder-tree-20.png" />
+    <Resource Include="Resources\png\icons8-folder-tree-40.png" />
+    <Resource Include="Resources\png\icons8-magnifying-glass-with-plus-20.png" />
+    <Resource Include="Resources\png\icons8-magnifying-glass-with-plus-40.png" />
+    <Resource Include="Resources\png\icons8-next-40.png" />
+    <Resource Include="Resources\png\icons8-no-entry-40.png" />
+    <Resource Include="Resources\png\icons8-opened-folder-40.png" />
+    <Resource Include="Resources\png\icons8-pause-button-40.png" />
+    <Resource Include="Resources\png\icons8-plus-20.png" />
+    <Resource Include="Resources\png\icons8-plus-40.png" />
+    <Resource Include="Resources\png\icons8-plus-math-20.png" />
+    <Resource Include="Resources\png\icons8-plus-math-40.png" />
+    <Resource Include="Resources\png\icons8-plus-sign-20.png" />
+    <Resource Include="Resources\png\icons8-plus-sign-40.png" />
+    <Resource Include="Resources\png\icons8-video-playlist-40.png" />
+    <Resource Include="Resources\png\icons8-vlc-24.png" />
+    <Resource Include="Resources\png\icons8-vlc-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

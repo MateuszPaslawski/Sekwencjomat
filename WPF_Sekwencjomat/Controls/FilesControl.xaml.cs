@@ -20,7 +20,7 @@ namespace WPF_Sekwencjomat
     public partial class FilesControl : UserControl
     {
 
-        public List<FileClass> ListOfFileClass = new List<FileClass>();
+        public List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
 
         public static List<string> CurrentFilesInDataGrid { get; set; }
 
@@ -34,9 +34,9 @@ namespace WPF_Sekwencjomat
             List<object> listToDelete = new List<object>();
             foreach (object item in DG_Main.SelectedItems)
             {
-                FileClass fc = item as FileClass;
-                CurrentFilesInDataGrid.Remove(fc.FilePath);
-                ListOfFileClass.Remove(fc);
+                MediaFile fc = item as MediaFile;
+                CurrentFilesInDataGrid.Remove(fc.Path);
+                ListOfMediaFilePropeties.Remove(fc);
                 listToDelete.Add(item);
             }
             foreach (var item in listToDelete)
@@ -62,45 +62,45 @@ namespace WPF_Sekwencjomat
 
                     Dispatcher.Invoke(() =>
                     {
-                        Utils.SetCurrentInfo($"Przetwarzanie pliku {++itemCount} / {FilePathList.Length} ({timeLeft.Seconds}s {timeLeft.Milliseconds}ms)", true);
+                        Helper.ChangeStatusControl($"Przetwarzanie pliku {++itemCount} / {FilePathList.Length} ({timeLeft.Seconds}s {timeLeft.Milliseconds}ms)", true);
                     });
 
                     CurrentFilesInDataGrid.Add(item);
                     FileInfo fi = new FileInfo(item);
-                    MediaFile mf = new MediaFile() { Filename = item };
+                    MediaToolkit.Model.MediaFile mf = new MediaToolkit.Model.MediaFile() { Filename = item };
 
                     using (mediaInfoEngine)
                     {
                         mediaInfoEngine.GetMetadata(mf);
                     }
 
-                    FileClass fc = new FileClass();
+                    MediaFile mfo = new MediaFile();
 
                     try
                     {
                         if (mf.Metadata.VideoData.BitRateKbs != null)
                         {
-                            fc.FileBitrate = mf.Metadata.VideoData.BitRateKbs.Value;
+                            mfo.Bitrate = mf.Metadata.VideoData.BitRateKbs.Value;
                         }
                         else
                         {
-                            fc.FileBitrate = 0;
+                            mfo.Bitrate = 0;
                         }
-                        fc.FileName = fi.Name;
-                        fc.FilePath = fi.FullName;
-                        fc.FileExtension = fi.Extension;
-                        fc.FileSize = Utils.BytesToString(fi.Length);
-                        fc.FileFormat = mf.Metadata.VideoData.Format;
-                        fc.FileColorModel = mf.Metadata.VideoData.ColorModel;
-                        fc.FileFPS = mf.Metadata.VideoData.Fps;
-                        fc.FileFrameSize = mf.Metadata.VideoData.FrameSize;
-                        fc.FileDuration = mf.Metadata.Duration.ToString($"hh\\:mm\\:ss");
+                        mfo.Name = fi.Name;
+                        mfo.Path = fi.FullName;
+                        mfo.Extension = fi.Extension;
+                        mfo.Size = Helper.DecorateBytes(fi.Length);
+                        mfo.Format = mf.Metadata.VideoData.Format;
+                        mfo.ColorGamut = mf.Metadata.VideoData.ColorModel;
+                        mfo.FPS = mf.Metadata.VideoData.Fps;
+                        mfo.FrameSize = mf.Metadata.VideoData.FrameSize;
+                        mfo.Duration = mf.Metadata.Duration.ToString($"hh\\:mm\\:ss");
 
-                        ListOfFileClass.Add(fc);
+                        ListOfMediaFilePropeties.Add(mfo);
 
                         Dispatcher.Invoke(new Action(() =>
                         {
-                            DG_Main.Items.Add(fc);
+                            DG_Main.Items.Add(mfo);
                         }));
                     }
                     catch (Exception exc)
@@ -115,7 +115,7 @@ namespace WPF_Sekwencjomat
                     }
                 }
             });
-            Utils.ResetCurrentInfo();
+            Helper.ResetCurrentStatusControl();
         }
 
         

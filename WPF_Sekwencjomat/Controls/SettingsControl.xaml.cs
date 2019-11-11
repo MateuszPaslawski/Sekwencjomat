@@ -22,7 +22,7 @@ namespace WPF_Sekwencjomat
                 {
                     ((MainWindow)Application.Current.MainWindow).PlayerControlObject.VLC_Control.SourceProvider.CreatePlayer(new DirectoryInfo(path));
                     TBX_VLCPath.Text = path;
-                    IMG_VLCPathStatus.Source = new BitmapImage(new Uri(@"/WPF_Sekwencjomat;component/Resources/icons8-checkmark-20.png", UriKind.Relative));
+                    IMG_VLCPathStatus.Source = new BitmapImage(new Uri(@"/WPF_Sekwencjomat;component/Resources/png/icons8-checkmark-20.png", UriKind.Relative));
                     ret = true;
                 }
                 catch { ret = false; }
