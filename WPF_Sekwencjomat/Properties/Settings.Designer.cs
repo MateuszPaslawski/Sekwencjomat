@@ -86,12 +86,12 @@ namespace WPF_Sekwencjomat.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PAUSEVIDEO_PATH {
+        public string COUNTEREVIDEO_PATH {
             get {
-                return ((string)(this["PAUSEVIDEO_PATH"]));
+                return ((string)(this["COUNTEREVIDEO_PATH"]));
             }
             set {
-                this["PAUSEVIDEO_PATH"] = value;
+                this["COUNTEREVIDEO_PATH"] = value;
             }
         }
         

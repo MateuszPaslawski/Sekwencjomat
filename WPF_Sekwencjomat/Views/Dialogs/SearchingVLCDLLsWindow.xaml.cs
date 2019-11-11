@@ -1,55 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using System;
 using System.Threading;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WPF_Sekwencjomat
 {
     public partial class SearchingVLCDLLsWindow : Window
     {
-        private List<string> SearchList = new List<string>
+        private List<string> SearchList
         {
-            @"C:\Program Files\VLC",
-            @"C:\Program Files\VideoLAN",
-            @"C:\Program Files\VideoLAN\VLC",
-            @"C:\VLC",
-            @"C:\VideoLAN",
-            @"C:\VideoLAN\VLC",
-            @"C:\Program Files (x86)\VLC",
-            @"C:\Program Files (x86)\VideoLAN",
-            @"C:\Program Files (x86)\VideoLAN\VLC",
+            get
+            {
+                List<string> searchList = new List<string>();
 
-            @"D:\Program Files\VLC",
-            @"D:\Program Files\VideoLAN",
-            @"D:\Program Files\VideoLAN\VLC",
-            @"D:\VLC",
-            @"D:\VideoLAN",
-            @"D:\VideoLAN\VLC",
-            @"D:\Program Files (x86)\VLC",
-            @"D:\Program Files (x86)\VideoLAN",
-            @"D:\Program Files (x86)\VideoLAN\VLC",
+                foreach (DriveInfo item in DriveInfo.GetDrives())
+                {
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VLC"));
+                }
 
-            @"E:\Program Files\VLC",
-            @"E:\Program Files\VideoLAN",
-            @"E:\Program Files\VideoLAN\VLC",
-            @"E:\VLC",
-            @"E:\VideoLAN",
-            @"E:\VideoLAN\VLC",
-            @"E:\Program Files (x86)\VLC",
-            @"E:\Program Files (x86)\VideoLAN",
-            @"E:\Program Files (x86)\VideoLAN\VLC",
-        };
-
+                return searchList;
+            }
+        }
 
         public SearchingVLCDLLsWindow()
         {
@@ -69,10 +50,9 @@ namespace WPF_Sekwencjomat
                     {
                         Label_Main.Content = item;
                     });
+
                     if (st.CheckVLCFolderDLLs(item))
-                    {
                         return;
-                    }
                 }
             });
             Close();

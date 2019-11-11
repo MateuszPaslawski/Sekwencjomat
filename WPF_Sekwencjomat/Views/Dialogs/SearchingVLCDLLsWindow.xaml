@@ -9,7 +9,6 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Vertical">
-                <Label Content="Przeszukiwanie: " HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Label x:Name="Label_Main" FontWeight="ExtraBold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </StackPanel>
             <ProgressBar Height="20" Width="250" IsIndeterminate="True" Margin="10"/>

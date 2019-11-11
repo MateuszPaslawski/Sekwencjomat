@@ -67,36 +67,11 @@ namespace WPF_Sekwencjomat
             }
         }
 
-        public void SaveUserSettings()
-        {
-            try
-            {
-                Properties.Settings s = Properties.Settings.Default;
-
-                s.VLC_DLL_PATH = SettingsControlObject.TBX_VLCPath.Text;
-
-                s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
-
-                if (WindowState == WindowState.Maximized) { s.WINDOWS_MAXIMIZED = true; }
-                else { s.WINDOWS_MAXIMIZED = false; }
-
-                s.SETTINGS_ORDER_TAG = Helper.GetPlaybackOrder();
-
-                s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
-                s.PAUSEVIDEO_PATH = FilesControlObject.TextBox_PauserPath.Text;
-
-                //s.LIST_OF_FILES = FilesControlObject.CurrentFilesInDataGrid;
-
-                //s.LIST_OF_FILES = new List<string>(FilesControlObject.GetCurrentFilesInDataGrid());
-                s.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
-                
-                s.Save();
-            }
-            catch { }
-        }
-
         public async void LoadUserSettings()
         {
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                return;
+
             try
             {
                 IsEnabled = false;
@@ -122,9 +97,9 @@ namespace WPF_Sekwencjomat
                     FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
                 }
 
-                if (File.Exists(settings.PAUSEVIDEO_PATH))
+                if (File.Exists(settings.COUNTEREVIDEO_PATH))
                 {
-                    FilesControlObject.TextBox_PauserPath.Text = settings.PAUSEVIDEO_PATH;
+                    FilesControlObject.TextBox_PauserPath.Text = settings.COUNTEREVIDEO_PATH;
                 }
 
                 await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
@@ -134,6 +109,28 @@ namespace WPF_Sekwencjomat
             {
                 IsEnabled = true;
             }
+        }
+
+        public void SaveUserSettings()
+        {
+            try
+            {
+                Properties.Settings s = Properties.Settings.Default;
+
+                if (WindowState == WindowState.Maximized)
+                    s.WINDOWS_MAXIMIZED = true;
+                else 
+                    s.WINDOWS_MAXIMIZED = false;
+
+                s.VLC_DLL_PATH = SettingsControlObject.TBX_VLCPath.Text;
+                s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
+                s.SETTINGS_ORDER_TAG = Helper.GetPlaybackOrder();
+                s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
+                s.COUNTEREVIDEO_PATH = FilesControlObject.TextBox_PauserPath.Text;
+                s.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
+                s.Save();
+            }
+            catch { }
         }
 
         #endregion
@@ -157,11 +154,9 @@ namespace WPF_Sekwencjomat
 
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
+            //LoadUserSettings();
 
-            LoadUserSettings();
-
-            if (!SettingsControlObject.CheckVLCFolderDLLs(Properties.Settings.Default.VLC_DLL_PATH))
-                new SearchingVLCDLLsWindow().ShowDialog();
+            new SearchingVLCDLLsWindow().ShowDialog();
 
             Visibility = Visibility.Visible;
             Topmost = true;
@@ -203,6 +198,11 @@ namespace WPF_Sekwencjomat
                     ChangeNavigationVisibility(true);
                     break;
             }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -17,7 +17,7 @@
     <Setting Name="REFVIDEO_PATH" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="PAUSEVIDEO_PATH" Type="System.String" Scope="User">
+    <Setting Name="COUNTEREVIDEO_PATH" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LIST_OF_FILES" Type="System.Collections.Genric.List&lt;System.String&gt;" Scope="User">
