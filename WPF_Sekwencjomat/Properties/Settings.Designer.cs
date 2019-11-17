@@ -49,13 +49,13 @@ namespace WPF_Sekwencjomat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool WINDOWS_MAXIMIZED {
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public global::System.Windows.WindowState WINDOW_STATE {
             get {
-                return ((bool)(this["WINDOWS_MAXIMIZED"]));
+                return ((global::System.Windows.WindowState)(this["WINDOW_STATE"]));
             }
             set {
-                this["WINDOWS_MAXIMIZED"] = value;
+                this["WINDOW_STATE"] = value;
             }
         }
         

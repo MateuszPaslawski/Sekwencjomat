@@ -8,8 +8,8 @@
     <Setting Name="WINDOW_LOCATION" Type="System.Windows.Rect" Scope="User">
       <Value Profile="(Default)">100,100,800,450</Value>
     </Setting>
-    <Setting Name="WINDOWS_MAXIMIZED" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="WINDOW_STATE" Type="System.Windows.WindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
     </Setting>
     <Setting Name="SETTINGS_ORDER_TAG" Type="System.String" Scope="User">
       <Value Profile="(Default)">SequentialForRating</Value>

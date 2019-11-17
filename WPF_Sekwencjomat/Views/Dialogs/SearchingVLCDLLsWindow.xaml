@@ -5,13 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
         mc:Ignorable="d" SizeToContent="WidthAndHeight" FontFamily="Google Sans" FontSize="13"
-        Title="Poszukiwanie plików VLC">
+        Title="Poszukiwanie plików VLC" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True">
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Vertical">
-                <Label x:Name="Label_Main" FontWeight="ExtraBold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            </StackPanel>
-            <ProgressBar Height="20" Width="250" IsIndeterminate="True" Margin="10"/>
+            <Image Source="/WPF_Sekwencjomat;component/Album.ico" Stretch="None" />
+            <ProgressBar Height="10" Width="320" IsIndeterminate="True" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>

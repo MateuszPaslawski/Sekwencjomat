@@ -19,6 +19,8 @@ namespace WPF_Sekwencjomat
         public FilesControl FilesControlObject;
         public PlayerControl PlayerControlObject;
         public SettingsControl SettingsControlObject;
+        public Rect WindowsRectBeforeFullScreen;
+        public WindowState WindowStateBeforeFullScreen;
 
         #region Metody Użytkownika
         private void MakeButtonPressedOnLeft(object sender)
@@ -40,7 +42,7 @@ namespace WPF_Sekwencjomat
             }
         }
 
-        public void ChangeNavigationVisibility(bool makeVisible)
+        public void SwitchFullScreen(bool makeVisible)
         {
             bool condition = 
                 (StackPanel_ButtonsLeft.Visibility == Visibility.Visible) 
@@ -54,12 +56,27 @@ namespace WPF_Sekwencjomat
                 Background = new SolidColorBrush(Colors.Black);
                 StackPanel_ButtonsLeft.Visibility = Visibility.Collapsed;
                 Border_BottomStatusBar.Visibility = Visibility.Collapsed;
+                WindowsRectBeforeFullScreen = new Rect
+                {
+                    Height = ActualHeight,
+                    Width = ActualWidth,
+                    Y = Top,
+                    X = Left,
+                };
+                WindowStateBeforeFullScreen = WindowState;
+
                 WindowState = WindowState.Normal;
                 WindowStyle = WindowStyle.None;
                 WindowState = WindowState.Maximized;
             }
             else
             {
+                Height = WindowsRectBeforeFullScreen.Height;
+                Width = WindowsRectBeforeFullScreen.Width;
+                Top = WindowsRectBeforeFullScreen.Y;
+                Left = WindowsRectBeforeFullScreen.X;
+                WindowState = WindowStateBeforeFullScreen;
+
                 Background = new SolidColorBrush(Colors.White);
                 StackPanel_ButtonsLeft.Visibility = Visibility.Visible;
                 Border_BottomStatusBar.Visibility = Visibility.Visible;
@@ -88,8 +105,8 @@ namespace WPF_Sekwencjomat
                     Height = settings.WINDOW_LOCATION.Height;
                 }
 
-                if (settings.WINDOWS_MAXIMIZED) { WindowState = WindowState.Maximized; }
-
+                WindowState = settings.WINDOW_STATE;
+                
                 Helper.SetPlaybackOrder(settings.SETTINGS_ORDER_TAG);
 
                 if (File.Exists(settings.REFVIDEO_PATH))
@@ -117,11 +134,7 @@ namespace WPF_Sekwencjomat
             {
                 Properties.Settings s = Properties.Settings.Default;
 
-                if (WindowState == WindowState.Maximized)
-                    s.WINDOWS_MAXIMIZED = true;
-                else 
-                    s.WINDOWS_MAXIMIZED = false;
-
+                s.WINDOW_STATE = WindowState;
                 s.VLC_DLL_PATH = SettingsControlObject.TBX_VLCPath.Text;
                 s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
                 s.SETTINGS_ORDER_TAG = Helper.GetPlaybackOrder();
@@ -132,7 +145,6 @@ namespace WPF_Sekwencjomat
             }
             catch { }
         }
-
         #endregion
 
 
@@ -140,27 +152,28 @@ namespace WPF_Sekwencjomat
         public MainWindow()
         {
             InitializeComponent();
+            WindowState = WindowState.Minimized;
+            ShowInTaskbar = false;
         }
 
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Visibility = Visibility.Hidden;
-
             FilesControlObject = new FilesControl();
             SettingsControlObject = new SettingsControl();
             PlayerControlObject = new PlayerControl();
 
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
-            //LoadUserSettings();
+            
 
             new SearchingVLCDLLsWindow().ShowDialog();
 
-            Visibility = Visibility.Visible;
-            Topmost = true;
-            
+            ShowInTaskbar = true;
+            LoadUserSettings();
+            //WindowState = WindowState.Normal;
+            Activate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -191,11 +204,11 @@ namespace WPF_Sekwencjomat
             switch (e.Key)
             {
                 case Key.F12:
-                    ChangeNavigationVisibility(false);
+                    SwitchFullScreen(false);
                     break;
 
                 case Key.Escape:
-                    ChangeNavigationVisibility(true);
+                    SwitchFullScreen(true);
                     break;
             }
         }

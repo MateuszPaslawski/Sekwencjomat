@@ -46,11 +46,6 @@ namespace WPF_Sekwencjomat
             {
                 foreach (string item in SearchList)
                 {
-                    Dispatcher.Invoke(() =>
-                    {
-                        Label_Main.Content = item;
-                    });
-
                     if (st.CheckVLCFolderDLLs(item))
                         return;
                 }

@@ -224,7 +224,7 @@ namespace WPF_Sekwencjomat
 
         private void VLC_Control_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            ((MainWindow)Application.Current.MainWindow).SwitchFullScreen(false);
         }
     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat"
         xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
-        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" MinWidth="575" MinHeight="360"  RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" UseLayoutRounding="True"
-        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="13" PreviewKeyDown="Window_PreviewKeyDown" Background="White">
+        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" MinWidth="700" MinHeight="360"  RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" UseLayoutRounding="True"
+        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="13" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <ScrollViewer x:Name="SV_MainDisplay" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
         </ScrollViewer>
-        
+
         <StackPanel x:Name="StackPanel_ButtonsLeft" Grid.Column="0">
             <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
                 <DockPanel>
