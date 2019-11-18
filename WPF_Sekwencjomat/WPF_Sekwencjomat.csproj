@@ -102,6 +102,9 @@
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Views\StartupWindow.xaml.cs">
+      <DependentUpon>StartupWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\FilesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SettingsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,7 +209,7 @@
     <Resource Include="Resources\ico\Album\Album.ico" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="Resources\ico\Album\Slpash.ico" />
+    <None Include="Resources\ico\Album\Slpash.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Dialogs\" />

@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using WPF_Sekwencjomat.Models;
+using WPF_Sekwencjomat.Views;
 
 namespace WPF_Sekwencjomat
 {
@@ -89,12 +90,13 @@ namespace WPF_Sekwencjomat
             if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
                 return;
 
+            StartupWindow startupWindow = new StartupWindow();
+
             try
             {
                 IsEnabled = false;
-
                 Properties.Settings settings = Properties.Settings.Default;
-
+                startupWindow.Show();
                 SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
 
                 if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
@@ -125,6 +127,7 @@ namespace WPF_Sekwencjomat
             finally
             {
                 IsEnabled = true;
+                startupWindow.Hide();
             }
         }
 
