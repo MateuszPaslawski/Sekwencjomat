@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace WPF_Sekwencjomat
+namespace WPF_Sekwencjomat.Models
 {
     class Helper
     {

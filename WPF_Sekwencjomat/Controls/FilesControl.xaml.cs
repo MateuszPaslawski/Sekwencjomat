@@ -8,19 +8,14 @@ using MediaToolkit;
 using MediaToolkit.Model;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Media;
-using System.Windows.Interop;
-using System.Runtime.InteropServices;
-using System.Windows.Media.Imaging;
-using System.Windows.Input;
+using WPF_Sekwencjomat.Models;
 
 namespace WPF_Sekwencjomat
 {
     public partial class FilesControl : UserControl
     {
 
-        public List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
+        public List<Models.MediaFile> ListOfMediaFilePropeties = new List<Models.MediaFile>();
 
         public static List<string> CurrentFilesInDataGrid { get; set; }
 
@@ -34,7 +29,7 @@ namespace WPF_Sekwencjomat
             List<object> listToDelete = new List<object>();
             foreach (object item in DG_Main.SelectedItems)
             {
-                MediaFile fc = item as MediaFile;
+                Models.MediaFile fc = item as Models.MediaFile;
                 CurrentFilesInDataGrid.Remove(fc.Path);
                 ListOfMediaFilePropeties.Remove(fc);
                 listToDelete.Add(item);
@@ -74,7 +69,7 @@ namespace WPF_Sekwencjomat
                         mediaInfoEngine.GetMetadata(mf);
                     }
 
-                    MediaFile mfo = new MediaFile();
+                    Models.MediaFile mfo = new Models.MediaFile();
 
                     try
                     {

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using WPF_Sekwencjomat.Models;
 
 namespace WPF_Sekwencjomat
 {

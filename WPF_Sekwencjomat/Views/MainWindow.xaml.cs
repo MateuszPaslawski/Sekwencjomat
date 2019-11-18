@@ -9,7 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Microsoft.Win32;
+using WPF_Sekwencjomat.Models;
+using WPF_Sekwencjomat.Views.Dialogs;
 
 namespace WPF_Sekwencjomat
 {
@@ -168,7 +169,7 @@ namespace WPF_Sekwencjomat
             MakeButtonPressedOnLeft(Button_FileControl);
             
 
-            new SearchingVLCDLLsWindow().ShowDialog();
+            new Splash().ShowDialog();
 
             ShowInTaskbar = true;
             LoadUserSettings();
@@ -216,6 +217,11 @@ namespace WPF_Sekwencjomat
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace WPF_Sekwencjomat
+namespace WPF_Sekwencjomat.Models
 {
     public class MediaFile
     {
@@ -28,18 +27,21 @@ namespace WPF_Sekwencjomat
 
         public string Duration { get; set; }
 
-        public ImageSource IconImage { get
+        public ImageSource IconImage
+        {
+            get
             {
                 ImageSource imageSource;
 
                 Icon icon = Icon.ExtractAssociatedIcon(Path);
                 using (Bitmap bmp = icon.ToBitmap())
                 {
-                    var stream = new MemoryStream();
+                    MemoryStream stream = new MemoryStream();
                     bmp.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
                     imageSource = BitmapFrame.Create(stream);
                 }
                 return imageSource;
-            } }
+            }
+        }
     }
 }

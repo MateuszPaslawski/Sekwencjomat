@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF_Sekwencjomat.SearchingVLCDLLsWindow"
+﻿<Window x:Class="WPF_Sekwencjomat.Views.Dialogs.Splash"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,8 +8,8 @@
         Title="Poszukiwanie plików VLC" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True">
     <Grid>
         <StackPanel>
-            <Image Source="/WPF_Sekwencjomat;component/Album.ico" Stretch="None" />
-            <ProgressBar Height="10" Width="320" IsIndeterminate="True" Margin="10"/>
+            <!--<Image Source="/WPF_Sekwencjomat;component/Resources/ico/Album/Album.ico" Stretch="None" />-->
+            <!--<ProgressBar Height="10" Width="320" IsIndeterminate="True" Margin="10"/>-->
         </StackPanel>
     </Grid>
 </Window>

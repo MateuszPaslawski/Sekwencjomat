@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPF_Sekwencjomat"
-             StartupUri="Views/Main/MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         
         <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
@@ -17,7 +17,6 @@
         <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="#FF3C77DD"/>
         <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="#FF212121"/>
         <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
-        
         
         <Style TargetType="{x:Type ProgressBar}">
             <Setter Property="Foreground" Value="#98CCFD" />
@@ -38,6 +37,43 @@
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" TargetName="border" Value="#FF78C1EC"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>-->
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#99BCDDEE"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#99245A83"/>-->
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <!--<Setter Property="Background" TargetName="border" Value="{x:Null}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>-->
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        
+        <ControlTemplate x:Key="ButtonBaseControlTemplate_Material" TargetType="{x:Type ButtonBase}">
+            <Grid>
+                <Border Background="Red">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-90" Color="Black" Opacity="0.7"/>
+                    </Border.Effect>
+                </Border>
+                <Border x:Name="border" Background="#DFF0FE" SnapsToDevicePixels="True">
+                    <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#85B3DD"/>
+                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#993C7FB1"/>-->
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#6D92B4"/>
                     <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>-->
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
@@ -88,7 +124,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Border x:Name="radioButtonBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Border x:Name="radioButtonBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                     <Grid x:Name="markGrid" Margin="2">
                                         <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="8" MinHeight="8" Opacity="0"/>
                                     </Grid>

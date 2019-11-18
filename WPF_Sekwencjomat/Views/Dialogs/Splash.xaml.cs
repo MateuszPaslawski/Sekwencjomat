@@ -5,11 +5,11 @@ using System.Windows;
 using System;
 using System.Threading;
 
-namespace WPF_Sekwencjomat
+namespace WPF_Sekwencjomat.Views.Dialogs
 {
-    public partial class SearchingVLCDLLsWindow : Window
+    public partial class Splash : Window
     {
-        private List<string> SearchList
+        private List<string> VLC_DLL_SearchList
         {
             get
             {
@@ -32,7 +32,7 @@ namespace WPF_Sekwencjomat
             }
         }
 
-        public SearchingVLCDLLsWindow()
+        public Splash()
         {
             InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace WPF_Sekwencjomat
 
             await Task.Run(() =>
             {
-                foreach (string item in SearchList)
+                foreach (var item in VLC_DLL_SearchList)
                 {
                     if (st.CheckVLCFolderDLLs(item))
                         return;

@@ -17,6 +17,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -57,7 +57,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Album.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\ico\Album\Album.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
@@ -97,20 +97,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\MediaFile.cs" />
+    <Compile Include="Models\MediaFile.cs" />
     <Compile Include="Controls\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Page Include="Controls\FilesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml">
+    <Page Include="Views\Dialogs\Splash.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="Views\Main\MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -121,10 +121,10 @@
     <Compile Include="Controls\FilesControl.xaml.cs">
       <DependentUpon>FilesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\SearchingVLCDLLsWindow.xaml.cs">
-      <DependentUpon>SearchingVLCDLLsWindow.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -170,7 +170,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 i x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -179,36 +179,37 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Album.ico" />
+    <Resource Include="Resources\png\add-folder-40.png" />
+    <Resource Include="Resources\png\air-play-40.png" />
+    <Resource Include="Resources\png\automatic-40.png" />
+    <Resource Include="Resources\png\checkmark-20.png" />
+    <Resource Include="Resources\png\circled-play-40.png" />
+    <Resource Include="Resources\png\delete-20.png" />
+    <Resource Include="Resources\png\documentary-40.png" />
+    <Resource Include="Resources\png\folder-tree-20.png" />
+    <Resource Include="Resources\png\folder-tree-40.png" />
+    <Resource Include="Resources\png\magnifying-glass-with-plus-20.png" />
+    <Resource Include="Resources\png\magnifying-glass-with-plus-40.png" />
+    <Resource Include="Resources\png\next-40.png" />
+    <Resource Include="Resources\png\no-entry-40.png" />
+    <Resource Include="Resources\png\opened-folder-40.png" />
+    <Resource Include="Resources\png\pause-button-40.png" />
+    <Resource Include="Resources\png\plus-20.png" />
+    <Resource Include="Resources\png\plus-40.png" />
+    <Resource Include="Resources\png\plus-math-20.png" />
+    <Resource Include="Resources\png\plus-math-40.png" />
+    <Resource Include="Resources\png\plus-sign-20.png" />
+    <Resource Include="Resources\png\plus-sign-40.png" />
+    <Resource Include="Resources\png\video-playlist-40.png" />
+    <Resource Include="Resources\png\vlc-24.png" />
+    <Resource Include="Resources\png\vlc-48.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ico\Album\Album.ico" />
-    <Resource Include="Resources\png\icons8-add-folder-40.png" />
-    <Resource Include="Resources\png\icons8-air-play-40.png" />
-    <Resource Include="Resources\png\icons8-automatic-40.png" />
-    <Resource Include="Resources\png\icons8-checkmark-20.png" />
-    <Resource Include="Resources\png\icons8-circled-play-40.png" />
-    <Resource Include="Resources\png\icons8-delete-20.png" />
-    <Resource Include="Resources\png\icons8-documentary-40.png" />
-    <Resource Include="Resources\png\icons8-folder-tree-20.png" />
-    <Resource Include="Resources\png\icons8-folder-tree-40.png" />
-    <Resource Include="Resources\png\icons8-magnifying-glass-with-plus-20.png" />
-    <Resource Include="Resources\png\icons8-magnifying-glass-with-plus-40.png" />
-    <Resource Include="Resources\png\icons8-next-40.png" />
-    <Resource Include="Resources\png\icons8-no-entry-40.png" />
-    <Resource Include="Resources\png\icons8-opened-folder-40.png" />
-    <Resource Include="Resources\png\icons8-pause-button-40.png" />
-    <Resource Include="Resources\png\icons8-plus-20.png" />
-    <Resource Include="Resources\png\icons8-plus-40.png" />
-    <Resource Include="Resources\png\icons8-plus-math-20.png" />
-    <Resource Include="Resources\png\icons8-plus-math-40.png" />
-    <Resource Include="Resources\png\icons8-plus-sign-20.png" />
-    <Resource Include="Resources\png\icons8-plus-sign-40.png" />
-    <Resource Include="Resources\png\icons8-video-playlist-40.png" />
-    <Resource Include="Resources\png\icons8-vlc-24.png" />
-    <Resource Include="Resources\png\icons8-vlc-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Resources\ico\Album\Slpash.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

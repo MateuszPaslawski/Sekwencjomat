@@ -14,7 +14,7 @@
         <DockPanel>
             <Button Click="Button_Click" Margin="0,5,5,5" Width="Auto" Height="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Background="#00000000" BorderBrush="{x:Null}">
                 <DockPanel Margin="5">
-                    <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-add-folder-40.png" HorizontalAlignment="Left" Stretch="None"/>
+                    <Image Source="/WPF_Sekwencjomat;component/Resources/png/add-folder-40.png" HorizontalAlignment="Left" Stretch="None"/>
                     <Label Content="Dodaj Pliki" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
@@ -22,7 +22,7 @@
                 <DockPanel Margin="0,5,5,5">
                     <Label Content="Ścieżka do pliku referencyjnego" DockPanel.Dock="Top" Margin="0"/>
                     <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_1" Background="White" BorderBrush="#FFABADB3">
-                        <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-plus-20.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" Height="24" Width="24"/>
+                        <Image Source="/WPF_Sekwencjomat;component/Resources/png/plus-20.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" Height="24" Width="24"/>
                     </Button>
                     <TextBox x:Name="TextBox_RefPath" VerticalAlignment="Center" IsReadOnly="True" Margin="0" Height="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </DockPanel>
@@ -30,7 +30,7 @@
                 <DockPanel Margin="0,5,5,5">
                     <Label Content="Ścieżka do pliku odliczania" DockPanel.Dock="Top" Margin="0"/>
                     <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_2" BorderBrush="#FFABADB3" Background="{x:Null}">
-                        <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-plus-20.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" Height="24" Width="24"/>
+                        <Image Source="/WPF_Sekwencjomat;component/Resources/png/plus-20.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" Height="24" Width="24"/>
                     </Button>
                     <TextBox x:Name="TextBox_PauserPath" VerticalAlignment="Center" IsReadOnly="True" Margin="0" Height="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </DockPanel>
@@ -42,7 +42,7 @@
                 <ContextMenu>
                     <MenuItem Header="Usuń zaznaczone elementy" Click="MenuItem_Click">
                         <MenuItem.Icon>
-                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-delete-20.png"/>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>

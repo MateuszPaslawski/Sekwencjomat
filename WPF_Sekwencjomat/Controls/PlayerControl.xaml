@@ -20,19 +20,19 @@
 
         <DockPanel x:Name="DP_Navigation" Grid.Row="1" LastChildFill="False" VerticalAlignment="Center" HorizontalAlignment="Center">
             <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1">
-                <Image Source="Resources/icons8-opened-folder-48.png" Stretch="None"/>
+                <Image Source="Resources/opened-folder-48.png" Stretch="None"/>
             </Button>-->
 
             <Button ToolTip="Pauza" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PAUSE_Button_Click_2" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-pause-button-40.png" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/pause-button-40.png" Stretch="None"/>
             </Button>
 
             <Button ToolTip="Rozpocznij odtwarzanie sekwencji od początku" Click="PLAY_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
             </Button>
 
             <Button ToolTip="Zatrzymaj odtwarzanie sekwencji" Click="STOP_Button_Click_1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/icons8-no-entry-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/no-entry-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
             </Button>
         </DockPanel>
     </Grid>
