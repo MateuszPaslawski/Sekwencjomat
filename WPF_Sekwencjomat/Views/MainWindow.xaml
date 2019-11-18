@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat"
         xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
-        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed" MinWidth="700" MinHeight="360"  RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" UseLayoutRounding="True"
-        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="13" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        TextOptions.TextFormattingMode="Ideal" VisualTextRenderingMode="Auto"
+        RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" UseLayoutRounding="True"
+        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed" MinWidth="700" MinHeight="360" 
+        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="14" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 
     <Grid>
         <Grid.ColumnDefinitions>

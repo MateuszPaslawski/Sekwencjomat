@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using WPF_Sekwencjomat.Models;
-using WPF_Sekwencjomat.Views.Dialogs;
 
 namespace WPF_Sekwencjomat
 {
@@ -168,9 +167,6 @@ namespace WPF_Sekwencjomat
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
             
-
-            new Splash().ShowDialog();
-
             ShowInTaskbar = true;
             LoadUserSettings();
             //WindowState = WindowState.Normal;
