@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat.Views" WindowStartupLocation="CenterScreen"
-        mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" AllowsTransparency="True"
+        mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None" Background="White" AllowsTransparency="True"
         Title="StartupWindow" SizeToContent="WidthAndHeight" Topmost="True">
     
     <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background="#66000000" CornerRadius="0">

@@ -214,6 +214,15 @@
   <ItemGroup>
     <Folder Include="Views\Dialogs\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\diagrams\wkleslo120.png" />
+    <Resource Include="Resources\diagrams\wypuklo120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\diagrams\losowo120.png" />
+    <Resource Include="Resources\diagrams\malejaco120.png" />
+    <Resource Include="Resources\diagrams\rosnaco120.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

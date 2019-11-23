@@ -8,29 +8,47 @@ using System.Windows.Media;
 
 namespace WPF_Sekwencjomat.Models
 {
-    class Helper
+    public static class Helper
     {
+        public static PlaybackTechnique CurrentPlaybackTechnique;
+        public static PlaybackMode CurrentPlaybackMode;
+
+        public enum PlaybackTechnique
+        {
+            ACR,
+            CCR,
+            DCR,
+        }
+
+        public enum PlaybackMode
+        {
+            Descending,
+            Ascending,
+            Random,
+        }
+
         public static string GetPlaybackOrder()
         {
-            string ret = string.Empty;
-            foreach (RadioButton item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
-            {
-                if (item.IsChecked == true)
-                    ret = item.Tag.ToString().ToLower();
-            }
-            return ret;
+            //string ret = string.Empty;
+            //foreach (RadioButton item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
+            //{
+            //    if (item.IsChecked == true)
+            //        ret = item.Tag.ToString().ToLower();
+            //}
+            //return ret;
+            return string.Empty;
         }
 
         public static void SetPlaybackOrder(string order)
         {
-            foreach (object item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
-            {
-                if (item is RadioButton)
-                {
-                    if (((RadioButton)item).Tag.ToString().ToLower() == order)
-                        ((RadioButton)item).IsChecked = true;
-                }
-            }
+            //foreach (object item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
+            //{
+            //    if (item is RadioButton)
+            //    {
+            //        if (((RadioButton)item).Tag.ToString().ToLower() == order)
+            //            ((RadioButton)item).IsChecked = true;
+            //    }
+            //}
         }
 
         public static string DecorateBytes(long byteCount)

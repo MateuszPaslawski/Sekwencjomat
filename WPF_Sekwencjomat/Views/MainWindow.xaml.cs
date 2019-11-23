@@ -138,9 +138,8 @@ namespace WPF_Sekwencjomat
                 Properties.Settings s = Properties.Settings.Default;
 
                 s.WINDOW_STATE = WindowState;
-                s.VLC_DLL_PATH = SettingsControlObject.TBX_VLCPath.Text;
+                s.VLC_DLL_PATH = SettingsControlObject.TextBox_VLCPath.Text;
                 s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
-                s.SETTINGS_ORDER_TAG = Helper.GetPlaybackOrder();
                 s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
                 s.COUNTEREVIDEO_PATH = FilesControlObject.TextBox_PauserPath.Text;
                 s.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();

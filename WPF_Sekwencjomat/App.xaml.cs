@@ -10,6 +10,8 @@ namespace WPF_Sekwencjomat
 {
     public partial class App : Application
     {
+
+
         public App()
         {
             Dispatcher.UnhandledException += OnDispatcherUnhandledException;

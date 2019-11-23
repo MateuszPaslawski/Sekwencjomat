@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_Sekwencjomat"
         xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
         TextOptions.TextFormattingMode="Ideal" VisualTextRenderingMode="Auto"
-        RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" UseLayoutRounding="True"
+        RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"
         mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed" MinWidth="700" MinHeight="360" 
         Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="14" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 

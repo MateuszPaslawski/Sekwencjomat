@@ -21,7 +21,7 @@
             <UniformGrid Rows="1">
                 <DockPanel Margin="0,5,5,5">
                     <Label Content="Ścieżka do pliku referencyjnego" DockPanel.Dock="Top" Margin="0"/>
-                    <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_1" Background="White" BorderBrush="#FFABADB3">
+                    <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_1" Background="{x:Null}" BorderBrush="#FFABADB3" >
                         <Image Source="/WPF_Sekwencjomat;component/Resources/png/plus-20.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" Height="24" Width="24"/>
                     </Button>
                     <TextBox x:Name="TextBox_RefPath" VerticalAlignment="Center" IsReadOnly="True" Margin="0" Height="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>

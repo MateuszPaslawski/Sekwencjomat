@@ -40,13 +40,13 @@ namespace WPF_Sekwencjomat.Views
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow mw = Application.Current.MainWindow as MainWindow;
-            SettingsControl st = mw.SettingsControlObject as SettingsControl;
+            SettingsControl sc = mw.SettingsControlObject as SettingsControl;
 
             await Task.Run(() =>
             {
                 foreach (var item in VLC_DLL_SearchList)
                 {
-                    if (st.CheckVLCFolderDLLs(item))
+                    if (sc.CheckVLCFolderDLLs(item))
                         return;
                 }
             });

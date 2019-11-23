@@ -11,7 +11,7 @@ namespace WPF_Sekwencjomat
 {
     public partial class PlayerControl : UserControl
     {
-        //SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
+        SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
         private readonly FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
         private readonly List<Button> ListOfButtons = new List<Button>();
         private List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
@@ -117,6 +117,8 @@ namespace WPF_Sekwencjomat
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(Helper.CurrentPlaybackMode);
+            Console.WriteLine(Helper.CurrentPlaybackTechnique);
             if (VLC_Control.SourceProvider.MediaPlayer != null)
             {
                 if (FilesControlObject.ListOfMediaFilePropeties.Count < 1 || CheckBeforeStartPlaying() == false)

@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Sekwencjomat"
-             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13"
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,21 +15,225 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <GroupBox Margin="5" Header="Opcje Odtwarzania" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <UniformGrid x:Name="UniformGrid_PlaybackOrderControl" Margin="10" Columns="2">
-                <RadioButton Tag="BitrateAscending" Content="Bitrate Rosnąco"  Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
+        <GroupBox Margin="5" Header="Opcje odtwarzania metodą MOS" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Margin="10" Orientation="Vertical">
+                <!--<RadioButton Tag="BitrateAscending" Content="Bitrate Rosnąco"  Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
                 <RadioButton Tag="BitrateDescending" Content="Bitrate Malejąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
                 <RadioButton Tag="ResolutionAscending" Content="Rozdzielczość Rosnąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
                 <RadioButton Tag="ResolutionDescending" Content="Rozdzielczość Malejąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="SequentialForRating" Content="Sekwencyjnie do Oceny" IsChecked="True" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="Random" Content="Losowo" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-            </UniformGrid>
+                <RadioButton Tag="Random" Content="Losowo" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>-->
+                <RadioButton x:Name="RadioButton_ACR" Checked="RadioButton_Checked" Height="50" IsChecked="True" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+                    <DockPanel LastChildFill="True">
+                        <Label Content="ACR"/>
+                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBox.Style>
+                                <Style TargetType="ComboBox">
+                                    <Style.Triggers>
+                                         <DataTrigger Binding ="{Binding ElementName=RadioButton_ACR, Path=IsChecked}" Value="false">                    
+                                                <Setter Property="ComboBox.IsEnabled" Value="false"/>                    
+                                        </DataTrigger> 
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                            <ComboBoxItem Content="Malejąco" IsSelected="True">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Rosnąco">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Losowo">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wypukło">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wklęsło">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                </RadioButton>
+                
+                <!--<RadioButton Visibility="Collapsed" x:Name="RadioButton_CCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+                    <DockPanel LastChildFill="True">
+                        <Label Content="CCR"/>
+                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBox.Style>
+                                <Style TargetType="ComboBox">
+                                    <Style.Triggers>
+                                         <DataTrigger Binding ="{Binding ElementName=RadioButton_CCR, Path=IsChecked}" Value="false">                    
+                                                <Setter Property="ComboBox.IsEnabled" Value="false"/>                    
+                                        </DataTrigger> 
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                            <ComboBoxItem Content="Malejąco" IsSelected="True">
+                                <ComboBoxItem.ToolTip>
+                                    <StackPanel>
+                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
+                                    </StackPanel>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Rosnąco">
+                                <ComboBoxItem.ToolTip>
+                                    <StackPanel>
+                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
+                                    </StackPanel>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Losowo">
+                                <ComboBoxItem.ToolTip>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
+                                        </StackPanel>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wypukło">
+                                <ComboBoxItem.ToolTip>
+                                    <StackPanel>
+                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
+                                    </StackPanel>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wklęsło">
+                                <ComboBoxItem.ToolTip>
+                                    <StackPanel>
+                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
+                                    </StackPanel>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                </RadioButton>-->
+                
+                <RadioButton x:Name="RadioButton_DCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+                    <DockPanel LastChildFill="True">
+                        <Label Content="DCR"/>
+                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBox.Style>
+                                <Style TargetType="ComboBox">
+                                    <Style.Triggers>
+                                         <DataTrigger Binding ="{Binding ElementName=RadioButton_DCR, Path=IsChecked}" Value="false">                    
+                                                <Setter Property="ComboBox.IsEnabled" Value="false"/>                    
+                                        </DataTrigger> 
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                            <ComboBoxItem Content="Malejąco" IsSelected="True">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Rosnąco">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Losowo">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wypukło">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                            <ComboBoxItem Content="Wklęsło">
+                                <ComboBoxItem.ToolTip>
+                                    <ToolTip Background="White" Margin="5,5,5,5">
+                                        <ToolTip.Effect>
+                                            <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                                        </ToolTip.Effect>
+                                        <StackPanel>
+                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ComboBoxItem.ToolTip>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                </RadioButton>
+            </StackPanel>
         </GroupBox>
 
         <GroupBox Margin="5" Grid.Row="1" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Image x:Name="IMG_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png" Stretch="None"/>
+                    <Image x:Name="Image_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png" Stretch="None"/>
                     <Label Content="Ścieżka programu VLC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox.Header>
@@ -38,7 +241,7 @@
                 <Button Click="Button_Click" Margin="-1,0" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" BorderBrush="#FFABADB3" Background="{x:Null}">
                     <Image Source="/WPF_Sekwencjomat;component/Resources/png/vlc-24.png" Stretch="None"/>
                 </Button>
-                <TextBox IsReadOnly="True" MinWidth="200" x:Name="TBX_VLCPath" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <TextBox IsReadOnly="True" MinWidth="200" x:Name="TextBox_VLCPath" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             </DockPanel>
         </GroupBox>
     </Grid>
