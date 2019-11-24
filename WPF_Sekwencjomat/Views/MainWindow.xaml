@@ -21,8 +21,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer x:Name="SV_MainDisplay" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
-        </ScrollViewer>
+        <ScrollViewer x:Name="SV_MainDisplay" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled"/>
 
         <StackPanel x:Name="StackPanel_ButtonsLeft" Grid.Column="0">
             <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Sekwencjomat"
-             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13" Width="500">
+             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,7 +15,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <GroupBox Margin="5" Header="Opcje odtwarzania metodą MOS" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <GroupBox Margin="5" Grid.Row="1" Header="Opcje odtwarzania metodą MOS">
             <StackPanel Margin="5" Orientation="Vertical">
                 
                 <RadioButton x:Name="RadioButton_ACR" Checked="RadioButton_Checked" Height="50" IsChecked="True" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
@@ -179,7 +179,7 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Margin="5" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
+        <GroupBox Margin="5" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="Image_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png" Stretch="None"/>

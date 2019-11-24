@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat.Views.Dialogs"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Background="Transparent"
         Title="ACRWindow" WindowStyle="None" AllowsTransparency="True"
         WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
-    <Grid>
+    <Grid Margin="5">
+        <Border Background="White">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+            </Border.Effect>
+        </Border>
         <DockPanel>
             <UniformGrid x:Name="UniformGrid_Main" DockPanel.Dock="Top" Margin="5,5" Columns="1">
                 <RadioButton Content="5 - Jakość jest wspaniała" IsChecked="True" Style="{StaticResource RadioButtonStyle_Colored}" Background="#008A00"/>
@@ -18,7 +23,7 @@
             </UniformGrid>
             <Button DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
                     Padding="0,20" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
-                    Background="#00D00000" BorderThickness="0"
+                    Background="Transparent" BorderThickness="0"
                     Click="Button_Click">
                 <Image Source="/WPF_Sekwencjomat;component/Resources/png/checkmark-20.png" Stretch="None"/>
             </Button>

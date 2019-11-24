@@ -18,7 +18,7 @@
             <Label x:Name="Label_Countdown" Visibility="Hidden" Content="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" FontWeight="Bold"/>
         </Grid>
 
-        <DockPanel x:Name="DP_Navigation" Grid.Row="1" LastChildFill="False" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <DockPanel x:Name="DP_Navigation" IsEnabled="False" Grid.Row="1" LastChildFill="False" VerticalAlignment="Center" HorizontalAlignment="Center">
 
             <Button ToolTip="Rozpocznij odtwarzanie sekwencji od początku" Click="PLAY_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
                 <Image Source="/WPF_Sekwencjomat;component/Resources/png/circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>

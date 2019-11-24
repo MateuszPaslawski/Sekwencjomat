@@ -14,10 +14,11 @@ namespace WPF_Sekwencjomat
     public partial class PlayerControl : UserControl
     {
         public SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
+        public FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
+
         public Helper.PlaybackTechnique PlayerPlaybackTechnique;
         public Helper.PlaybackMode PlayerPlaybackMode;
-        private readonly FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
-        private readonly List<Button> ListOfButtons = new List<Button>();
+
         private List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
         private int CurrentPlayingFileIndex = 0;
         
@@ -27,44 +28,16 @@ namespace WPF_Sekwencjomat
             ThreadPool.QueueUserWorkItem(x =>
             {
                 VLC_Control.SourceProvider.MediaPlayer.Stop();
-
             });
 
             Dispatcher.Invoke(() =>
             {
                 Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
+                Helper.EnableNavigationButtons();
             });
 
             CurrentPlayingFileIndex = 0;
             ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
-        }
-
-        private void FillListOfButtons()
-        {
-            foreach (object item in DP_Navigation.Children)
-            {
-                if (!(item is Button)) { continue; }
-
-                Button btn = item as Button;
-
-                ListOfButtons.Add(btn);
-            }
-        }
-
-        private void EnableAllNavigation()
-        {
-            foreach (Button item in ListOfButtons)
-            {
-                item.IsEnabled = true;
-            }
-        }
-
-        private void DisableAllNavigation()
-        {
-            foreach (Button item in ListOfButtons)
-            {
-                item.IsEnabled = false;
-            }
         }
 
         private void MakePlaybackOrder()
@@ -137,8 +110,6 @@ namespace WPF_Sekwencjomat
         public PlayerControl()
         {
             InitializeComponent();
-            FillListOfButtons();
-            DisableAllNavigation();
         }
 
 
@@ -148,13 +119,12 @@ namespace WPF_Sekwencjomat
             if (VLC_Control.SourceProvider.MediaPlayer != null)
             {
                 if (FilesControlObject.ListOfMediaFilePropeties.Count < 1 || CheckBeforeStartPlaying() == false)
-                    DisableAllNavigation();
+                    DP_Navigation.IsEnabled = false;
                 else
                 {
                     VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
                     VLC_Control.SourceProvider.MediaPlayer.EndReached += MediaPlayer_EndReached;
-
-                    EnableAllNavigation();
+                    DP_Navigation.IsEnabled = true;
                 }
             }
 
@@ -190,11 +160,11 @@ namespace WPF_Sekwencjomat
                 ThreadPool.QueueUserWorkItem(x =>
                 {
                     VLC_Control.SourceProvider.MediaPlayer.Stop();
-
                 });
 
                 Dispatcher.Invoke(() =>
                 {
+                    Helper.EnableNavigationButtons();
                     Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
                 });
 
@@ -217,20 +187,19 @@ namespace WPF_Sekwencjomat
 
         private void PLAY_Button_Click(object sender, RoutedEventArgs e)
         {
-
             if (VLC_Control.SourceProvider.MediaPlayer.IsPlaying())
             {
                 MessageBoxResult mb = MessageBox.Show("Rozpocząć odtwarzanie od początku?", "Czy aby napewno?", MessageBoxButton.YesNo);
                 if (mb != MessageBoxResult.Yes)
-                {
                     return;
-                }
             }
 
+            if (FilesControlObject.ListOfMediaFilePropeties == null) { return; }
+
             ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
-            if (ListOfMediaFilePropeties == null) { return; }
 
             CurrentPlayingFileIndex = 0;
+
             MakePlaybackOrder();
 
             PlayerPlaybackTechnique = Helper.CurrentPlaybackTechnique;
@@ -243,6 +212,7 @@ namespace WPF_Sekwencjomat
             });
 
             Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFilePropeties[0].Path}", false);
+            Helper.DisableNavigationButtons();
         }
 
         private void STOP_Button_Click_1(object sender, RoutedEventArgs e)

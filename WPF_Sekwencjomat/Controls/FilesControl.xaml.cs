@@ -109,7 +109,7 @@ namespace WPF_Sekwencjomat
                     }
                 }
             });
-            Helper.ResetCurrentStatusControl();
+            Helper.ResetStatusControl();
         }
 
         

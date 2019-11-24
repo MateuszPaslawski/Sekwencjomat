@@ -66,7 +66,7 @@ namespace WPF_Sekwencjomat.Models
             mw.LBL_Status.Content = $"Status [ {info} ]";
         }
 
-        public static void ResetCurrentStatusControl()
+        public static void ResetStatusControl()
         {
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
             mw.Cursor = Cursors.Arrow;
@@ -74,6 +74,17 @@ namespace WPF_Sekwencjomat.Models
             mw.ProgressBar_Status.Visibility = Visibility.Hidden;
         }
 
+        public static void DisableNavigationButtons()
+        {
+            MainWindow mw = (MainWindow)Application.Current.MainWindow;
+            mw.StackPanel_ButtonsLeft.IsEnabled = false;
+        }
+
+        public static void EnableNavigationButtons()
+        {
+            MainWindow mw = (MainWindow)Application.Current.MainWindow;
+            mw.StackPanel_ButtonsLeft.IsEnabled = true;
+        }
 
 
         public static List<T> ShuffleList<T>(List<T> inputList)

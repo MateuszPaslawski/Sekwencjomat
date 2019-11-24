@@ -164,7 +164,6 @@ namespace WPF_Sekwencjomat
             
             ShowInTaskbar = true;
             LoadUserSettings();
-            //WindowState = WindowState.Normal;
             Activate();
         }
 

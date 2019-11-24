@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat.Views.Dialogs"
         mc:Ignorable="d"
-        Title="DCRWindow" WindowStyle="None" AllowsTransparency="True"
+        Title="DCRWindow" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
     <Grid Margin="5">
-        <Grid>
-            <Grid.Effect>
-                <DropShadowEffect Color="Black" Opacity="1" BlurRadius="5" ShadowDepth="5" Direction="-90"/>
-            </Grid.Effect>
-        </Grid>
+        <Border Background="White">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+            </Border.Effect>
+        </Border>
         <DockPanel>
             <UniformGrid x:Name="UniformGrid_Main" DockPanel.Dock="Top" Margin="5,5" Columns="1">
                 <RadioButton Content="5 - pogorszenie jakości jest niewidoczne" IsChecked="True" Style="{StaticResource RadioButtonStyle_Colored}" Background="#008A00"/>
