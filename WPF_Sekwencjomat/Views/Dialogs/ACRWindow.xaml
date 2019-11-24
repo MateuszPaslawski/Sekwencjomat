@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Sekwencjomat.Views.Dialogs"
         mc:Ignorable="d" Background="Transparent"
-        Title="ACRWindow" WindowStyle="None" AllowsTransparency="True"
+        Title="ACRWindow" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded"
         WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
     <Grid Margin="5">
         <Border Background="White">
@@ -21,11 +21,14 @@
                 <RadioButton Content="2 - Jakość jest słaba" Style="{StaticResource RadioButtonStyle_Colored}" Background="#AB3100"/>
                 <RadioButton Content="1 - Jakość jest zła" Style="{StaticResource RadioButtonStyle_Colored}" Background="#E51400"/>
             </UniformGrid>
-            <Button DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
-                    Padding="0,20" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
+            <Button x:Name="Button_Main" DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
+                    Height="80" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
                     Background="Transparent" BorderThickness="0"
                     Click="Button_Click">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/checkmark-20.png" Stretch="None"/>
+                <Grid>
+                    <Image x:Name="Image_Completed" Source="/WPF_Sekwencjomat;component/Resources/png/checkmark-20.png" Stretch="None"/>
+                    <Label x:Name="Label_Counter" Content="Counter" Visibility="Collapsed" FontSize="24"/>
+                </Grid>
             </Button>
         </DockPanel>
     </Grid>

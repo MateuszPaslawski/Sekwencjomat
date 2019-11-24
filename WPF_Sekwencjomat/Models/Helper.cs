@@ -12,6 +12,17 @@ namespace WPF_Sekwencjomat.Models
     {
         public static PlaybackTechnique CurrentPlaybackTechnique;
         public static PlaybackMode CurrentPlaybackMode;
+        public static int RatingDelay
+        {
+            get
+            {
+                return int.Parse(((MainWindow)Application.Current.MainWindow).SettingsControlObject.TextBox_RatingDelay.Text);
+            }
+            set
+            {
+                RatingDelay = value;
+            }
+        }
 
         public enum PlaybackTechnique
         {
