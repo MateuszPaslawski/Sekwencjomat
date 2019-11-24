@@ -102,10 +102,24 @@
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Views\Dialogs\ACRWindow.xaml.cs">
+      <DependentUpon>ACRWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\DCRWindow.xaml.cs">
+      <DependentUpon>DCRWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartupWindow.xaml.cs">
       <DependentUpon>StartupWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\FilesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\ACRWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\DCRWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,9 +225,7 @@
   <ItemGroup>
     <None Include="Resources\ico\Album\Slpash.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Dialogs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\diagrams\wkleslo120.png" />
     <Resource Include="Resources\diagrams\wypuklo120.png" />

@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using MediaToolkit;
-using MediaToolkit.Model;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using WPF_Sekwencjomat.Models;
@@ -15,7 +14,7 @@ namespace WPF_Sekwencjomat
     public partial class FilesControl : UserControl
     {
 
-        public List<Models.MediaFile> ListOfMediaFilePropeties = new List<Models.MediaFile>();
+        public List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
 
         public static List<string> CurrentFilesInDataGrid { get; set; }
 
@@ -29,7 +28,7 @@ namespace WPF_Sekwencjomat
             List<object> listToDelete = new List<object>();
             foreach (object item in DG_Main.SelectedItems)
             {
-                Models.MediaFile fc = item as Models.MediaFile;
+                MediaFile fc = item as MediaFile;
                 CurrentFilesInDataGrid.Remove(fc.Path);
                 ListOfMediaFilePropeties.Remove(fc);
                 listToDelete.Add(item);
@@ -69,7 +68,7 @@ namespace WPF_Sekwencjomat
                         mediaInfoEngine.GetMetadata(mf);
                     }
 
-                    Models.MediaFile mfo = new Models.MediaFile();
+                    MediaFile mfo = new MediaFile();
 
                     try
                     {
@@ -149,15 +148,6 @@ namespace WPF_Sekwencjomat
             if (fd.ShowDialog() == true)
             {
                 TextBox_RefPath.Text = fd.FileName;
-            }
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
-            if (fd.ShowDialog() == true)
-            {
-                TextBox_PauserPath.Text = fd.FileName;
             }
         }
     }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using WPF_Sekwencjomat.Models;
 using WPF_Sekwencjomat.Views;
+using WPF_Sekwencjomat.Views.Dialogs;
 
 namespace WPF_Sekwencjomat
 {
@@ -108,17 +109,10 @@ namespace WPF_Sekwencjomat
                 }
 
                 WindowState = settings.WINDOW_STATE;
-                
-                Helper.SetPlaybackOrder(settings.SETTINGS_ORDER_TAG);
 
                 if (File.Exists(settings.REFVIDEO_PATH))
                 {
                     FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
-                }
-
-                if (File.Exists(settings.COUNTEREVIDEO_PATH))
-                {
-                    FilesControlObject.TextBox_PauserPath.Text = settings.COUNTEREVIDEO_PATH;
                 }
 
                 await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
@@ -141,7 +135,6 @@ namespace WPF_Sekwencjomat
                 s.VLC_DLL_PATH = SettingsControlObject.TextBox_VLCPath.Text;
                 s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
                 s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
-                s.COUNTEREVIDEO_PATH = FilesControlObject.TextBox_PauserPath.Text;
                 s.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
                 s.Save();
             }

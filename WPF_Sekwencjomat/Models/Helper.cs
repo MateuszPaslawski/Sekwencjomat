@@ -18,37 +18,16 @@ namespace WPF_Sekwencjomat.Models
             ACR,
             CCR,
             DCR,
+            DCRmod,
         }
 
         public enum PlaybackMode
         {
             Descending,
             Ascending,
+            Concave,
+            Convex,
             Random,
-        }
-
-        public static string GetPlaybackOrder()
-        {
-            //string ret = string.Empty;
-            //foreach (RadioButton item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
-            //{
-            //    if (item.IsChecked == true)
-            //        ret = item.Tag.ToString().ToLower();
-            //}
-            //return ret;
-            return string.Empty;
-        }
-
-        public static void SetPlaybackOrder(string order)
-        {
-            //foreach (object item in ((MainWindow)Application.Current.MainWindow).SettingsControlObject.UniformGrid_PlaybackOrderControl.Children)
-            //{
-            //    if (item is RadioButton)
-            //    {
-            //        if (((RadioButton)item).Tag.ToString().ToLower() == order)
-            //            ((RadioButton)item).IsChecked = true;
-            //    }
-            //}
         }
 
         public static string DecorateBytes(long byteCount)
@@ -69,6 +48,13 @@ namespace WPF_Sekwencjomat.Models
             return ret[0] * ret[1];
         }
 
+        public static SolidColorBrush GetBrushFromHex(string colorString)
+        {
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorString));
+        }
+
+
+
         public static void ChangeStatusControl(string info, bool changeCursor)
         {
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
@@ -88,10 +74,7 @@ namespace WPF_Sekwencjomat.Models
             mw.ProgressBar_Status.Visibility = Visibility.Hidden;
         }
 
-        public static SolidColorBrush GetBrushFromHex(string colorString)
-        {
-            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorString));
-        }
+
 
         public static List<T> ShuffleList<T>(List<T> inputList)
         {
@@ -120,26 +103,57 @@ namespace WPF_Sekwencjomat.Models
             return SortedList;
         }
 
-        public static List<MediaFile> AscendingResolution(List<MediaFile> inputList)
+
+
+        public static List<MediaFile> ACR_Concave(List<MediaFile> inputList)
         {
-            List<MediaFile> SortedList = inputList.OrderBy(o => ResolutionToInt(o.FrameSize)).ToList();
-            return SortedList;
+            List<MediaFile> first = DescendingBitrate(inputList);
+            List<MediaFile> second = new List<MediaFile>(first);
+            second.Reverse();
+            second.RemoveAt(0);
+            List<MediaFile> final = first.Concat(second).ToList();
+
+            return final;
         }
 
-        public static List<MediaFile> DescendingResolution(List<MediaFile> inputList)
+        public static List<MediaFile> ACR_Convex(List<MediaFile> inputList)
         {
-            List<MediaFile> SortedList = inputList.OrderByDescending(o => ResolutionToInt(o.FrameSize)).ToList();
-            return SortedList;
+            List<MediaFile> first = AscendingBitrate(inputList);
+            List<MediaFile> second = new List<MediaFile>(first);
+            second.Reverse();
+            second.RemoveAt(0);
+            List<MediaFile> final = first.Concat(second).ToList();
+
+            return final;
         }
 
-        public static List<MediaFile> SequentialWithRefFile(List<MediaFile> inputList, string referencePath, string pausePath)
+        public static List<MediaFile> ACR_Random(List<MediaFile> inputList)
         {
-            if (referencePath.Trim() == string.Empty || pausePath.Trim() == string.Empty)
+            List<MediaFile> first = ShuffleList(inputList);
+            List<MediaFile> final = new List<MediaFile>();
+
+            foreach (MediaFile item in first)
             {
-                MessageBox.Show($"Brak lub niewłaściwa ścieżka do pliku referencyjnego bądź przerywnika!\n\nPlik referencyjny: {referencePath}\nPlik przerywnika: {pausePath}");
-                return null;
+                final.Add(item);
             }
 
+            return final;
+        }
+
+        public static List<MediaFile> ACR_Ascending(List<MediaFile> inputList)
+        {
+            return AscendingBitrate(inputList);
+        }
+
+        public static List<MediaFile> ACR_Descending(List<MediaFile> inputList)
+        {
+            return DescendingBitrate(inputList);
+        }
+
+
+
+        public static List<MediaFile> DCR_Concave(List<MediaFile> inputList, string referencePath)
+        {
             List<MediaFile> first = DescendingBitrate(inputList);
             List<MediaFile> second = new List<MediaFile>(first);
             second.Reverse();
@@ -151,10 +165,72 @@ namespace WPF_Sekwencjomat.Models
             {
                 final.Add(new MediaFile() { Path = referencePath });
                 final.Add(item);
-                final.Add(new MediaFile() { Path = pausePath });
             }
 
             return final;
         }
+        
+        public static List<MediaFile> DCR_Convex(List<MediaFile> inputList, string referencePath)
+        {
+            List<MediaFile> first = AscendingBitrate(inputList);
+            List<MediaFile> second = new List<MediaFile>(first);
+            second.Reverse();
+            second.RemoveAt(0);
+            List<MediaFile> both = first.Concat(second).ToList();
+            List<MediaFile> final = new List<MediaFile>();
+
+            foreach (MediaFile item in both)
+            {
+                final.Add(new MediaFile() { Path = referencePath });
+                final.Add(item);
+            }
+
+            return final;
+        }
+
+        public static List<MediaFile> DCR_Random(List<MediaFile> inputList, string referencePath)
+        {
+            List<MediaFile> first = ShuffleList(inputList);
+            List<MediaFile> final = new List<MediaFile>();
+
+            foreach (MediaFile item in first)
+            {
+                final.Add(new MediaFile() { Path = referencePath });
+                final.Add(item);
+            }
+
+            return final;
+        }
+
+        public static List<MediaFile> DCR_Ascending(List<MediaFile> inputList, string referencePath)
+        {
+            List<MediaFile> first = AscendingBitrate(inputList);
+            List<MediaFile> final = new List<MediaFile>();
+
+            foreach (MediaFile item in first)
+            {
+                final.Add(new MediaFile() { Path = referencePath });
+                final.Add(item);
+            }
+
+            return final;
+
+        }
+
+        public static List<MediaFile> DCR_Descending(List<MediaFile> inputList, string referencePath)
+        {
+            List<MediaFile> first = DescendingBitrate(inputList);
+            List<MediaFile> final = new List<MediaFile>();
+
+            foreach (MediaFile item in first)
+            {
+                final.Add(new MediaFile() { Path = referencePath });
+                final.Add(item);
+            }
+
+            return final;
+        }
+
+
     }
 }

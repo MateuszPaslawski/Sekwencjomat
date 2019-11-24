@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Sekwencjomat"
-             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13">
+             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,17 +15,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <GroupBox Margin="5" Header="Opcje odtwarzania metodą MOS" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <StackPanel Margin="10" Orientation="Vertical">
-                <!--<RadioButton Tag="BitrateAscending" Content="Bitrate Rosnąco"  Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="BitrateDescending" Content="Bitrate Malejąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="ResolutionAscending" Content="Rozdzielczość Rosnąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="ResolutionDescending" Content="Rozdzielczość Malejąco" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>
-                <RadioButton Tag="Random" Content="Losowo" Margin="10" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center"/>-->
+        <GroupBox Margin="5" Header="Opcje odtwarzania metodą MOS" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Margin="5" Orientation="Vertical">
+                
                 <RadioButton x:Name="RadioButton_ACR" Checked="RadioButton_Checked" Height="50" IsChecked="True" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
                     <DockPanel LastChildFill="True">
-                        <Label Content="ACR"/>
-                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBox  MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
                                 <Style TargetType="ComboBox">
                                     <Style.Triggers>
@@ -96,65 +91,13 @@
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
                         </ComboBox>
+                        <Label Content="ACR" DockPanel.Dock="Left"/>
                     </DockPanel>
                 </RadioButton>
                 
-                <!--<RadioButton Visibility="Collapsed" x:Name="RadioButton_CCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
-                    <DockPanel LastChildFill="True">
-                        <Label Content="CCR"/>
-                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
-                            <ComboBox.Style>
-                                <Style TargetType="ComboBox">
-                                    <Style.Triggers>
-                                         <DataTrigger Binding ="{Binding ElementName=RadioButton_CCR, Path=IsChecked}" Value="false">                    
-                                                <Setter Property="ComboBox.IsEnabled" Value="false"/>                    
-                                        </DataTrigger> 
-                                    </Style.Triggers>
-                                </Style>
-                            </ComboBox.Style>
-                            <ComboBoxItem Content="Malejąco" IsSelected="True">
-                                <ComboBoxItem.ToolTip>
-                                    <StackPanel>
-                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
-                                    </StackPanel>
-                                </ComboBoxItem.ToolTip>
-                            </ComboBoxItem>
-                            <ComboBoxItem Content="Rosnąco">
-                                <ComboBoxItem.ToolTip>
-                                    <StackPanel>
-                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
-                                    </StackPanel>
-                                </ComboBoxItem.ToolTip>
-                            </ComboBoxItem>
-                            <ComboBoxItem Content="Losowo">
-                                <ComboBoxItem.ToolTip>
-                                        <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
-                                        </StackPanel>
-                                </ComboBoxItem.ToolTip>
-                            </ComboBoxItem>
-                            <ComboBoxItem Content="Wypukło">
-                                <ComboBoxItem.ToolTip>
-                                    <StackPanel>
-                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
-                                    </StackPanel>
-                                </ComboBoxItem.ToolTip>
-                            </ComboBoxItem>
-                            <ComboBoxItem Content="Wklęsło">
-                                <ComboBoxItem.ToolTip>
-                                    <StackPanel>
-                                        <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
-                                    </StackPanel>
-                                </ComboBoxItem.ToolTip>
-                            </ComboBoxItem>
-                        </ComboBox>
-                    </DockPanel>
-                </RadioButton>-->
-                
                 <RadioButton x:Name="RadioButton_DCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
                     <DockPanel LastChildFill="True">
-                        <Label Content="DCR"/>
-                        <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBox  MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
                                 <Style TargetType="ComboBox">
                                     <Style.Triggers>
@@ -225,12 +168,18 @@
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
                         </ComboBox>
+                        <Label Content="DCR" DockPanel.Dock="Left"/>
                     </DockPanel>
                 </RadioButton>
+                
+                <DockPanel LastChildFill="True">
+                    <Label Content="Ilość sekund na ocenę"/>
+                    <TextBox VerticalAlignment="Stretch" Text="5" CommandManager.PreviewExecuted="TextBox_PreviewExecuted" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Stretch" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center"/>
+                </DockPanel>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Margin="5" Grid.Row="1" VerticalAlignment="Top">
+        <GroupBox Margin="5" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="Image_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png" Stretch="None"/>

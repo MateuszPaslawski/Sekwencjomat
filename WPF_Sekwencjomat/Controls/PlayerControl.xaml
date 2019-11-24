@@ -19,13 +19,6 @@
         </Grid>
 
         <DockPanel x:Name="DP_Navigation" Grid.Row="1" LastChildFill="False" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <!--<Button HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_1">
-                <Image Source="Resources/opened-folder-48.png" Stretch="None"/>
-            </Button>-->
-
-            <Button ToolTip="Pauza" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PAUSE_Button_Click_2" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/pause-button-40.png" Stretch="None"/>
-            </Button>
 
             <Button ToolTip="Rozpocznij odtwarzanie sekwencji od początku" Click="PLAY_Button_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,10,0" Background="{x:Null}" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
                 <Image Source="/WPF_Sekwencjomat;component/Resources/png/circled-play-40.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
