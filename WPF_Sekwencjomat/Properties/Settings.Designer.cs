@@ -61,18 +61,6 @@ namespace WPF_Sekwencjomat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SequentialForRating")]
-        public string SETTINGS_ORDER_TAG {
-            get {
-                return ((string)(this["SETTINGS_ORDER_TAG"]));
-            }
-            set {
-                this["SETTINGS_ORDER_TAG"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string REFVIDEO_PATH {
             get {
@@ -85,24 +73,48 @@ namespace WPF_Sekwencjomat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string COUNTEREVIDEO_PATH {
-            get {
-                return ((string)(this["COUNTEREVIDEO_PATH"]));
-            }
-            set {
-                this["COUNTEREVIDEO_PATH"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Generic.List<System.String> LIST_OF_FILES {
             get {
                 return ((global::System.Collections.Generic.List<System.String>)(this["LIST_OF_FILES"]));
             }
             set {
                 this["LIST_OF_FILES"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ACR")]
+        public string PLAYBACK_TECHNIQUE {
+            get {
+                return ((string)(this["PLAYBACK_TECHNIQUE"]));
+            }
+            set {
+                this["PLAYBACK_TECHNIQUE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Random")]
+        public string PLAYBACK_MODE {
+            get {
+                return ((string)(this["PLAYBACK_MODE"]));
+            }
+            set {
+                this["PLAYBACK_MODE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int RATING_DELAY {
+            get {
+                return ((int)(this["RATING_DELAY"]));
+            }
+            set {
+                this["RATING_DELAY"] = value;
             }
         }
     }

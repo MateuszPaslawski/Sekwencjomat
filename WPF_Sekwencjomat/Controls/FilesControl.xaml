@@ -57,7 +57,6 @@
                 </DataGridTemplateColumn>
                 
                 <DataGridTextColumn Binding="{Binding Name}" Header="Nazwa"/>
-                <DataGridTextColumn Binding="{Binding Path}" Header="Ścieżka"/>
                 <DataGridTextColumn Binding="{Binding Extension}" Header="Kontener"/>
                 <DataGridTextColumn Binding="{Binding Bitrate}" Header="Bitrate (kB/s)"/>
                 <DataGridTextColumn Binding="{Binding Size}" Header="Rozmiar"/>
@@ -66,6 +65,7 @@
                 <DataGridTextColumn Binding="{Binding FrameSize}" Header="Rozdzielczość"/>
                 <DataGridTextColumn Binding="{Binding Format}" Header="Format"/>
                 <DataGridTextColumn Binding="{Binding ColorGamut}" Header="Profil Koloru"/>
+                <DataGridTextColumn Binding="{Binding Path}" Header="Ścieżka"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

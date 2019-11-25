@@ -109,6 +109,7 @@ namespace WPF_Sekwencjomat
                 }
 
                 WindowState = settings.WINDOW_STATE;
+                Helper.RatingDelay = settings.RATING_DELAY;
 
                 if (File.Exists(settings.REFVIDEO_PATH))
                 {
@@ -116,6 +117,37 @@ namespace WPF_Sekwencjomat
                 }
 
                 await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
+
+                switch (settings.PLAYBACK_TECHNIQUE.ToLower())
+                {
+                    case "acr":
+                        Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.ACR;
+                        break;
+                    case "dcr":
+                        Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.DCR;
+                        break;
+                }
+
+                switch(settings.PLAYBACK_MODE.ToLower())
+                {
+                    case "ascending":
+                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Ascending;
+                        break;
+                    case "descending":
+                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Descending;
+                        break;
+                    case "random":
+                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Random;
+                        break;
+                    case "convex":
+                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Convex;
+                        break;
+                    case "concave":
+                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Concave;
+                        break;
+                }
+
+                SettingsControlObject.HelperPlaybackPropetiesToControls();
             }
             catch { }
             finally
@@ -129,14 +161,16 @@ namespace WPF_Sekwencjomat
         {
             try
             {
-                Properties.Settings s = Properties.Settings.Default;
-
-                s.WINDOW_STATE = WindowState;
-                s.VLC_DLL_PATH = SettingsControlObject.TextBox_VLCPath.Text;
-                s.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
-                s.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
-                s.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
-                s.Save();
+                Properties.Settings settings = Properties.Settings.Default;
+                settings.WINDOW_STATE = WindowState;
+                settings.VLC_DLL_PATH = SettingsControlObject.TextBox_VLCPath.Text;
+                settings.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
+                settings.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
+                settings.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
+                settings.PLAYBACK_MODE = Helper.CurrentPlaybackMode.ToString();
+                settings.PLAYBACK_TECHNIQUE = Helper.CurrentPlaybackTechnique.ToString();
+                settings.RATING_DELAY = Helper.RatingDelay;
+                settings.Save();
             }
             catch { }
         }

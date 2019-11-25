@@ -8,7 +8,7 @@
         TextOptions.TextFormattingMode="Ideal" VisualTextRenderingMode="Auto"
         RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"
         mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing" Closed="Window_Closed" MinWidth="700" MinHeight="360" 
-        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="14" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        Title="Sekwencjomat" Height="450" Width="800" FontFamily="Google Sans" FontSize="13" PreviewKeyDown="Window_PreviewKeyDown" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
 
     
     <Grid>
@@ -24,21 +24,21 @@
         <ScrollViewer x:Name="SV_MainDisplay" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled"/>
 
         <StackPanel x:Name="StackPanel_ButtonsLeft" Grid.Column="0">
-            <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
+            <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5,10" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="/WPF_Sekwencjomat;component/Resources/png/opened-folder-40.png" HorizontalAlignment="Left"/>
                     <Label Content="Zbiór Plików" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
 
-            <Button Click="Button_Click_1" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
+            <Button Click="Button_Click_1" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5,10" Margin="5,0,5,5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
                 <DockPanel>
                     <Image Source="/WPF_Sekwencjomat;component/Resources/png/automatic-40.png" HorizontalAlignment="Left"/>
                     <Label Content="Ustawienia" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
 
-            <Button x:Name="Button_PlayerObjectNavigator" Click="Button_Click_2" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}">
+            <Button x:Name="Button_PlayerObjectNavigator" Click="Button_Click_2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5,10" Margin="5,0,5,5">
                 <DockPanel>
                     <Image Source="/WPF_Sekwencjomat;component/Resources/png/air-play-40.png" HorizontalAlignment="Left"/>
                     <Label Content="Odtwarzacz" HorizontalAlignment="Center" VerticalAlignment="Center"/>

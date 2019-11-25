@@ -11,17 +11,20 @@
     <Setting Name="WINDOW_STATE" Type="System.Windows.WindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="SETTINGS_ORDER_TAG" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SequentialForRating</Value>
-    </Setting>
     <Setting Name="REFVIDEO_PATH" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="COUNTEREVIDEO_PATH" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LIST_OF_FILES" Type="System.Collections.Genric.List&lt;System.String&gt;" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PLAYBACK_TECHNIQUE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ACR</Value>
+    </Setting>
+    <Setting Name="PLAYBACK_MODE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Random</Value>
+    </Setting>
+    <Setting Name="RATING_DELAY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

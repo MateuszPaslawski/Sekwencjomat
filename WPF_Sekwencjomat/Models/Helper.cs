@@ -12,6 +12,8 @@ namespace WPF_Sekwencjomat.Models
     {
         public static PlaybackTechnique CurrentPlaybackTechnique;
         public static PlaybackMode CurrentPlaybackMode;
+        public static bool IsInterfaceLocked = false;
+
         public static int RatingDelay
         {
             get
@@ -20,7 +22,7 @@ namespace WPF_Sekwencjomat.Models
             }
             set
             {
-                RatingDelay = value;
+                ((MainWindow)Application.Current.MainWindow).SettingsControlObject.TextBox_RatingDelay.Text = value.ToString();
             }
         }
 
@@ -30,6 +32,7 @@ namespace WPF_Sekwencjomat.Models
             CCR,
             DCR,
             DCRmod,
+            Unknown,
         }
 
         public enum PlaybackMode
@@ -39,7 +42,10 @@ namespace WPF_Sekwencjomat.Models
             Concave,
             Convex,
             Random,
+            Unknown,
         }
+
+
 
         public static string DecorateBytes(long byteCount)
         {

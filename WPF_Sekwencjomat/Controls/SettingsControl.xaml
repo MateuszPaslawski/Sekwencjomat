@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Sekwencjomat"
-             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13">
+             mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13" 
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,7 +21,7 @@
                 
                 <RadioButton x:Name="RadioButton_ACR" Checked="RadioButton_Checked" Height="50" IsChecked="True" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
                     <DockPanel LastChildFill="True">
-                        <ComboBox  MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
+                        <ComboBox x:Name="ComboBox_ACR" MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
                                 <Style TargetType="ComboBox">
                                     <Style.Triggers>
@@ -30,7 +31,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </ComboBox.Style>
-                            <ComboBoxItem Content="Malejąco" IsSelected="True">
+                            <ComboBoxItem Content="Malejąco" x:Name="ComboBoxItem_ACR_Descending" IsSelected="True">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -42,7 +43,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Rosnąco">
+                            <ComboBoxItem Content="Rosnąco" x:Name="ComboBoxItem_ACR_Ascending">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -54,7 +55,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Losowo">
+                            <ComboBoxItem Content="Losowo" x:Name="ComboBoxItem_ACR_Random">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -66,7 +67,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Wypukło">
+                            <ComboBoxItem Content="Wypukło" x:Name="ComboBoxItem_ACR_Convex">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -78,7 +79,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Wklęsło">
+                            <ComboBoxItem Content="Wklęsło" x:Name="ComboBoxItem_ACR_Concave">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -97,7 +98,7 @@
                 
                 <RadioButton x:Name="RadioButton_DCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
                     <DockPanel LastChildFill="True">
-                        <ComboBox  MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
+                        <ComboBox x:Name="ComboBox_DCR" MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
                                 <Style TargetType="ComboBox">
                                     <Style.Triggers>
@@ -107,7 +108,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </ComboBox.Style>
-                            <ComboBoxItem Content="Malejąco" IsSelected="True">
+                            <ComboBoxItem Content="Malejąco" x:Name="ComboBoxItem_DCR_Descending" IsSelected="True">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -119,7 +120,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Rosnąco">
+                            <ComboBoxItem Content="Rosnąco" x:Name="ComboBoxItem_DCR_Ascending">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -131,7 +132,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Losowo">
+                            <ComboBoxItem Content="Losowo" x:Name="ComboBoxItem_DCR_Random">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -143,7 +144,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Wypukło">
+                            <ComboBoxItem Content="Wypukło" x:Name="ComboBoxItem_DCR_Convex">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -155,7 +156,7 @@
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
                             </ComboBoxItem>
-                            <ComboBoxItem Content="Wklęsło">
+                            <ComboBoxItem Content="Wklęsło" x:Name="ComboBoxItem_DCR_Concave">
                                 <ComboBoxItem.ToolTip>
                                     <ToolTip Background="White" Margin="5,5,5,5">
                                         <ToolTip.Effect>
@@ -173,7 +174,7 @@
                 </RadioButton>
                 
                 <DockPanel LastChildFill="True">
-                    <Label Content="Ilość sekund na ocenę"/>
+                    <Label Content="Czas oceniania [s]"/>
                     <TextBox x:Name="TextBox_RatingDelay" VerticalAlignment="Stretch" Text="5" CommandManager.PreviewExecuted="TextBox_PreviewExecuted" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Stretch" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center"/>
                 </DockPanel>
             </StackPanel>

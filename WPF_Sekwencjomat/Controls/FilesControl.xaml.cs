@@ -146,9 +146,7 @@ namespace WPF_Sekwencjomat
         {
             OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
             if (fd.ShowDialog() == true)
-            {
                 TextBox_RefPath.Text = fd.FileName;
-            }
         }
     }
 }
