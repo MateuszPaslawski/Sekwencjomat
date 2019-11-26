@@ -11,12 +11,7 @@ namespace WPF_Sekwencjomat
 {
     public partial class SettingsControl : UserControl
     {
-
-        public SettingsControl()
-        {
-            InitializeComponent();
-        }
-
+        #region Metody Użytkownika
         private void SetHelperPlaybackTechnique(RadioButton rb)
         {
             if (rb.Name == "RadioButton_ACR")
@@ -48,7 +43,6 @@ namespace WPF_Sekwencjomat
             switch (Helper.CurrentPlaybackTechnique)
             {
                 case Helper.PlaybackTechnique.ACR:
-                    RadioButton_ACR.IsChecked = true;
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -67,10 +61,10 @@ namespace WPF_Sekwencjomat
                             ComboBoxItem_ACR_Random.IsSelected = true;
                             break;
                     }
+                    RadioButton_ACR.IsChecked = true;
                     break;
 
                 case Helper.PlaybackTechnique.DCR:
-                    RadioButton_DCR.IsChecked = true;
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -89,6 +83,7 @@ namespace WPF_Sekwencjomat
                             ComboBoxItem_DCR_Random.IsSelected = true;
                             break;
                     }
+                    RadioButton_DCR.IsChecked = true;
                     break;
             }
         }
@@ -109,8 +104,22 @@ namespace WPF_Sekwencjomat
             });
             return ret;
         }
+        #endregion
 
 
+
+        public SettingsControl()
+        {
+            InitializeComponent();
+        }
+
+
+
+        #region Metody Kontrolek
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            HelperPlaybackPropetiesToControls();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -127,21 +136,18 @@ namespace WPF_Sekwencjomat
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("RadioButton_Checked");
             if (sender != null)
                 SetHelperPlaybackTechnique(sender as RadioButton);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("ComboBox_SelectionChanged");
             if ((ComboBoxItem)((ComboBox)sender).SelectedItem != null)
                 SetHelperPlaybackMode((ComboBoxItem)((ComboBox)sender).SelectedItem);
         }
 
         private void ComboBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Console.WriteLine("ComboBox_IsEnabledChanged");
             if ((ComboBoxItem)((ComboBox)sender).SelectedItem != null)
                 SetHelperPlaybackMode((ComboBoxItem)((ComboBox)sender).SelectedItem);
         }
@@ -157,10 +163,6 @@ namespace WPF_Sekwencjomat
             if (e.Command == ApplicationCommands.Paste)
                 e.Handled = true;
         }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            HelperPlaybackPropetiesToControls();
-        }
+        #endregion
     }
 }

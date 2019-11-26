@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +22,8 @@ namespace WPF_Sekwencjomat.Views.Dialogs
     /// </summary>
     public partial class ACRWindow : Window
     {
-        public string Result = null;
-        private int counter = Helper.RatingDelay;
+        public int Result = 0;
+        private int Counter = Helper.RatingDelay;
 
         public ACRWindow()
         {
@@ -32,20 +33,23 @@ namespace WPF_Sekwencjomat.Views.Dialogs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (counter != 0)
+            if (Counter != 0)
                 return;
 
             foreach (var item in UniformGrid_Main.Children)
             {
                 if (item is RadioButton && ((RadioButton)item).IsChecked == true)
-                    Result = ((RadioButton)item).Content.ToString();
+                {
+                    string regexValue = Regex.Match(((RadioButton)item).Content.ToString(), @"\d").Value.ToString();
+                    Result = int.Parse(regexValue);
+                }
             }
             Close();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (counter > 0)
+            if (Counter > 0)
             {
                 Label_Counter.Visibility = Visibility.Visible;
                 Image_Completed.Visibility = Visibility.Collapsed;
@@ -53,17 +57,17 @@ namespace WPF_Sekwencjomat.Views.Dialogs
                 await Task.Run(() =>
                 {
                     
-                    while (counter > 0)
+                    while (Counter > 0)
                     {
 
                         Dispatcher.Invoke(() =>
                         {
-                            Label_Counter.Content = counter;
+                            Label_Counter.Content = Counter;
                         });
 
                         Thread.Sleep(1000);
 
-                        --counter;
+                        --Counter;
                     }
 
                     Dispatcher.Invoke(() => 

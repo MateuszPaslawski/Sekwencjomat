@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,11 +17,11 @@ namespace WPF_Sekwencjomat.Views.Dialogs
 {
     public partial class DCRWindow : Window
     {
-        public string Result = null;
+        public int Result = 0;
 
         public DCRWindow()
         {
-            Owner = (MainWindow)App.Current.MainWindow;
+            Owner = (MainWindow)Application.Current.MainWindow;
             InitializeComponent();
         }
 
@@ -29,7 +30,10 @@ namespace WPF_Sekwencjomat.Views.Dialogs
             foreach (var item in UniformGrid_Main.Children)
             {
                 if (item is RadioButton && ((RadioButton)item).IsChecked == true)
-                    Result = ((RadioButton)item).Content.ToString();
+                {
+                    string regexValue = Regex.Match(((RadioButton)item).Content.ToString(), @"\d").Value.ToString();
+                    Result = int.Parse(regexValue);
+                }
             }
             Close();
         }

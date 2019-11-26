@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -19,9 +20,11 @@ namespace WPF_Sekwencjomat
         public Helper.PlaybackTechnique PlayerPlaybackTechnique;
         public Helper.PlaybackMode PlayerPlaybackMode;
 
-        private List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
+        private List<MediaFile> ListOfMediaFilesWithGrades = new List<MediaFile>();
+        private List<MediaFile> ListOfMediaFiles = new List<MediaFile>();
+        private Stopwatch TimeLeft = new Stopwatch();
         private int CurrentPlayingFileIndex = 0;
-        
+
 
         public void StopPlayer()
         {
@@ -32,12 +35,12 @@ namespace WPF_Sekwencjomat
 
             Dispatcher.Invoke(() =>
             {
-                Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
+                Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFiles.Count} sekwencji zostało zakończone.", false);
                 Helper.EnableNavigationButtons();
             });
 
             CurrentPlayingFileIndex = 0;
-            ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
+            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
         }
 
         private void MakePlaybackOrder()
@@ -48,19 +51,19 @@ namespace WPF_Sekwencjomat
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
-                            ListOfMediaFilePropeties = Helper.ACR_Descending(ListOfMediaFilePropeties);
+                            ListOfMediaFiles = Helper.ACR_Descending(ListOfMediaFiles);
                             break;
                         case Helper.PlaybackMode.Ascending:
-                            ListOfMediaFilePropeties = Helper.ACR_Ascending(ListOfMediaFilePropeties);
+                            ListOfMediaFiles = Helper.ACR_Ascending(ListOfMediaFiles);
                             break;
                         case Helper.PlaybackMode.Concave:
-                            ListOfMediaFilePropeties = Helper.ACR_Concave(ListOfMediaFilePropeties);
+                            ListOfMediaFiles = Helper.ACR_Concave(ListOfMediaFiles);
                             break;
                         case Helper.PlaybackMode.Convex:
-                            ListOfMediaFilePropeties = Helper.ACR_Convex(ListOfMediaFilePropeties);
+                            ListOfMediaFiles = Helper.ACR_Convex(ListOfMediaFiles);
                             break;
                         case Helper.PlaybackMode.Random:
-                            ListOfMediaFilePropeties = Helper.ACR_Random(ListOfMediaFilePropeties);
+                            ListOfMediaFiles = Helper.ACR_Random(ListOfMediaFiles);
                             break;
                     }
                     break;
@@ -72,30 +75,25 @@ namespace WPF_Sekwencjomat
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
-                            ListOfMediaFilePropeties = Helper.DCR_Descending(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text);
+                            ListOfMediaFiles = Helper.DCR_Descending(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                         case Helper.PlaybackMode.Ascending:
-                            ListOfMediaFilePropeties = Helper.DCR_Ascending(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text);
+                            ListOfMediaFiles = Helper.DCR_Ascending(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                         case Helper.PlaybackMode.Concave:
-                            ListOfMediaFilePropeties = Helper.DCR_Concave(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text);
+                            ListOfMediaFiles = Helper.DCR_Concave(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                         case Helper.PlaybackMode.Convex:
-                            ListOfMediaFilePropeties = Helper.DCR_Convex(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text);
+                            ListOfMediaFiles = Helper.DCR_Convex(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                         case Helper.PlaybackMode.Random:
-                            ListOfMediaFilePropeties = Helper.DCR_Random(ListOfMediaFilePropeties, FilesControlObject.TextBox_RefPath.Text);
+                            ListOfMediaFiles = Helper.DCR_Random(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                     }
                     break;
 
                 case Helper.PlaybackTechnique.DCRmod:
                     throw new NotImplementedException();
-            }
-
-            foreach (var item in ListOfMediaFilePropeties)
-            {
-                Console.WriteLine(item.Path);
             }
         }
 
@@ -106,6 +104,8 @@ namespace WPF_Sekwencjomat
                 else 
                     return false;
         }
+
+
 
         public PlayerControl()
         {
@@ -140,7 +140,9 @@ namespace WPF_Sekwencjomat
                 { 
                     DCRWindow dialog = new DCRWindow();
                     dialog.ShowDialog();
-                    Console.WriteLine($"[{ListOfMediaFilePropeties[CurrentPlayingFileIndex-1].Name}]RESULT: {Regex.Match(dialog.Result, "^[1-5]")}");
+                    MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex - 1] as MediaFile;
+                    tempFile.UserGrade = dialog.Result;
+                    ListOfMediaFilesWithGrades.Add(tempFile);
                 });
             }
             else if (PlayerPlaybackTechnique == Helper.PlaybackTechnique.ACR)
@@ -149,13 +151,15 @@ namespace WPF_Sekwencjomat
                 {
                     ACRWindow dialog = new ACRWindow();
                     dialog.ShowDialog();
-                    Console.WriteLine($"[{ListOfMediaFilePropeties[CurrentPlayingFileIndex-1].Name}]RESULT: {Regex.Match(dialog.Result, "^[1-5]")}");
+                    MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex-1] as MediaFile;
+                    tempFile.UserGrade = dialog.Result;
+                    ListOfMediaFilesWithGrades.Add(tempFile);
                 });
             }
 
 
 
-            if (CurrentPlayingFileIndex >= ListOfMediaFilePropeties.Count)
+            if (CurrentPlayingFileIndex >= ListOfMediaFiles.Count)
             {
                 ThreadPool.QueueUserWorkItem(x =>
                 {
@@ -164,23 +168,34 @@ namespace WPF_Sekwencjomat
 
                 Dispatcher.Invoke(() =>
                 {
+                    Rating tmpRating = new Rating
+                    {
+                        RatingTimeSpan = TimeLeft.Elapsed,
+                        RatingSeconds = Helper.RatingDelay,
+                        ReferenceVideoPath = FilesControlObject.TextBox_RefPath.Text,
+                        PlaybackMode = Helper.CurrentPlaybackMode,
+                        PlaybackTechnique = Helper.CurrentPlaybackTechnique,
+                        FilesListWithGrades = ListOfMediaFilesWithGrades,
+                    };
+
+                    Logger.LogRatingToCSV(tmpRating);
                     Helper.EnableNavigationButtons();
-                    Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFilePropeties.Count} sekwencji zostało zakończone.", false);
+                    Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFiles.Count} sekwencji zostało zakończone.", false);
                 });
 
                 CurrentPlayingFileIndex = 0;
                 return;
             }
-            else if (CurrentPlayingFileIndex < ListOfMediaFilePropeties.Count)
+            else if (CurrentPlayingFileIndex < ListOfMediaFiles.Count)
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFilePropeties[0].Path}", false);
+                    Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
                 });
 
                 ThreadPool.QueueUserWorkItem(x =>
                 {
-                    VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFilePropeties[CurrentPlayingFileIndex].Path));
+                    VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFiles[CurrentPlayingFileIndex].Path));
                 });
             }
         }
@@ -196,7 +211,7 @@ namespace WPF_Sekwencjomat
 
             if (FilesControlObject.ListOfMediaFilePropeties == null) { return; }
 
-            ListOfMediaFilePropeties = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
+            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
 
             CurrentPlayingFileIndex = 0;
 
@@ -205,13 +220,17 @@ namespace WPF_Sekwencjomat
             PlayerPlaybackTechnique = Helper.CurrentPlaybackTechnique;
             PlayerPlaybackMode = Helper.CurrentPlaybackMode;
 
+            
+
             ThreadPool.QueueUserWorkItem(x =>
             {
                 VLC_Control.SourceProvider.MediaPlayer.Audio.Volume = 0;
-                VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFilePropeties[0].Path));
+                VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFiles[0].Path));
             });
 
-            Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFilePropeties[0].Path}", false);
+            TimeLeft.Start();
+
+            Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[0].Path}", false);
             Helper.DisableNavigationButtons();
         }
 

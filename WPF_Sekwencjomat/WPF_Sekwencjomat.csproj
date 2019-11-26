@@ -97,11 +97,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\MediaFile.cs" />
     <Compile Include="Controls\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Views\Dialogs\ACRWindow.xaml.cs">
       <DependentUpon>ACRWindow.xaml</DependentUpon>
     </Compile>

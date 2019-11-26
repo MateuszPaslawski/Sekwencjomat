@@ -23,9 +23,11 @@ namespace WPF_Sekwencjomat.Models
 
         public int Bitrate { get; set; }
 
-        public string Size { get; set; }
+        public string Resolution { get; set; }
 
         public string Duration { get; set; }
+
+        public int UserGrade { get; set; }
 
         public ImageSource IconImage
         {

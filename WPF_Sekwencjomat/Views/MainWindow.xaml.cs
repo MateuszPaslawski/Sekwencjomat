@@ -98,8 +98,11 @@ namespace WPF_Sekwencjomat
                 IsEnabled = false;
                 Properties.Settings settings = Properties.Settings.Default;
                 startupWindow.Show();
+
+                //Check for VLC DLL
                 SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
 
+                //Window Location and State
                 if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
                 {
                     Top = settings.WINDOW_LOCATION.Top;
@@ -107,17 +110,21 @@ namespace WPF_Sekwencjomat
                     Width = settings.WINDOW_LOCATION.Width;
                     Height = settings.WINDOW_LOCATION.Height;
                 }
-
                 WindowState = settings.WINDOW_STATE;
-                Helper.RatingDelay = settings.RATING_DELAY;
 
+                //Reference video path
                 if (File.Exists(settings.REFVIDEO_PATH))
                 {
                     FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
                 }
 
+                //Fill DataGrid with all files
                 await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
 
+                //RatingDelay
+                Helper.RatingDelay = settings.RATING_DELAY;
+
+                //PlaybackTechnique
                 switch (settings.PLAYBACK_TECHNIQUE.ToLower())
                 {
                     case "acr":
@@ -128,7 +135,8 @@ namespace WPF_Sekwencjomat
                         break;
                 }
 
-                switch(settings.PLAYBACK_MODE.ToLower())
+                //PlaybackMode
+                switch (settings.PLAYBACK_MODE.ToLower())
                 {
                     case "ascending":
                         Helper.CurrentPlaybackMode = Helper.PlaybackMode.Ascending;
@@ -147,13 +155,14 @@ namespace WPF_Sekwencjomat
                         break;
                 }
 
+                //Set different controls propeties from settings
                 SettingsControlObject.HelperPlaybackPropetiesToControls();
             }
             catch { }
             finally
             {
                 IsEnabled = true;
-                startupWindow.Hide();
+                startupWindow.Close();
             }
         }
 
@@ -186,7 +195,7 @@ namespace WPF_Sekwencjomat
         }
 
 
-
+        #region Metody Kontrolek
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             FilesControlObject = new FilesControl();
@@ -195,7 +204,7 @@ namespace WPF_Sekwencjomat
 
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
-            
+
             ShowInTaskbar = true;
             LoadUserSettings();
             Activate();
@@ -247,5 +256,6 @@ namespace WPF_Sekwencjomat
         {
             Environment.Exit(0);
         }
+        #endregion
     }
 }

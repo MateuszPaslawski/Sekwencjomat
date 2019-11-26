@@ -59,7 +59,7 @@
                 <DataGridTextColumn Binding="{Binding Name}" Header="Nazwa"/>
                 <DataGridTextColumn Binding="{Binding Extension}" Header="Kontener"/>
                 <DataGridTextColumn Binding="{Binding Bitrate}" Header="Bitrate (kB/s)"/>
-                <DataGridTextColumn Binding="{Binding Size}" Header="Rozmiar"/>
+                <DataGridTextColumn Binding="{Binding Resolution}" Header="Rozdzielczość"/>
                 <DataGridTextColumn Binding="{Binding Duration}" Header="Długość"/>
                 <DataGridTextColumn Binding="{Binding FPS}" Header="FPS"/>
                 <DataGridTextColumn Binding="{Binding FrameSize}" Header="Rozdzielczość"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,13 @@ namespace WPF_Sekwencjomat.Models
         public static PlaybackTechnique CurrentPlaybackTechnique;
         public static PlaybackMode CurrentPlaybackMode;
         public static bool IsInterfaceLocked = false;
+        public static string ExecutionPath
+        {
+            get
+            {
+                return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location).ToString();
+            }
+        }
 
         public static int RatingDelay
         {
@@ -70,7 +78,14 @@ namespace WPF_Sekwencjomat.Models
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorString));
         }
 
-
+        public static bool IsDirectoryEmpty(string path)
+        {
+            IEnumerable<string> items = Directory.EnumerateFileSystemEntries(path);
+            using (IEnumerator<string> en = items.GetEnumerator())
+            {
+                return !en.MoveNext();
+            }
+        }
 
         public static void ChangeStatusControl(string info, bool changeCursor)
         {
@@ -102,6 +117,7 @@ namespace WPF_Sekwencjomat.Models
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
             mw.StackPanel_ButtonsLeft.IsEnabled = true;
         }
+
 
 
         public static List<T> ShuffleList<T>(List<T> inputList)
@@ -161,9 +177,7 @@ namespace WPF_Sekwencjomat.Models
             List<MediaFile> final = new List<MediaFile>();
 
             foreach (MediaFile item in first)
-            {
                 final.Add(item);
-            }
 
             return final;
         }

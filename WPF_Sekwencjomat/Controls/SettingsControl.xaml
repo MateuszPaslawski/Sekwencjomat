@@ -175,7 +175,7 @@
                 
                 <DockPanel LastChildFill="True">
                     <Label Content="Czas oceniania [s]"/>
-                    <TextBox x:Name="TextBox_RatingDelay" VerticalAlignment="Stretch" Text="5" CommandManager.PreviewExecuted="TextBox_PreviewExecuted" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Stretch" MaxLines="1" MaxLength="3" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_RatingDelay" VerticalAlignment="Stretch" Text="5" CommandManager.PreviewExecuted="TextBox_PreviewExecuted" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Stretch" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center"/>
                 </DockPanel>
             </StackPanel>
         </GroupBox>
