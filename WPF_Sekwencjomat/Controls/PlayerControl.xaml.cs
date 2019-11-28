@@ -43,6 +43,22 @@ namespace WPF_Sekwencjomat
             ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
         }
 
+        public void PausePlayer()
+        {
+            ThreadPool.QueueUserWorkItem(x =>
+            {
+                VLC_Control.SourceProvider.MediaPlayer.Pause();
+            });
+        }
+
+        public void UnpausePlayer()
+        {
+            ThreadPool.QueueUserWorkItem(x =>
+            {
+                VLC_Control.SourceProvider.MediaPlayer.Play();
+            });
+        }
+
         private void MakePlaybackOrder()
         {
             switch (Helper.CurrentPlaybackTechnique)
@@ -179,6 +195,9 @@ namespace WPF_Sekwencjomat
                     };
 
                     Logger.LogRatingToCSV(tmpRating);
+                    Logger.LogRatingToTXT(tmpRating);
+                    Logger.LogRatingToHTML(tmpRating);
+                    ListOfMediaFilesWithGrades.Clear();
                     Helper.EnableNavigationButtons();
                     Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFiles.Count} sekwencji zostało zakończone.", false);
                 });
@@ -190,7 +209,7 @@ namespace WPF_Sekwencjomat
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
+                    Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackTechnique.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
                 });
 
                 ThreadPool.QueueUserWorkItem(x =>
@@ -228,9 +247,9 @@ namespace WPF_Sekwencjomat
                 VLC_Control.SourceProvider.MediaPlayer.Play(new Uri(ListOfMediaFiles[0].Path));
             });
 
-            TimeLeft.Start();
+            TimeLeft.Restart();
 
-            Helper.ChangeStatusControl($"Technika: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[0].Path}", false);
+            Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[0].Path}", false);
             Helper.DisableNavigationButtons();
         }
 
@@ -238,8 +257,13 @@ namespace WPF_Sekwencjomat
         {
             if (VLC_Control.SourceProvider.MediaPlayer.IsPlaying())
             {
+                PausePlayer();
                 MessageBoxResult mb = MessageBox.Show("Zatrzymać odtwarzanie sekwencji?", "Czy aby napewno?", MessageBoxButton.YesNo);
-                if (mb == MessageBoxResult.Yes) { StopPlayer(); }
+
+                if (mb == MessageBoxResult.Yes)
+                    StopPlayer();
+                else
+                    UnpausePlayer();
             }
         }
 

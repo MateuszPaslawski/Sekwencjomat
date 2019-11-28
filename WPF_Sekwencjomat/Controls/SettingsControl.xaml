@@ -183,7 +183,7 @@
         <GroupBox Margin="5" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Image x:Name="Image_VLCPathStatus" Margin="5" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/delete-20.png" Stretch="None"/>
+                    <Image x:Name="Image_VLCPathStatus" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/Delete_32x32.png" Stretch="None"/>
                     <Label Content="Ścieżka programu VLC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox.Header>

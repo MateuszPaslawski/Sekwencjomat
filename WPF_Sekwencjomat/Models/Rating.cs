@@ -12,7 +12,7 @@ namespace WPF_Sekwencjomat.Models
         {
             get
             {
-                return DateTime.Now.ToString(@"yyyy-MM-dd HH\hmm");
+                return DateTime.Now.ToString(@"yyyy-MM-dd HH:mm");
             }
         }
 

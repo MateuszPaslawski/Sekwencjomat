@@ -54,6 +54,31 @@ namespace WPF_Sekwencjomat.Models
         }
 
 
+        public static string PlaybackModeToString(PlaybackMode playbackMode)
+        {
+            string ret = "Nieznany";
+
+            switch (playbackMode)
+            {
+                case PlaybackMode.Descending:
+                    ret = "Malejąco";
+                    break;
+                case PlaybackMode.Ascending:
+                    ret = "Rosnąco";
+                    break;
+                case PlaybackMode.Concave:
+                    ret = "Wklęsło";
+                    break;
+                case PlaybackMode.Convex:
+                    ret = "Wypukło";
+                    break;
+                case PlaybackMode.Random:
+                    ret = "Losowo";
+                    break;
+            }
+
+            return ret;
+        }
 
         public static string DecorateBytes(long byteCount)
         {

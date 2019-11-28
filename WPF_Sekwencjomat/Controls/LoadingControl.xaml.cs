@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace WPF_Sekwencjomat.Controls
 {
-    /// <summary>
-    /// Interaction logic for LoadingControl.xaml
-    /// </summary>
     public partial class LoadingControl : UserControl
     {
         public LoadingControl()

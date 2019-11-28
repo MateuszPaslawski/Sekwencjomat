@@ -22,11 +22,12 @@
                 <RadioButton Content="1 - Jakość jest zła" Style="{StaticResource RadioButtonStyle_Colored}" Background="#E51400"/>
             </UniformGrid>
             <Button x:Name="Button_Main" DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
-                    Height="80" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
+                    Padding="0,10"
+                    Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
                     Background="Transparent" BorderThickness="0"
                     Click="Button_Click">
                 <Grid>
-                    <Image x:Name="Image_Completed" Source="/WPF_Sekwencjomat;component/Resources/png/checkmark-20.png" Stretch="None"/>
+                    <Image x:Name="Image_Completed" Source="/WPF_Sekwencjomat;component/Resources/png/Checkmark_64x64.png" Stretch="None"/>
                     <Label x:Name="Label_Counter" Content="Counter" Visibility="Collapsed" FontSize="24"/>
                 </Grid>
             </Button>

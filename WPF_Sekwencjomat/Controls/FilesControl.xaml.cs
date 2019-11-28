@@ -83,7 +83,7 @@ namespace WPF_Sekwencjomat
                         mfo.Name = fi.Name;
                         mfo.Path = fi.FullName;
                         mfo.Extension = fi.Extension;
-                        mfo.Resolution = Helper.DecorateBytes(fi.Length);
+                        mfo.Size = Helper.DecorateBytes(fi.Length);
                         mfo.Format = mf.Metadata.VideoData.Format;
                         mfo.ColorGamut = mf.Metadata.VideoData.ColorModel;
                         mfo.FPS = mf.Metadata.VideoData.Fps;

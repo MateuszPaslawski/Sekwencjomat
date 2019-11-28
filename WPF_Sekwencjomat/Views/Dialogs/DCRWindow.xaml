@@ -22,10 +22,10 @@
                 <RadioButton Content="1 - Pogorszenie jakości jest bardzo dokuczliwe " Style="{StaticResource RadioButtonStyle_Colored}" Background="#E51400"/>
             </UniformGrid>
             <Button DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
-                    Padding="0,20" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
+                    Padding="0,10" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"
                     Background="#00D00000" BorderThickness="0"
                     Click="Button_Click">
-                <Image Source="/WPF_Sekwencjomat;component/Resources/png/checkmark-20.png" Stretch="None"/>
+                <Image Source="/WPF_Sekwencjomat;component/Resources/png/Checkmark_64x64.png" Stretch="None"/>
             </Button>
         </DockPanel>
     </Grid>
