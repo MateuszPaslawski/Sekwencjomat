@@ -13,9 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WPF_Sekwencjomat.Models;
+using Sekwencjomat.Models;
 
-namespace WPF_Sekwencjomat.Views.Dialogs
+namespace Sekwencjomat.Views.Dialogs
 {
     /// <summary>
     /// Interaction logic for ACRWindow.xaml

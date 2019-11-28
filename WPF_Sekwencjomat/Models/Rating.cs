@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_Sekwencjomat.Models
+namespace Sekwencjomat.Models
 {
     public class Rating
     {
@@ -28,7 +28,7 @@ namespace WPF_Sekwencjomat.Models
         public int RatingSeconds { get; set; }
         public string ReferenceVideoPath { get; set; }
         public Helper.PlaybackMode PlaybackMode { get; set; }
-        public Helper.PlaybackTechnique PlaybackTechnique { get; set; }
+        public Helper.PlaybackScale PlaybackScale { get; set; }
         public List<MediaFile> FilesListWithGrades { get; set; }
     }
 }

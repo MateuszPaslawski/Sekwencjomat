@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_Sekwencjomat.Models
+namespace Sekwencjomat.Models
 {
     public static class Logger
     {
@@ -13,34 +13,30 @@ namespace WPF_Sekwencjomat.Models
         private static string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
         private static string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
 
-        public static void LogRatingToTXT(Rating rating)
+        public async static void LogRatingToTXT(Rating rating)
         {
-            Console.WriteLine(nowDate);
-            Console.WriteLine(LoggingDirWithDate);
-
             int i = 1;
             int lp_counter = 1;
             string extension = ".txt";
-            string technique = rating.PlaybackTechnique.ToString();
+            string scale = rating.PlaybackScale.ToString();
 
             Directory.CreateDirectory(LoggingDirWithDate);
 
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{technique}_{i}{extension}")))
+            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
             {
                 i++;
             }
 
-
-            using (StreamWriter file =
-            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackTechnique.ToString()}_{i}{extension}"), false, Encoding.UTF8))
+            using (StreamWriter file = new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
             {
                 file.WriteLine($"{"Data:", -20}{rating.DateTimeString}");
-                file.WriteLine($"{"Metoda MOS:", -20}{rating.PlaybackTechnique}");
+                file.WriteLine($"{"Metoda MOS:", -20}{rating.PlaybackScale}");
                 file.WriteLine($"{"Kolejność:", -20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
                 file.WriteLine($"{"Czas trwania:", -20}{rating.RatingTimeSpanToString}");
                 file.WriteLine($"{"Czas na ocenę [s]:", -20}{rating.RatingSeconds}");
                 file.WriteLine();
-                if (rating.PlaybackTechnique == Helper.PlaybackTechnique.DCR)
+
+                if (rating.PlaybackScale == Helper.PlaybackScale.DCR)
                     file.WriteLine($"{"Plik referencyjny:", -20}{rating.ReferenceVideoPath}");
 
                 file.WriteLine($"{"lp",5} | {"Ocena",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
@@ -61,24 +57,24 @@ namespace WPF_Sekwencjomat.Models
             int i = 1;
             int lp_counter = 1;
             string extension = ".csv";
-            string technique = rating.PlaybackTechnique.ToString();
+            string scale = rating.PlaybackScale.ToString();
 
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{technique}_{i}{extension}")))
+            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
             {
                 i++;
             }
 
 
             using (StreamWriter file =
-            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackTechnique.ToString()}_{i}{extension}"), false, Encoding.UTF8))
+            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
             {
                 file.WriteLine($"Data;{rating.DateTimeString}");
-                file.WriteLine($"Metoda MOS;{rating.PlaybackTechnique}");
+                file.WriteLine($"Metoda MOS;{rating.PlaybackScale}");
                 file.WriteLine($"Kolejność;{Helper.PlaybackModeToString(rating.PlaybackMode)}");
                 file.WriteLine($"Czas trwania badania;{rating.RatingTimeSpanToString}");
                 file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
                 file.WriteLine();
-                if (rating.PlaybackTechnique == Helper.PlaybackTechnique.DCR)
+                if (rating.PlaybackScale == Helper.PlaybackScale.DCR)
                     file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
 
                 file.WriteLine($"lp;Ocena;Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
@@ -99,16 +95,16 @@ namespace WPF_Sekwencjomat.Models
             int i = 1;
             int lp_counter = 1;
             string extension = ".html";
-            string technique = rating.PlaybackTechnique.ToString();
+            string scale = rating.PlaybackScale.ToString();
 
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{technique}_{i}{extension}")))
+            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
             {
                 i++;
             }
 
 
             using (StreamWriter file =
-            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackTechnique.ToString()}_{i}{extension}"), false, Encoding.UTF8))
+            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
             {
                 file.WriteLine("<html>");
                 file.WriteLine("<head>");
@@ -125,12 +121,12 @@ namespace WPF_Sekwencjomat.Models
                 file.WriteLine("<h1><center>Wyniki pomiarów : Sekwencjomat</center></h1>");
 
                 file.WriteLine($"<p>Data: <b>{rating.DateTimeString}</b></p>");
-                file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackTechnique}</b></p>");
+                file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackScale}</b></p>");
                 file.WriteLine($"<p>Kolejność: <b>{Helper.PlaybackModeToString(rating.PlaybackMode)}</b></p>");
                 file.WriteLine($"<p>Czas trwania: <b>{rating.RatingTimeSpanToString}</b></p>");
                 file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
 
-                if (rating.PlaybackTechnique == Helper.PlaybackTechnique.DCR)
+                if (rating.PlaybackScale == Helper.PlaybackScale.DCR)
                     file.WriteLine($"<p>Plik referencyjny: <b>{rating.ReferenceVideoPath}</b></p>");
 
                 file.WriteLine("<table style=\"width: 100 %\">");

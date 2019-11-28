@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WPF_Sekwencjomat")]
+[assembly: AssemblyProduct("Sekwencjomat")]
 [assembly: AssemblyCopyright("Copyright ©  2019 Mateusz Pasławski")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -52,6 +52,6 @@ using System.Windows;
 // przy użyciu symbolu „*”, tak jak pokazano poniżej:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguage("pl")]
 

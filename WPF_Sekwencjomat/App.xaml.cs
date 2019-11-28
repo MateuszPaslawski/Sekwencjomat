@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WPF_Sekwencjomat
+namespace Sekwencjomat
 {
     public partial class App : Application
     {
-
-
         public App()
         {
             Dispatcher.UnhandledException += OnDispatcherUnhandledException;

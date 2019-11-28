@@ -7,17 +7,17 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using WPF_Sekwencjomat.Models;
-using WPF_Sekwencjomat.Views.Dialogs;
+using Sekwencjomat.Models;
+using Sekwencjomat.Views.Dialogs;
 
-namespace WPF_Sekwencjomat
+namespace Sekwencjomat
 {
     public partial class PlayerControl : UserControl
     {
         public SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
         public FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
 
-        public Helper.PlaybackTechnique PlayerPlaybackTechnique;
+        public Helper.PlaybackScale PlayerPlaybackScale;
         public Helper.PlaybackMode PlayerPlaybackMode;
 
         private List<MediaFile> ListOfMediaFilesWithGrades = new List<MediaFile>();
@@ -40,7 +40,7 @@ namespace WPF_Sekwencjomat
             });
 
             CurrentPlayingFileIndex = 0;
-            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
+            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilsInGrid);
         }
 
         public void PausePlayer()
@@ -61,9 +61,9 @@ namespace WPF_Sekwencjomat
 
         private void MakePlaybackOrder()
         {
-            switch (Helper.CurrentPlaybackTechnique)
+            switch (Helper.CurrentPlaybackScale)
             {
-                case Helper.PlaybackTechnique.ACR:
+                case Helper.PlaybackScale.ACR:
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -84,10 +84,10 @@ namespace WPF_Sekwencjomat
                     }
                     break;
 
-                case Helper.PlaybackTechnique.CCR:
+                case Helper.PlaybackScale.CCR:
                     throw new NotImplementedException();
 
-                case Helper.PlaybackTechnique.DCR:
+                case Helper.PlaybackScale.DCR:
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -108,17 +108,23 @@ namespace WPF_Sekwencjomat
                     }
                     break;
 
-                case Helper.PlaybackTechnique.DCRmod:
+                case Helper.PlaybackScale.DCRmod:
                     throw new NotImplementedException();
             }
         }
 
         public bool CheckBeforeStartPlaying()
         {
-                if (File.Exists(FilesControlObject.TextBox_RefPath.Text))
-                    return true;
-                else 
-                    return false;
+            if (Helper.CurrentPlaybackScale == Helper.PlaybackScale.ACR)
+                return true;
+
+            if (File.Exists(FilesControlObject.TextBox_RefPath.Text))
+                return true;
+            else
+            {
+                FilesControlObject.TextBox_RefPath.Text = string.Empty;
+                return false;
+            }
         }
 
 
@@ -134,7 +140,7 @@ namespace WPF_Sekwencjomat
         {
             if (VLC_Control.SourceProvider.MediaPlayer != null)
             {
-                if (FilesControlObject.ListOfMediaFilePropeties.Count < 1 || CheckBeforeStartPlaying() == false)
+                if (FilesControlObject.ListOfMediaFilsInGrid.Count < 1 || CheckBeforeStartPlaying() == false)
                     DP_Navigation.IsEnabled = false;
                 else
                 {
@@ -150,7 +156,7 @@ namespace WPF_Sekwencjomat
         {
             CurrentPlayingFileIndex++;
 
-            if(PlayerPlaybackTechnique == Helper.PlaybackTechnique.DCR && CurrentPlayingFileIndex % 2 == 0)
+            if(PlayerPlaybackScale == Helper.PlaybackScale.DCR && CurrentPlayingFileIndex % 2 == 0)
             {
                 Dispatcher.Invoke(() => 
                 { 
@@ -161,7 +167,7 @@ namespace WPF_Sekwencjomat
                     ListOfMediaFilesWithGrades.Add(tempFile);
                 });
             }
-            else if (PlayerPlaybackTechnique == Helper.PlaybackTechnique.ACR)
+            else if (PlayerPlaybackScale == Helper.PlaybackScale.ACR)
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -190,7 +196,7 @@ namespace WPF_Sekwencjomat
                         RatingSeconds = Helper.RatingDelay,
                         ReferenceVideoPath = FilesControlObject.TextBox_RefPath.Text,
                         PlaybackMode = Helper.CurrentPlaybackMode,
-                        PlaybackTechnique = Helper.CurrentPlaybackTechnique,
+                        PlaybackScale = Helper.CurrentPlaybackScale,
                         FilesListWithGrades = ListOfMediaFilesWithGrades,
                     };
 
@@ -209,7 +215,7 @@ namespace WPF_Sekwencjomat
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackTechnique.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
+                    Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
                 });
 
                 ThreadPool.QueueUserWorkItem(x =>
@@ -223,20 +229,25 @@ namespace WPF_Sekwencjomat
         {
             if (VLC_Control.SourceProvider.MediaPlayer.IsPlaying())
             {
+                PausePlayer();
                 MessageBoxResult mb = MessageBox.Show("Rozpocząć odtwarzanie od początku?", "Czy aby napewno?", MessageBoxButton.YesNo);
+
                 if (mb != MessageBoxResult.Yes)
+                {
+                    UnpausePlayer();
                     return;
+                }
             }
 
-            if (FilesControlObject.ListOfMediaFilePropeties == null) { return; }
+            if (FilesControlObject.ListOfMediaFilsInGrid.Count == 0) { return; }
 
-            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilePropeties);
+            ListOfMediaFiles = new List<MediaFile>(FilesControlObject.ListOfMediaFilsInGrid);
 
             CurrentPlayingFileIndex = 0;
 
             MakePlaybackOrder();
 
-            PlayerPlaybackTechnique = Helper.CurrentPlaybackTechnique;
+            PlayerPlaybackScale = Helper.CurrentPlaybackScale;
             PlayerPlaybackMode = Helper.CurrentPlaybackMode;
 
             
@@ -248,8 +259,7 @@ namespace WPF_Sekwencjomat
             });
 
             TimeLeft.Restart();
-
-            Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackTechnique.ToString()}\tKolejność: {PlayerPlaybackMode}\tPlik: {ListOfMediaFiles[0].Path}", false);
+            Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
             Helper.DisableNavigationButtons();
         }
 
@@ -267,7 +277,12 @@ namespace WPF_Sekwencjomat
             }
         }
 
-        private void VLC_Control_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void PlayerControl_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).SwitchFullScreen(false);
+        }
+
+        private void FullScreen_Button_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).SwitchFullScreen(false);
         }

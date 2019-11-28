@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="WPF_Sekwencjomat.SettingsControl"
+﻿<UserControl x:Class="Sekwencjomat.SettingsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_Sekwencjomat"
+             xmlns:local="clr-namespace:Sekwencjomat"
              mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13" 
              Loaded="UserControl_Loaded">
     <Grid>
@@ -13,13 +13,24 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         
         <GroupBox Margin="5" Grid.Row="1" Header="Opcje odtwarzania metodą MOS">
             <StackPanel Margin="5" Orientation="Vertical">
                 
                 <RadioButton x:Name="RadioButton_ACR" Checked="RadioButton_Checked" Height="50" IsChecked="True" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+                    <RadioButton.ToolTip>
+                        <ToolTip Background="White" Margin="5,5,5,5">
+                            <ToolTip.Effect>
+                                <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                            </ToolTip.Effect>
+                            <StackPanel>
+                                <Label Content="ACR (Absolute Category Rating)" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                <Image Source="/Sekwencjomat;component/Resources/diagrams/ACR_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </RadioButton.ToolTip>
                     <DockPanel LastChildFill="True">
                         <ComboBox x:Name="ComboBox_ACR" MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
@@ -38,7 +49,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/malejaco120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -50,7 +61,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/rosnaco120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -62,7 +73,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/losowo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -74,7 +85,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/wypuklo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -86,7 +97,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/wkleslo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -97,6 +108,17 @@
                 </RadioButton>
                 
                 <RadioButton x:Name="RadioButton_DCR" Checked="RadioButton_Checked" Height="50" Margin="5" Style="{DynamicResource RadioButtonStyle_Blank}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch">
+                    <RadioButton.ToolTip>
+                        <ToolTip Background="White" Margin="5,5,5,5">
+                            <ToolTip.Effect>
+                                <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
+                            </ToolTip.Effect>
+                            <StackPanel>
+                                <Label Content="DCR (Degradation Category Rating)" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                <Image Source="/Sekwencjomat;component/Resources/diagrams/DCR_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </RadioButton.ToolTip>
                     <DockPanel LastChildFill="True">
                         <ComboBox x:Name="ComboBox_DCR" MinWidth="120" HorizontalContentAlignment="Center"  SelectionChanged="ComboBox_SelectionChanged" IsEnabledChanged="ComboBox_IsEnabledChanged" DockPanel.Dock="Right">
                             <ComboBox.Style>
@@ -115,7 +137,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/malejaco120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/malejaco120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -127,7 +149,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/rosnaco120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/rosnaco120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -139,7 +161,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/losowo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/losowo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -151,7 +173,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wypuklo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/wypuklo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -163,7 +185,7 @@
                                             <DropShadowEffect BlurRadius="6" ShadowDepth="2" Color="Black" Opacity="1" Direction="-90"/>
                                         </ToolTip.Effect>
                                         <StackPanel>
-                                            <Image Source="/WPF_Sekwencjomat;component/Resources/diagrams/wkleslo120.png"/>
+                                            <Image Source="/Sekwencjomat;component/Resources/diagrams/wkleslo120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                                         </StackPanel>
                                     </ToolTip>
                                 </ComboBoxItem.ToolTip>
@@ -174,7 +196,7 @@
                 </RadioButton>
                 
                 <DockPanel LastChildFill="True">
-                    <Label Content="Czas oceniania [s]"/>
+                    <Label Content="Minimalny czas na ocenę [s]"/>
                     <TextBox x:Name="TextBox_RatingDelay" VerticalAlignment="Stretch" Text="5" CommandManager.PreviewExecuted="TextBox_PreviewExecuted" PreviewTextInput="TextBox_PreviewTextInput" HorizontalAlignment="Stretch" MaxLines="1" MaxLength="2" HorizontalContentAlignment="Center"/>
                 </DockPanel>
             </StackPanel>
@@ -183,13 +205,13 @@
         <GroupBox Margin="5" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Image x:Name="Image_VLCPathStatus" DockPanel.Dock="Right" Source="/WPF_Sekwencjomat;component/Resources/png/Delete_32x32.png" Stretch="None"/>
+                    <Image x:Name="Image_VLCPathStatus" DockPanel.Dock="Right" Source="/Sekwencjomat;component/Resources/UI/Delete_16x16.png" Stretch="None"/>
                     <Label Content="Ścieżka programu VLC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox.Header>
             <DockPanel Margin="10" LastChildFill="True">
                 <Button Click="Button_Click" Margin="-1,0" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" BorderBrush="#FFABADB3" Background="{x:Null}">
-                    <Image Source="/WPF_Sekwencjomat;component/Resources/png/vlc-24.png" Stretch="None"/>
+                    <Image Source="/Sekwencjomat;component/Resources/UI/vlc-24.png" Stretch="None"/>
                 </Button>
                 <TextBox IsReadOnly="True" MinWidth="200" x:Name="TextBox_VLCPath" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             </DockPanel>

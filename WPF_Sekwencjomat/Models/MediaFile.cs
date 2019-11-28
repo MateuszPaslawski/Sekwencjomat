@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace WPF_Sekwencjomat.Models
+namespace Sekwencjomat.Models
 {
     public class MediaFile
     {

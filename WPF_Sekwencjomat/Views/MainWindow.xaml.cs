@@ -5,15 +5,16 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WPF_Sekwencjomat.Models;
-using WPF_Sekwencjomat.Views;
-using WPF_Sekwencjomat.Views.Dialogs;
+using Sekwencjomat.Models;
+using Sekwencjomat.Views;
+using Sekwencjomat.Views.Dialogs;
 
-namespace WPF_Sekwencjomat
+namespace Sekwencjomat
 {
 
     public partial class MainWindow : Window
@@ -23,6 +24,29 @@ namespace WPF_Sekwencjomat
         public SettingsControl SettingsControlObject;
         public Rect WindowsRectBeforeFullScreen;
         public WindowState WindowStateBeforeFullScreen;
+
+        private List<string> VLC_DLL_SearchList
+        {
+            get
+            {
+                List<string> searchList = new List<string>();
+
+                foreach (DriveInfo item in DriveInfo.GetDrives())
+                {
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"VLC"));
+                }
+
+                return searchList;
+            }
+        }
 
         #region Metody Użytkownika
         private void MakeButtonPressedOnLeft(object sender)
@@ -86,20 +110,28 @@ namespace WPF_Sekwencjomat
             }
         }
 
-        public async void LoadUserSettings()
+        public async Task SearchForVLCDLL()
+        {
+            await Task.Run(() =>
+            {
+                foreach (var item in VLC_DLL_SearchList)
+                {
+                    if (SettingsControlObject.CheckVLCFolderDLLs(item))
+                        return;
+                }
+            });
+        }
+
+        public async Task LoadUserSettings()
         {
             if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
                 return;
 
-            StartupWindow startupWindow = new StartupWindow();
-
             try
             {
-                IsEnabled = false;
                 Properties.Settings settings = Properties.Settings.Default;
-                startupWindow.Show();
 
-                //Check for VLC DLL
+                //Check if saved VLC Path is valid
                 SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
 
                 //Window Location and State
@@ -110,6 +142,7 @@ namespace WPF_Sekwencjomat
                     Width = settings.WINDOW_LOCATION.Width;
                     Height = settings.WINDOW_LOCATION.Height;
                 }
+                
                 WindowState = settings.WINDOW_STATE;
 
                 //Reference video path
@@ -124,14 +157,14 @@ namespace WPF_Sekwencjomat
                 //RatingDelay
                 Helper.RatingDelay = settings.RATING_DELAY;
 
-                //PlaybackTechnique
+                //PlaybackScale
                 switch (settings.PLAYBACK_TECHNIQUE.ToLower())
                 {
                     case "acr":
-                        Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.ACR;
+                        Helper.CurrentPlaybackScale = Helper.PlaybackScale.ACR;
                         break;
                     case "dcr":
-                        Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.DCR;
+                        Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCR;
                         break;
                 }
 
@@ -159,11 +192,6 @@ namespace WPF_Sekwencjomat
                 SettingsControlObject.HelperPlaybackPropetiesToControls();
             }
             catch { }
-            finally
-            {
-                IsEnabled = true;
-                startupWindow.Close();
-            }
         }
 
         public void SaveUserSettings()
@@ -175,9 +203,9 @@ namespace WPF_Sekwencjomat
                 settings.VLC_DLL_PATH = SettingsControlObject.TextBox_VLCPath.Text;
                 settings.WINDOW_LOCATION = new Rect(Left, Top, Width, Height);
                 settings.REFVIDEO_PATH = FilesControlObject.TextBox_RefPath.Text;
-                settings.LIST_OF_FILES = FilesControlObject.GetCurrentFilesInDataGrid();
+                settings.LIST_OF_FILES = FilesControlObject.ListOfPathsFilsInGrid;
                 settings.PLAYBACK_MODE = Helper.CurrentPlaybackMode.ToString();
-                settings.PLAYBACK_TECHNIQUE = Helper.CurrentPlaybackTechnique.ToString();
+                settings.PLAYBACK_TECHNIQUE = Helper.CurrentPlaybackScale.ToString();
                 settings.RATING_DELAY = Helper.RatingDelay;
                 settings.Save();
             }
@@ -190,23 +218,29 @@ namespace WPF_Sekwencjomat
         public MainWindow()
         {
             InitializeComponent();
-            WindowState = WindowState.Minimized;
-            ShowInTaskbar = false;
         }
 
 
         #region Metody Kontrolek
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
+            StartupWindow startupWindow = new StartupWindow();
+            startupWindow.Show();
+            
             FilesControlObject = new FilesControl();
             SettingsControlObject = new SettingsControl();
             PlayerControlObject = new PlayerControl();
-
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
 
-            ShowInTaskbar = true;
-            LoadUserSettings();
+            await SearchForVLCDLL();
+            await LoadUserSettings();
+
+            startupWindow.Close();
+
+            if (WindowState == WindowState.Minimized)
+                WindowState = WindowState.Normal;
             Activate();
         }
 
@@ -245,11 +279,6 @@ namespace WPF_Sekwencjomat
                     SwitchFullScreen(true);
                     break;
             }
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void Window_Closed(object sender, EventArgs e)

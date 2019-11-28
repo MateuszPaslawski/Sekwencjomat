@@ -7,11 +7,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace WPF_Sekwencjomat.Models
+namespace Sekwencjomat.Models
 {
     public static class Helper
     {
-        public static PlaybackTechnique CurrentPlaybackTechnique;
+        public static PlaybackScale CurrentPlaybackScale;
         public static PlaybackMode CurrentPlaybackMode;
         public static bool IsInterfaceLocked = false;
         public static string ExecutionPath
@@ -34,7 +34,7 @@ namespace WPF_Sekwencjomat.Models
             }
         }
 
-        public enum PlaybackTechnique
+        public enum PlaybackScale
         {
             ACR,
             CCR,

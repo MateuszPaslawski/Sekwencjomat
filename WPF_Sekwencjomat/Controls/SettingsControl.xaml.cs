@@ -5,23 +5,23 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using WPF_Sekwencjomat.Models;
+using Sekwencjomat.Models;
 
-namespace WPF_Sekwencjomat
+namespace Sekwencjomat
 {
     public partial class SettingsControl : UserControl
     {
         #region Metody Użytkownika
-        private void SetHelperPlaybackTechnique(RadioButton rb)
+        private void SetHelperPlaybackScale(RadioButton rb)
         {
             if (rb.Name == "RadioButton_ACR")
-                Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.ACR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScale.ACR;
             else if (rb.Name == "RadioButton_CCR")
-                Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.CCR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScale.CCR;
             else if (rb.Name == "RadioButton_DCR")
-                Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.DCR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCR;
             else if (rb.Name == "RadioButton_DCRmod")
-                Helper.CurrentPlaybackTechnique = Helper.PlaybackTechnique.DCRmod;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCRmod;
         }
 
         public void SetHelperPlaybackMode(ComboBoxItem cbi)
@@ -40,9 +40,9 @@ namespace WPF_Sekwencjomat
 
         public void HelperPlaybackPropetiesToControls()
         {
-            switch (Helper.CurrentPlaybackTechnique)
+            switch (Helper.CurrentPlaybackScale)
             {
-                case Helper.PlaybackTechnique.ACR:
+                case Helper.PlaybackScale.ACR:
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -64,7 +64,7 @@ namespace WPF_Sekwencjomat
                     RadioButton_ACR.IsChecked = true;
                     break;
 
-                case Helper.PlaybackTechnique.DCR:
+                case Helper.PlaybackScale.DCR:
                     switch (Helper.CurrentPlaybackMode)
                     {
                         case Helper.PlaybackMode.Descending:
@@ -97,7 +97,7 @@ namespace WPF_Sekwencjomat
                 {
                     ((MainWindow)Application.Current.MainWindow).PlayerControlObject.VLC_Control.SourceProvider.CreatePlayer(new DirectoryInfo(path));
                     TextBox_VLCPath.Text = path;
-                    Image_VLCPathStatus.Source = new BitmapImage(new Uri(@"/WPF_Sekwencjomat;component/Resources/png/Checkmark_32x32.png", UriKind.Relative));
+                    Image_VLCPathStatus.Source = new BitmapImage(new Uri(@"/Sekwencjomat;component/Resources/UI/Checkmark_16x16.png", UriKind.Relative));
                     ret = true;
                 }
                 catch { }
@@ -137,7 +137,7 @@ namespace WPF_Sekwencjomat
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (sender != null)
-                SetHelperPlaybackTechnique(sender as RadioButton);
+                SetHelperPlaybackScale(sender as RadioButton);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

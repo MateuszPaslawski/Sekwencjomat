@@ -1,7 +1,7 @@
-﻿<Application x:Class="WPF_Sekwencjomat.App"
+﻿<Application x:Class="Sekwencjomat.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPF_Sekwencjomat"
+             xmlns:local="clr-namespace:Sekwencjomat"
              StartupUri="Views/MainWindow.xaml"
              >
     <Application.Resources>
@@ -19,6 +19,10 @@
         <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="#FF212121"/>
         <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
         
+        <SolidColorBrush x:Key="ButtonBase.Static.IsMouseOver" Color="#4C40B9FF"/>
+        <SolidColorBrush x:Key="ButtonBase.Static.IsPressed" Color="#FF78C1EC"/>
+        <SolidColorBrush x:Key="ButtonBase.Static.IsChecked" Color="#9973C8F3"/>
+        
         <Style TargetType="{x:Type ProgressBar}">
             <Setter Property="Foreground" Value="#98CCFD" />
         </Style>
@@ -32,15 +36,15 @@
                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#99BEE6FD"/>
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
                     <!--<Setter Property="BorderBrush" TargetName="border" Value="#993C7FB1"/>-->
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#FF78C1EC"/>
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsPressed}"/>
                     <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>-->
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="#99BCDDEE"/>
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsChecked}"/>
                     <!--<Setter Property="BorderBrush" TargetName="border" Value="#99245A83"/>-->
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
@@ -51,7 +55,6 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        
         
         <ControlTemplate x:Key="ButtonBaseControlTemplate_Material" TargetType="{x:Type ButtonBase}">
             <Grid>

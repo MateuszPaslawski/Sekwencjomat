@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPF_Sekwencjomat.Views.Dialogs
+namespace Sekwencjomat.Views.Dialogs
 {
     public partial class DCRWindow : Window
     {
