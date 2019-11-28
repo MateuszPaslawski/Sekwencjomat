@@ -235,6 +235,19 @@
     <Resource Include="Resources\png\Delete_32x32.png" />
     <Resource Include="Resources\png\Delete_64x64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\png\Plus_128x128.png" />
+    <Resource Include="Resources\png\Plus_16x16.png" />
+    <Resource Include="Resources\png\Plus_32x32.png" />
+    <Resource Include="Resources\png\Plus_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\png\boring-50.png" />
+    <Resource Include="Resources\png\happy-50.png" />
+    <Resource Include="Resources\png\neutral-50.png" />
+    <Resource Include="Resources\png\sad-50.png" />
+    <Resource Include="Resources\png\smiling-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.0.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.4\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

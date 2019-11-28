@@ -15,11 +15,77 @@
         </Border>
         <DockPanel>
             <UniformGrid x:Name="UniformGrid_Main" DockPanel.Dock="Top" Margin="5,5" Columns="1">
-                <RadioButton Content="5 - pogorszenie jakości jest niewidoczne" IsChecked="True" Style="{StaticResource RadioButtonStyle_Colored}" Background="#008A00"/>
-                <RadioButton Content="4 - pogorszenie jakości jest widoczne, nie dokuczliwe" Style="{StaticResource RadioButtonStyle_Colored}" Background="#396C00"/>
-                <RadioButton Content="3 - Pogorszenie jakości jest trochę dokuczliwe " Style="{StaticResource RadioButtonStyle_Colored}" Background="#724F00"/>
-                <RadioButton Content="2 - Pogorszenie jakości jest dokuczliwe " Style="{StaticResource RadioButtonStyle_Colored}" Background="#AB3100"/>
-                <RadioButton Content="1 - Pogorszenie jakości jest bardzo dokuczliwe " Style="{StaticResource RadioButtonStyle_Colored}" Background="#E51400"/>
+                <RadioButton Tag ="5" IsChecked="True" Style="{StaticResource RadioButtonStyle_Colored}" Background="#008A00">
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="25">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="0.75"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/smiling-50.png" Stretch="None"/>
+                        </Border>
+                        <Label Content="Pogorszenie jakości jest niewidoczne" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Tag="4" Style="{StaticResource RadioButtonStyle_Colored}" Background="#396C00">
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="25">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="0.75"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/happy-50.png" Stretch="None"/>
+                        </Border>
+                        <Label Content="Pogorszenie jakości jest widoczne, nie dokuczliwe" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Tag="3" Style="{StaticResource RadioButtonStyle_Colored}" Background="#724F00">
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="25">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="0.75"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/neutral-50.png" Stretch="None"/>
+                        </Border>
+                        <Label Content="Pogorszenie jakości jest trochę dokuczliwe" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Tag="2" Style="{StaticResource RadioButtonStyle_Colored}" Background="#AB3100">
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="25">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="0.75"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/boring-50.png" Stretch="None"/>
+                        </Border>
+                        <Label Content="Pogorszenie jakości jest dokuczliwe" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Tag="1" Style="{StaticResource RadioButtonStyle_Colored}" Background="#E51400">
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="25">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="0.75"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Image Source="/WPF_Sekwencjomat;component/Resources/png/sad-50.png" Stretch="None"/>
+                        </Border>
+                        <Label Content="Pogorszenie jakości jest bardzo dokuczliwe" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                
             </UniformGrid>
             <Button DockPanel.Dock="Bottom" VerticalAlignment="Center" Margin="5,0,5,5"
                     Padding="0,10" Template="{DynamicResource ButtonBaseControlTemplate_Blank}"

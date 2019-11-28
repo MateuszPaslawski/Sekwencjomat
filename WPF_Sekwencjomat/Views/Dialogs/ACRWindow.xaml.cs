@@ -40,7 +40,7 @@ namespace WPF_Sekwencjomat.Views.Dialogs
             {
                 if (item is RadioButton && ((RadioButton)item).IsChecked == true)
                 {
-                    string regexValue = Regex.Match(((RadioButton)item).Content.ToString(), @"\d").Value.ToString();
+                    string regexValue = Regex.Match(((RadioButton)item).Tag.ToString(), @"\d").Value.ToString();
                     Result = int.Parse(regexValue);
                 }
             }

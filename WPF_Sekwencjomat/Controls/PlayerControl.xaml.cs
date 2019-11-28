@@ -35,7 +35,7 @@ namespace WPF_Sekwencjomat
 
             Dispatcher.Invoke(() =>
             {
-                Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFiles.Count} sekwencji zostało zakończone.", false);
+                Helper.ResetStatusControl();
                 Helper.EnableNavigationButtons();
             });
 
