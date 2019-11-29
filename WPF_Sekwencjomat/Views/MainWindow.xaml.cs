@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -33,17 +34,16 @@ namespace Sekwencjomat
 
                 foreach (DriveInfo item in DriveInfo.GetDrives())
                 {
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN"));
-                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VLC"));
-                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"VideoLAN"));
                     searchList.Add(Path.Combine(item.ToString(), @"VLC"));
                 }
-
                 return searchList;
             }
         }
@@ -132,7 +132,10 @@ namespace Sekwencjomat
                 Properties.Settings settings = Properties.Settings.Default;
 
                 //Check if saved VLC Path is valid
-                SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
+                await Task.Run(() =>
+                {
+                    SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
+                });
 
                 //Window Location and State
                 if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
@@ -224,10 +227,9 @@ namespace Sekwencjomat
         #region Metody Kontrolek
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
             StartupWindow startupWindow = new StartupWindow();
             startupWindow.Show();
-            
+
             FilesControlObject = new FilesControl();
             SettingsControlObject = new SettingsControl();
             PlayerControlObject = new PlayerControl();

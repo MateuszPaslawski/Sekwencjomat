@@ -104,11 +104,11 @@
     </Compile>
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Rating.cs" />
-    <Compile Include="Views\Dialogs\ACRWindow.xaml.cs">
-      <DependentUpon>ACRWindow.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\ACR_Dialog.xaml.cs">
+      <DependentUpon>ACR_Dialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dialogs\DCRWindow.xaml.cs">
-      <DependentUpon>DCRWindow.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\DCR_Dialog.xaml.cs">
+      <DependentUpon>DCR_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartupWindow.xaml.cs">
       <DependentUpon>StartupWindow.xaml</DependentUpon>
@@ -117,11 +117,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Dialogs\ACRWindow.xaml">
+    <Page Include="Views\Dialogs\ACR_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Dialogs\DCRWindow.xaml">
+    <Page Include="Views\Dialogs\DCR_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

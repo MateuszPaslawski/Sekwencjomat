@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 
 namespace Sekwencjomat.Views.Dialogs
 {
-    public partial class DCRWindow : Window
+    public partial class DCR_Dialog : Window
     {
         public int Result = 0;
 
-        public DCRWindow()
+        public DCR_Dialog()
         {
             Owner = (MainWindow)Application.Current.MainWindow;
             InitializeComponent();

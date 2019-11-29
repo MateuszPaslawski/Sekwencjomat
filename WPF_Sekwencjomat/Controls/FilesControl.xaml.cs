@@ -13,8 +13,6 @@ namespace Sekwencjomat
 {
     public partial class FilesControl : UserControl
     {
-
-        ////public List<MediaFile> ListOfMediaFilePropeties = new List<MediaFile>();
         public List<MediaFile> ListOfMediaFilsInGrid 
         { 
             get 
@@ -144,8 +142,6 @@ namespace Sekwencjomat
                         mf2.FrameSize = mf.Metadata.VideoData.FrameSize;
                         mf2.Duration = mf.Metadata.Duration.ToString($"hh\\:mm\\:ss");
 
-                        //ListOfMediaFilePropeties.Add(mf2);
-
                         Dispatcher.Invoke(new Action(() =>
                         {
                             DG_Main.Items.Add(mf2);
@@ -231,7 +227,6 @@ namespace Sekwencjomat
             var dgr = pp.PlacementTarget as DataGridRow;
             var mf = dgr.Item as MediaFile;
 
-            //ListOfMediaFilsInGrid.Remove(mf);
             DG_Main.Items.Remove(mf);
             TextBox_RefPath.Text = mf.Path;
         }

@@ -20,12 +20,12 @@ namespace Sekwencjomat.Views.Dialogs
     /// <summary>
     /// Interaction logic for ACRWindow.xaml
     /// </summary>
-    public partial class ACRWindow : Window
+    public partial class ACR_Dialog : Window
     {
         public int Result = 0;
         private int Counter = Helper.RatingDelay;
 
-        public ACRWindow()
+        public ACR_Dialog()
         {
             Owner = (MainWindow)Application.Current.MainWindow;
             InitializeComponent();

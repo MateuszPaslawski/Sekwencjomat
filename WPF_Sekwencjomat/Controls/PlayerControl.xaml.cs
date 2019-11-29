@@ -160,7 +160,7 @@ namespace Sekwencjomat
             {
                 Dispatcher.Invoke(() => 
                 { 
-                    DCRWindow dialog = new DCRWindow();
+                    DCR_Dialog dialog = new DCR_Dialog();
                     dialog.ShowDialog();
                     MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex - 1] as MediaFile;
                     tempFile.UserGrade = dialog.Result;
@@ -171,7 +171,7 @@ namespace Sekwencjomat
             {
                 Dispatcher.Invoke(() =>
                 {
-                    ACRWindow dialog = new ACRWindow();
+                    ACR_Dialog dialog = new ACR_Dialog();
                     dialog.ShowDialog();
                     MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex-1] as MediaFile;
                     tempFile.UserGrade = dialog.Result;

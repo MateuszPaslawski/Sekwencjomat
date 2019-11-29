@@ -1,11 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Sekwencjomat.Models;
+using Vlc.DotNet.Wpf;
 
 namespace Sekwencjomat
 {
@@ -88,21 +91,24 @@ namespace Sekwencjomat
             }
         }
 
-        public bool CheckVLCFolderDLLs(string path)
+        public  bool CheckVLCFolderDLLs(string path)
         {
-            bool ret = false;
-            Dispatcher.Invoke(() =>
+            if (!Directory.Exists(path))
+                return false;
+
+            try
             {
-                try
+                Dispatcher.Invoke(() =>
                 {
-                    ((MainWindow)Application.Current.MainWindow).PlayerControlObject.VLC_Control.SourceProvider.CreatePlayer(new DirectoryInfo(path));
-                    TextBox_VLCPath.Text = path;
+                    new VlcControl().SourceProvider.CreatePlayer(new DirectoryInfo(path));
                     Image_VLCPathStatus.Source = new BitmapImage(new Uri(@"/Sekwencjomat;component/Resources/UI/Checkmark_16x16.png", UriKind.Relative));
-                    ret = true;
-                }
-                catch { }
-            });
-            return ret;
+                    TextBox_VLCPath.Text = path;
+                });
+                return true;
+            }
+            catch { }
+
+            return false;
         }
         #endregion
 
@@ -124,7 +130,6 @@ namespace Sekwencjomat
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
-
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if (!CheckVLCFolderDLLs(dialog.SelectedPath))

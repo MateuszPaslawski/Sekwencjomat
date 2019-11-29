@@ -13,7 +13,7 @@ namespace Sekwencjomat.Models
         private static string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
         private static string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
 
-        public async static void LogRatingToTXT(Rating rating)
+        public static void LogRatingToTXT(Rating rating)
         {
             int i = 1;
             int lp_counter = 1;
