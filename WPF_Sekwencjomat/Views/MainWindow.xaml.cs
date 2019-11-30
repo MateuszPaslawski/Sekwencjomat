@@ -1,19 +1,13 @@
-﻿using System;
+﻿using Sekwencjomat.Controls;
+using Sekwencjomat.Views;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Sekwencjomat.Models;
-using Sekwencjomat.Views;
-using Sekwencjomat.Views.Dialogs;
 
 namespace Sekwencjomat
 {
@@ -23,6 +17,7 @@ namespace Sekwencjomat
         public FilesControl FilesControlObject;
         public PlayerControl PlayerControlObject;
         public SettingsControl SettingsControlObject;
+        public UserRatingControl UserRatingControlObject;
         public Rect WindowsRectBeforeFullScreen;
         public WindowState WindowStateBeforeFullScreen;
 
@@ -58,7 +53,7 @@ namespace Sekwencjomat
                 {
                     if (item is Button)
                     {
-                        ((Button)item).Background = new SolidColorBrush(Color.FromArgb(0,0,0,0));
+                        ((Button)item).Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                         ((Button)item).BorderBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                     }
                 }
@@ -70,9 +65,9 @@ namespace Sekwencjomat
 
         public void SwitchFullScreen(bool makeVisible)
         {
-            bool condition = 
-                (StackPanel_ButtonsLeft.Visibility == Visibility.Visible) 
-                && 
+            bool condition =
+                (StackPanel_ButtonsLeft.Visibility == Visibility.Visible)
+                &&
                 (Border_BottomStatusBar.Visibility == Visibility.Visible);
 
             if (condition && !makeVisible)
@@ -114,10 +109,13 @@ namespace Sekwencjomat
         {
             await Task.Run(() =>
             {
-                foreach (var item in VLC_DLL_SearchList)
+                foreach (string item in VLC_DLL_SearchList)
                 {
                     if (SettingsControlObject.CheckVLCFolderDLLs(item))
+                    {
+                        PlayerControlObject.VLC_Control.SourceProvider.CreatePlayer(new DirectoryInfo(item));
                         return;
+                    }
                 }
             });
         }
@@ -125,7 +123,9 @@ namespace Sekwencjomat
         public async Task LoadUserSettings()
         {
             if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
                 return;
+            }
 
             try
             {
@@ -145,7 +145,7 @@ namespace Sekwencjomat
                     Width = settings.WINDOW_LOCATION.Width;
                     Height = settings.WINDOW_LOCATION.Height;
                 }
-                
+
                 WindowState = settings.WINDOW_STATE;
 
                 //Reference video path
@@ -164,10 +164,10 @@ namespace Sekwencjomat
                 switch (settings.PLAYBACK_TECHNIQUE.ToLower())
                 {
                     case "acr":
-                        Helper.CurrentPlaybackScale = Helper.PlaybackScale.ACR;
+                        Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.ACR;
                         break;
                     case "dcr":
-                        Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCR;
+                        Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCR;
                         break;
                 }
 
@@ -175,19 +175,19 @@ namespace Sekwencjomat
                 switch (settings.PLAYBACK_MODE.ToLower())
                 {
                     case "ascending":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Ascending;
+                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Ascending;
                         break;
                     case "descending":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Descending;
+                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Descending;
                         break;
                     case "random":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Random;
+                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Random;
                         break;
                     case "convex":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Convex;
+                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Convex;
                         break;
                     case "concave":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackMode.Concave;
+                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Concave;
                         break;
                 }
 
@@ -233,6 +233,8 @@ namespace Sekwencjomat
             FilesControlObject = new FilesControl();
             SettingsControlObject = new SettingsControl();
             PlayerControlObject = new PlayerControl();
+            UserRatingControlObject = new UserRatingControl();
+
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
 
@@ -242,7 +244,10 @@ namespace Sekwencjomat
             startupWindow.Close();
 
             if (WindowState == WindowState.Minimized)
+            {
                 WindowState = WindowState.Normal;
+            }
+
             Activate();
         }
 
@@ -286,6 +291,12 @@ namespace Sekwencjomat
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MakeButtonPressedOnLeft(sender);
+            SV_MainDisplay.Content = UserRatingControlObject;
         }
         #endregion
     }

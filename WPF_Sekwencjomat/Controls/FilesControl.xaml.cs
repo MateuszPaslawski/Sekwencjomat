@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Sekwencjomat.Models;
 
-namespace Sekwencjomat
+namespace Sekwencjomat.Controls
 {
     public partial class FilesControl : UserControl
     {
@@ -206,23 +206,33 @@ namespace Sekwencjomat
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
+            var bt = sender as Button;
+            var cm = bt.TemplatedParent as ContextMenu;
+            cm.IsOpen = false;
             OpenFileFromDataGrid();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
+            var bt = sender as Button;
+            var cm = bt.TemplatedParent as ContextMenu;
+            cm.IsOpen = false;
             OpenExplorerFromDataGrid();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
+            var bt = sender as Button;
+            var cm = bt.TemplatedParent as ContextMenu;
+            cm.IsOpen = false;
             RemoveRowFromDataGrid();
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
-            var mi = sender as MenuItem;
-            var cm = mi.Parent as ContextMenu;
+            var bt = sender as Button;
+            var cm = bt.TemplatedParent as ContextMenu;
+            cm.IsOpen = false;
             var pp = cm.Parent as System.Windows.Controls.Primitives.Popup;
             var dgr = pp.PlacementTarget as DataGridRow;
             var mf = dgr.Item as MediaFile;

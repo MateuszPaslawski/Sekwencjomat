@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,18 +9,18 @@ using System.Windows.Threading;
 using Sekwencjomat.Models;
 using Sekwencjomat.Views.Dialogs;
 
-namespace Sekwencjomat
+namespace Sekwencjomat.Controls
 {
     public partial class PlayerControl : UserControl
     {
         public SettingsControl SettingsControlObject = ((MainWindow)Application.Current.MainWindow).SettingsControlObject;
         public FilesControl FilesControlObject = ((MainWindow)Application.Current.MainWindow).FilesControlObject;
 
-        public Helper.PlaybackScale PlayerPlaybackScale;
-        public Helper.PlaybackMode PlayerPlaybackMode;
+        public Helper.PlaybackScaleEnum PlayerPlaybackScale;
+        public Helper.PlaybackModeEnum PlayerPlaybackMode;
 
         private List<MediaFile> ListOfMediaFilesWithGrades = new List<MediaFile>();
-        private List<MediaFile> ListOfMediaFiles = new List<MediaFile>();
+        private List<MediaFile> ListOfMediaFiles;
         private Stopwatch TimeLeft = new Stopwatch();
         private int CurrentPlayingFileIndex = 0;
 
@@ -63,59 +62,59 @@ namespace Sekwencjomat
         {
             switch (Helper.CurrentPlaybackScale)
             {
-                case Helper.PlaybackScale.ACR:
+                case Helper.PlaybackScaleEnum.ACR:
                     switch (Helper.CurrentPlaybackMode)
                     {
-                        case Helper.PlaybackMode.Descending:
+                        case Helper.PlaybackModeEnum.Descending:
                             ListOfMediaFiles = Helper.ACR_Descending(ListOfMediaFiles);
                             break;
-                        case Helper.PlaybackMode.Ascending:
+                        case Helper.PlaybackModeEnum.Ascending:
                             ListOfMediaFiles = Helper.ACR_Ascending(ListOfMediaFiles);
                             break;
-                        case Helper.PlaybackMode.Concave:
+                        case Helper.PlaybackModeEnum.Concave:
                             ListOfMediaFiles = Helper.ACR_Concave(ListOfMediaFiles);
                             break;
-                        case Helper.PlaybackMode.Convex:
+                        case Helper.PlaybackModeEnum.Convex:
                             ListOfMediaFiles = Helper.ACR_Convex(ListOfMediaFiles);
                             break;
-                        case Helper.PlaybackMode.Random:
+                        case Helper.PlaybackModeEnum.Random:
                             ListOfMediaFiles = Helper.ACR_Random(ListOfMediaFiles);
                             break;
                     }
                     break;
 
-                case Helper.PlaybackScale.CCR:
+                case Helper.PlaybackScaleEnum.CCR:
                     throw new NotImplementedException();
 
-                case Helper.PlaybackScale.DCR:
+                case Helper.PlaybackScaleEnum.DCR:
                     switch (Helper.CurrentPlaybackMode)
                     {
-                        case Helper.PlaybackMode.Descending:
+                        case Helper.PlaybackModeEnum.Descending:
                             ListOfMediaFiles = Helper.DCR_Descending(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
-                        case Helper.PlaybackMode.Ascending:
+                        case Helper.PlaybackModeEnum.Ascending:
                             ListOfMediaFiles = Helper.DCR_Ascending(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
-                        case Helper.PlaybackMode.Concave:
+                        case Helper.PlaybackModeEnum.Concave:
                             ListOfMediaFiles = Helper.DCR_Concave(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
-                        case Helper.PlaybackMode.Convex:
+                        case Helper.PlaybackModeEnum.Convex:
                             ListOfMediaFiles = Helper.DCR_Convex(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
-                        case Helper.PlaybackMode.Random:
+                        case Helper.PlaybackModeEnum.Random:
                             ListOfMediaFiles = Helper.DCR_Random(ListOfMediaFiles, FilesControlObject.TextBox_RefPath.Text);
                             break;
                     }
                     break;
 
-                case Helper.PlaybackScale.DCRmod:
+                case Helper.PlaybackScaleEnum.DCRmod:
                     throw new NotImplementedException();
             }
         }
 
         public bool CheckBeforeStartPlaying()
         {
-            if (Helper.CurrentPlaybackScale == Helper.PlaybackScale.ACR)
+            if (Helper.CurrentPlaybackScale == Helper.PlaybackScaleEnum.ACR)
                 return true;
 
             if (File.Exists(FilesControlObject.TextBox_RefPath.Text))
@@ -138,16 +137,13 @@ namespace Sekwencjomat
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (VLC_Control.SourceProvider.MediaPlayer != null)
+            if (FilesControlObject.ListOfMediaFilsInGrid.Count < 1 || CheckBeforeStartPlaying() == false)
+                DP_Navigation.IsEnabled = false;
+            else
             {
-                if (FilesControlObject.ListOfMediaFilsInGrid.Count < 1 || CheckBeforeStartPlaying() == false)
-                    DP_Navigation.IsEnabled = false;
-                else
-                {
-                    VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
-                    VLC_Control.SourceProvider.MediaPlayer.EndReached += MediaPlayer_EndReached;
-                    DP_Navigation.IsEnabled = true;
-                }
+                VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
+                VLC_Control.SourceProvider.MediaPlayer.EndReached += MediaPlayer_EndReached;
+                DP_Navigation.IsEnabled = true;
             }
 
         }
@@ -156,7 +152,7 @@ namespace Sekwencjomat
         {
             CurrentPlayingFileIndex++;
 
-            if(PlayerPlaybackScale == Helper.PlaybackScale.DCR && CurrentPlayingFileIndex % 2 == 0)
+            if (PlayerPlaybackScale == Helper.PlaybackScaleEnum.DCR && CurrentPlayingFileIndex % 2 == 0)
             {
                 Dispatcher.Invoke(() => 
                 { 
@@ -167,7 +163,7 @@ namespace Sekwencjomat
                     ListOfMediaFilesWithGrades.Add(tempFile);
                 });
             }
-            else if (PlayerPlaybackScale == Helper.PlaybackScale.ACR)
+            else if (PlayerPlaybackScale == Helper.PlaybackScaleEnum.ACR)
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -176,10 +172,9 @@ namespace Sekwencjomat
                     MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex-1] as MediaFile;
                     tempFile.UserGrade = dialog.Result;
                     ListOfMediaFilesWithGrades.Add(tempFile);
+                    Console.WriteLine($"\n\nAdding {tempFile.Path}   Count: {ListOfMediaFilesWithGrades.Count}");
                 });
             }
-
-
 
             if (CurrentPlayingFileIndex >= ListOfMediaFiles.Count)
             {
@@ -197,15 +192,13 @@ namespace Sekwencjomat
                         ReferenceVideoPath = FilesControlObject.TextBox_RefPath.Text,
                         PlaybackMode = Helper.CurrentPlaybackMode,
                         PlaybackScale = Helper.CurrentPlaybackScale,
-                        FilesListWithGrades = ListOfMediaFilesWithGrades,
+                        FilesListWithGrades = new List<MediaFile>(ListOfMediaFilesWithGrades),
                     };
 
-                    Logger.LogRatingToCSV(tmpRating);
-                    Logger.LogRatingToTXT(tmpRating);
-                    Logger.LogRatingToHTML(tmpRating);
+                    Helper.AddUserRatingToGrid(tmpRating);
                     ListOfMediaFilesWithGrades.Clear();
                     Helper.EnableNavigationButtons();
-                    Helper.ChangeStatusControl($"Odtwarzanie {ListOfMediaFiles.Count} sekwencji zostało zakończone.", false);
+                    Helper.ResetStatusControl();
                 });
 
                 CurrentPlayingFileIndex = 0;
@@ -230,7 +223,7 @@ namespace Sekwencjomat
             if (VLC_Control.SourceProvider.MediaPlayer.IsPlaying())
             {
                 PausePlayer();
-                MessageBoxResult mb = MessageBox.Show("Rozpocząć odtwarzanie od początku?", "Czy aby napewno?", MessageBoxButton.YesNo);
+                MessageBoxResult mb = MessageBox.Show("Rozpocząć odtwarzanie od początku?", "", MessageBoxButton.YesNo);
 
                 if (mb != MessageBoxResult.Yes)
                 {
@@ -268,7 +261,7 @@ namespace Sekwencjomat
             if (VLC_Control.SourceProvider.MediaPlayer.IsPlaying())
             {
                 PausePlayer();
-                MessageBoxResult mb = MessageBox.Show("Zatrzymać odtwarzanie sekwencji?", "Czy aby napewno?", MessageBoxButton.YesNo);
+                MessageBoxResult mb = MessageBox.Show("Zatrzymać odtwarzanie sekwencji?", "", MessageBoxButton.YesNo);
 
                 if (mb == MessageBoxResult.Yes)
                     StopPlayer();

@@ -44,6 +44,13 @@
                     <Label Content="Odtwarzacz" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
+            
+            <Button x:Name="Button_UserRatingObjectNavigator" Click="Button_Click_3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5">
+                <DockPanel>
+                    <Image Source="/Sekwencjomat;component/Resources/UI/statistics-48.png" RenderOptions.BitmapScalingMode="NearestNeighbor" HorizontalAlignment="Left"/>
+                    <Label Content="Wyniki oceny" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DockPanel>
+            </Button>
         </StackPanel>
 
         <Border x:Name="Border_BottomStatusBar" Grid.ColumnSpan="2" Grid.Row="1" Background="#DFF0FE" BorderThickness="2" BorderBrush="#4C0068FF">

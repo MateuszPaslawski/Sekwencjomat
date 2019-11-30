@@ -8,15 +8,15 @@ namespace Sekwencjomat.Models
 {
     public class Rating
     {
-        public string DateTimeString
+        public string DateTimeRatingString
         {
             get
             {
-                return DateTime.Now.ToString(@"yyyy-MM-dd HH:mm");
+                return DateTimeRating.ToString(@"yyyy-MM-dd HH:mm");
             }
         }
 
-        public string RatingTimeSpanToString
+        public string RatingTimeSpanString
         {
             get
             {
@@ -24,11 +24,36 @@ namespace Sekwencjomat.Models
             }
         }
 
+        public int GradesCount
+        {
+            get
+            {
+                Console.WriteLine($"GETTING: {FilesListWithGrades.Count}");
+                return FilesListWithGrades.Count;
+            }
+        }
+
+        public string PlaybackModeString
+        {
+            get
+            {
+                return Helper.PlaybackModeToString(PlaybackMode);
+            }
+        }
+
+        public Rating()
+        {
+            DateTimeRating = DateTime.Now;
+        }
+
+
+
+        public DateTime DateTimeRating { get; set; }
         public TimeSpan RatingTimeSpan { get; set; }
         public int RatingSeconds { get; set; }
         public string ReferenceVideoPath { get; set; }
-        public Helper.PlaybackMode PlaybackMode { get; set; }
-        public Helper.PlaybackScale PlaybackScale { get; set; }
+        public Helper.PlaybackModeEnum PlaybackMode { get; set; }
+        public Helper.PlaybackScaleEnum PlaybackScale { get; set; }
         public List<MediaFile> FilesListWithGrades { get; set; }
     }
 }

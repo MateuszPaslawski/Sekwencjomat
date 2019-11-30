@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using Sekwencjomat.Models;
 using Vlc.DotNet.Wpf;
 
-namespace Sekwencjomat
+namespace Sekwencjomat.Controls
 {
     public partial class SettingsControl : UserControl
     {
@@ -18,71 +18,71 @@ namespace Sekwencjomat
         private void SetHelperPlaybackScale(RadioButton rb)
         {
             if (rb.Name == "RadioButton_ACR")
-                Helper.CurrentPlaybackScale = Helper.PlaybackScale.ACR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.ACR;
             else if (rb.Name == "RadioButton_CCR")
-                Helper.CurrentPlaybackScale = Helper.PlaybackScale.CCR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.CCR;
             else if (rb.Name == "RadioButton_DCR")
-                Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCR;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCR;
             else if (rb.Name == "RadioButton_DCRmod")
-                Helper.CurrentPlaybackScale = Helper.PlaybackScale.DCRmod;
+                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCRmod;
         }
 
         public void SetHelperPlaybackMode(ComboBoxItem cbi)
         {
             if (cbi.Content.ToString().Contains("Mal"))
-                Helper.CurrentPlaybackMode = Helper.PlaybackMode.Descending;
+                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Descending;
             else if (cbi.Content.ToString().Contains("Ros"))
-                Helper.CurrentPlaybackMode = Helper.PlaybackMode.Ascending;
+                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Ascending;
             else if (cbi.Content.ToString().Contains("Los"))
-                Helper.CurrentPlaybackMode = Helper.PlaybackMode.Random;
+                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Random;
             else if (cbi.Content.ToString().Contains("Wyp"))
-                Helper.CurrentPlaybackMode = Helper.PlaybackMode.Convex;
+                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Convex;
             else if (cbi.Content.ToString().Contains("Wkl"))
-                Helper.CurrentPlaybackMode = Helper.PlaybackMode.Concave;
+                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Concave;
         }
 
         public void HelperPlaybackPropetiesToControls()
         {
             switch (Helper.CurrentPlaybackScale)
             {
-                case Helper.PlaybackScale.ACR:
+                case Helper.PlaybackScaleEnum.ACR:
                     switch (Helper.CurrentPlaybackMode)
                     {
-                        case Helper.PlaybackMode.Descending:
+                        case Helper.PlaybackModeEnum.Descending:
                             ComboBoxItem_ACR_Descending.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Ascending:
+                        case Helper.PlaybackModeEnum.Ascending:
                             ComboBoxItem_ACR_Ascending.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Concave:
+                        case Helper.PlaybackModeEnum.Concave:
                             ComboBoxItem_ACR_Concave.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Convex:
+                        case Helper.PlaybackModeEnum.Convex:
                             ComboBoxItem_ACR_Convex.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Random:
+                        case Helper.PlaybackModeEnum.Random:
                             ComboBoxItem_ACR_Random.IsSelected = true;
                             break;
                     }
                     RadioButton_ACR.IsChecked = true;
                     break;
 
-                case Helper.PlaybackScale.DCR:
+                case Helper.PlaybackScaleEnum.DCR:
                     switch (Helper.CurrentPlaybackMode)
                     {
-                        case Helper.PlaybackMode.Descending:
+                        case Helper.PlaybackModeEnum.Descending:
                             ComboBoxItem_DCR_Descending.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Ascending:
+                        case Helper.PlaybackModeEnum.Ascending:
                             ComboBoxItem_DCR_Ascending.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Concave:
+                        case Helper.PlaybackModeEnum.Concave:
                             ComboBoxItem_DCR_Concave.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Convex:
+                        case Helper.PlaybackModeEnum.Convex:
                             ComboBoxItem_DCR_Convex.IsSelected = true;
                             break;
-                        case Helper.PlaybackMode.Random:
+                        case Helper.PlaybackModeEnum.Random:
                             ComboBoxItem_DCR_Random.IsSelected = true;
                             break;
                     }

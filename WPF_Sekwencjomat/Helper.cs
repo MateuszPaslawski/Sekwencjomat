@@ -1,19 +1,28 @@
-﻿using System;
+﻿using Sekwencjomat.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Sekwencjomat.Models
+namespace Sekwencjomat
 {
     public static class Helper
     {
-        public static PlaybackScale CurrentPlaybackScale;
-        public static PlaybackMode CurrentPlaybackMode;
+        public static PlaybackScaleEnum CurrentPlaybackScale;
+        public static PlaybackModeEnum CurrentPlaybackMode;
         public static bool IsInterfaceLocked = false;
+
+
+        public  static void AddUserRatingToGrid(Rating rating)
+        {
+            ((MainWindow)Application.Current.MainWindow).UserRatingControlObject.DG_Main.Items.Add(rating);
+        }
+
         public static string ExecutionPath
         {
             get
@@ -34,7 +43,7 @@ namespace Sekwencjomat.Models
             }
         }
 
-        public enum PlaybackScale
+        public enum PlaybackScaleEnum
         {
             ACR,
             CCR,
@@ -43,7 +52,7 @@ namespace Sekwencjomat.Models
             Unknown,
         }
 
-        public enum PlaybackMode
+        public enum PlaybackModeEnum
         {
             Descending,
             Ascending,
@@ -53,31 +62,45 @@ namespace Sekwencjomat.Models
             Unknown,
         }
 
-
-        public static string PlaybackModeToString(PlaybackMode playbackMode)
+        public enum FileTypeEnum
         {
-            string ret = "Nieznany";
+            TXT,
+            HTML,
+            CSV,
+        }
 
+        public static string RandomString(int length, bool lowerCase)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < length; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
+        }
+
+        public static string PlaybackModeToString(PlaybackModeEnum playbackMode)
+        {
             switch (playbackMode)
             {
-                case PlaybackMode.Descending:
-                    ret = "Malejąco";
-                    break;
-                case PlaybackMode.Ascending:
-                    ret = "Rosnąco";
-                    break;
-                case PlaybackMode.Concave:
-                    ret = "Wklęsło";
-                    break;
-                case PlaybackMode.Convex:
-                    ret = "Wypukło";
-                    break;
-                case PlaybackMode.Random:
-                    ret = "Losowo";
-                    break;
+                case PlaybackModeEnum.Descending:
+                    return "Malejąco";
+                case PlaybackModeEnum.Ascending:
+                    return "Rosnąco";
+                case PlaybackModeEnum.Concave:
+                    return "Wklęsło";
+                case PlaybackModeEnum.Convex:
+                    return "Wypukło";
+                case PlaybackModeEnum.Random:
+                    return "Losowo";
             }
 
-            return ret;
+            return "Nieznany";
         }
 
         public static string DecorateBytes(long byteCount)

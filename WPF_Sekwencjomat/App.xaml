@@ -56,6 +56,25 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         
+        <ControlTemplate x:Key="ButtonBaseControlTemplate_Blank_MenuItemLike" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" HorizontalAlignment="Stretch">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsPressed}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        
         <ControlTemplate x:Key="ButtonBaseControlTemplate_Material" TargetType="{x:Type ButtonBase}">
             <Grid>
                 <Border Background="Red">

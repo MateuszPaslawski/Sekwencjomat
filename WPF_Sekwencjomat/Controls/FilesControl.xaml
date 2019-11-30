@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Sekwencjomat.FilesControl"
+﻿<UserControl x:Class="Sekwencjomat.Controls.FilesControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -29,30 +29,61 @@
             </UniformGrid>
         </DockPanel>
         
-        <DataGrid x:Name="DG_Main" Grid.Row="1" ScrollViewer.CanContentScroll="True" BeginningEdit="DG_Main_BeginningEdit">
+        <DataGrid x:Name="DG_Main" Grid.Row="1" ScrollViewer.CanContentScroll="True" BeginningEdit="DG_Main_BeginningEdit" RowHeaderWidth="0">
              <DataGrid.Resources>
                  <ContextMenu x:Key="DG_Main_Rows_ContextMenu" >
-                     <MenuItem Header="Oznacz jako plik referencyjny" Click="MenuItem_Click_4">
-                        <MenuItem.Icon>
-                            <Image Source="/Sekwencjomat;component/Resources/UI/up-32.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Odtwórz plik" Click="MenuItem_Click_1">
-                        <MenuItem.Icon>
-                            <Image Source="/Sekwencjomat;component/Resources/UI/play-16.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Otwórz folder nadrzędny" Click="MenuItem_Click_2">
-                        <MenuItem.Icon>
-                            <Image Source="/Sekwencjomat;component/Resources/UI/folder-16.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                     <Separator/>
-                    <MenuItem Header="Usuń element" Click="MenuItem_Click_3">
-                        <MenuItem.Icon>
-                            <Image Source="/Sekwencjomat;component/Resources/UI/Delete_32x32.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+                     <ContextMenu.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Border Margin="5" Background="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Color="Black" Opacity="0.5"/>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Margin="5">
+                                <StackPanel Orientation="Vertical">
+                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_4" Height="34">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/drag-list-up-24.png" Stretch="None"/>
+                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
+                                                <Label Content="Oznacz jako plik referencyjny"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_1" Height="34">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/play-32.png" Stretch="None"/>
+                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />            
+                                                <Label Content="Odtwórz plik"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_2" Height="34">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/folder-16.png" Stretch="None"/>
+                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
+                                                <Label Content="Otwórz folder nadrzędny"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                    <Separator Margin="5"/>
+                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_3" Height="34">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/Delete_32x32.png" Stretch="None"/>
+                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
+                                                <Label Content="Usuń zaznaczone elementy"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </ContextMenu.Template>
                 </ContextMenu>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
