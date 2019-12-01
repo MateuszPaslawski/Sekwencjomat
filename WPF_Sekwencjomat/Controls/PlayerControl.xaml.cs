@@ -193,12 +193,13 @@ namespace Sekwencjomat.Controls
                 {
                     Rating tmpRating = new Rating
                     {
-                        RatingTimeSpan = TimeLeft.Elapsed,
+                        DurationSeconds = TimeLeft.Elapsed.Seconds,
                         RatingSeconds = Helper.RatingDelay,
                         ReferenceVideoPath = FilesControlObject.TextBox_RefPath.Text,
                         PlaybackMode = Helper.CurrentPlaybackMode,
                         PlaybackScale = Helper.CurrentPlaybackScale,
                         FilesListWithGrades = new List<MediaFile>(ListOfMediaFilesWithGrades),
+                        DateTimeRating = DateTime.Now,
                     };
 
                     Helper.AddUserRatingToGrid(tmpRating);

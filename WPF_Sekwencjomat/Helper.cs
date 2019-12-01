@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Xml.Serialization;
 
 namespace Sekwencjomat
 {
@@ -43,31 +44,49 @@ namespace Sekwencjomat
             }
         }
 
-
-
+        [Serializable]
+        [XmlRoot(ElementName = "PlaybackScaleEnum")]
         public enum PlaybackScaleEnum
         {
+            [XmlEnum("ACR")]
             ACR,
+            [XmlEnum("CCR")]
             CCR,
+            [XmlEnum("DCR")]
             DCR,
+            [XmlEnum("DCRmod")]
             DCRmod,
+            [XmlEnum("Unknown")]
             Unknown,
         }
 
+        [Serializable]
+        [XmlRoot(ElementName = "PlaybackModeEnum")]
         public enum PlaybackModeEnum
         {
+            [XmlEnum("Descending")]
             Descending,
+            [XmlEnum("Ascending")]
             Ascending,
+            [XmlEnum("Concave")]
             Concave,
+            [XmlEnum("Convex")]
             Convex,
+            [XmlEnum("Random")]
             Random,
+            [XmlEnum("Unknown")]
             Unknown,
         }
 
+        [Serializable]
+        [XmlRoot(ElementName = "FileTypeEnum")]
         public enum FileTypeEnum
         {
+            [XmlEnum("TXT")]
             TXT,
+            [XmlEnum("HTML")]
             HTML,
+            [XmlEnum("CSV")]
             CSV,
         }
 

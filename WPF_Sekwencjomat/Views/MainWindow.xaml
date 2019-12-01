@@ -24,28 +24,28 @@
         <ScrollViewer x:Name="SV_MainDisplay" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled"/>
 
         <StackPanel x:Name="StackPanel_ButtonsLeft" Grid.Column="0">
-            <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
+            <Button x:Name="Button_FileControl" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Click="Button_Click" Margin="5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                 <DockPanel>
                     <Image Source="/Sekwencjomat;component/Resources/UI/live-folder-48.png" RenderOptions.BitmapScalingMode="NearestNeighbor" HorizontalAlignment="Left"/>
                     <Label Content="Zbiór Plików" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
 
-            <Button Click="Button_Click_1" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}">
+            <Button Click="Button_Click_1" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                 <DockPanel>
                     <Image Source="/Sekwencjomat;component/Resources/UI/settings-48.png" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                     <Label Content="Ustawienia" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
 
-            <Button x:Name="Button_PlayerObjectNavigator" Click="Button_Click_2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5">
+            <Button x:Name="Button_PlayerObjectNavigator" Click="Button_Click_2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5">
                 <DockPanel>
                     <Image Source="/Sekwencjomat;component/Resources/UI/cinema-48.png" RenderOptions.BitmapScalingMode="NearestNeighbor" HorizontalAlignment="Left"/>
                     <Label Content="Odtwarzacz" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </DockPanel>
             </Button>
             
-            <Button x:Name="Button_UserRatingObjectNavigator" Click="Button_Click_3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#00000000" BorderBrush="{x:Null}" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5">
+            <Button x:Name="Button_UserRatingObjectNavigator" Click="Button_Click_3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" Padding="5" Margin="5,0,5,5">
                 <DockPanel>
                     <Image Source="/Sekwencjomat;component/Resources/UI/spreadsheet-48.png" RenderOptions.BitmapScalingMode="NearestNeighbor" HorizontalAlignment="Left"/>
                     <Label Content="Wyniki oceny" HorizontalAlignment="Center" VerticalAlignment="Center"/>

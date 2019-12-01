@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Sekwencjomat.Models
 {
+    [Serializable]
+    [XmlInclude(typeof(MediaFile))]
     public class Rating
     {
         public string DateTimeRatingString
@@ -13,19 +18,10 @@ namespace Sekwencjomat.Models
             }
         }
 
-        public string RatingTimeSpanString
-        {
-            get
-            {
-                return RatingTimeSpan.ToString(@"hh\h\ mm\m\ ss\s");
-            }
-        }
-
         public int GradesCount
         {
             get
             {
-                Console.WriteLine($"GETTING: {FilesListWithGrades.Count}");
                 return FilesListWithGrades.Count;
             }
         }
@@ -38,19 +34,30 @@ namespace Sekwencjomat.Models
             }
         }
 
+        public string DurationSecondsString
+        {
+            get
+            {
+                TimeSpan ts = TimeSpan.FromSeconds(DurationSeconds);
+                return ts.ToString(@"hh\h\ mm\m\ ss\s");
+            }
+        }
+
         public Rating()
         {
-            DateTimeRating = DateTime.Now;
+
         }
 
 
 
         public DateTime DateTimeRating { get; set; }
-        public TimeSpan RatingTimeSpan { get; set; }
         public int RatingSeconds { get; set; }
+        public int DurationSeconds { get; set; }
         public string ReferenceVideoPath { get; set; }
         public Helper.PlaybackModeEnum PlaybackMode { get; set; }
         public Helper.PlaybackScaleEnum PlaybackScale { get; set; }
+        [XmlArray("ListOfMediaFiles")]
+        [XmlArrayItem("MediaFileItem")]
         public List<MediaFile> FilesListWithGrades { get; set; }
     }
 }

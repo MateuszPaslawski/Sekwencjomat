@@ -197,7 +197,7 @@ namespace Sekwencjomat.Controls
             e.Cancel = true;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_OpenRefFileDialog(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
             if (fd.ShowDialog() == true)

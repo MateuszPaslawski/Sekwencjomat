@@ -21,7 +21,7 @@
             <UniformGrid Rows="1">
                 <DockPanel Margin="0,5,5,5">
                     <Label Content="Ścieżka do pliku referencyjnego" DockPanel.Dock="Top" Margin="0"/>
-                    <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_1" Background="{x:Null}" BorderBrush="#FFABADB3" Width="28" Height="28" >
+                    <Button Template="{DynamicResource ButtonBaseControlTemplate_Blank}" VerticalAlignment="Center" Margin="-1,0" Click="Button_Click_OpenRefFileDialog" Background="{x:Null}" BorderBrush="#FFABADB3" Width="28" Height="28" >
                         <Image Source="/Sekwencjomat;component/Resources/UI/folder-16.png" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                     </Button>
                     <TextBox x:Name="TextBox_RefPath" VerticalAlignment="Center" IsReadOnly="True" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="28"/>

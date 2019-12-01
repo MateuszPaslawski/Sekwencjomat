@@ -11,7 +11,9 @@ namespace Sekwencjomat.Models
         private static readonly string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
         private static readonly string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
 
-
+        //TODO
+        //Logging every format to one directory
+        //Overload with Rating[]
 
         public static void LogRatingToTXT(Rating rating, Helper.FileTypeEnum fileType)
         {
@@ -24,7 +26,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"{"Data:",-20}{rating.DateTimeRatingString}");
                 file.WriteLine($"{"Metoda MOS:",-20}{rating.PlaybackScale}");
                 file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"{"Czas trwania:",-20}{rating.RatingTimeSpanString}");
+                file.WriteLine($"{"Czas trwania:",-20}{rating.DurationSecondsString}");
                 file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
                 file.WriteLine();
 
@@ -60,7 +62,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"Data;{rating.DateTimeRatingString}");
                 file.WriteLine($"Metoda MOS;{rating.PlaybackScale}");
                 file.WriteLine($"Kolejność;{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"Czas trwania badania;{rating.RatingTimeSpanString}");
+                file.WriteLine($"Czas trwania badania;{rating.DurationSecondsString}");
                 file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
                 file.WriteLine();
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
@@ -107,7 +109,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"<p>Data: <b>{rating.DateTimeRatingString}</b></p>");
                 file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackScale}</b></p>");
                 file.WriteLine($"<p>Kolejność: <b>{Helper.PlaybackModeToString(rating.PlaybackMode)}</b></p>");
-                file.WriteLine($"<p>Czas trwania: <b>{rating.RatingTimeSpanString}</b></p>");
+                file.WriteLine($"<p>Czas trwania: <b>{rating.DurationSecondsString}</b></p>");
                 file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
@@ -171,7 +173,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"{"Data:",-20}{rating.DateTimeRatingString}");
                 file.WriteLine($"{"Metoda MOS:",-20}{rating.PlaybackScale}");
                 file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"{"Czas trwania:",-20}{rating.RatingTimeSpanString}");
+                file.WriteLine($"{"Czas trwania:",-20}{rating.DurationSecondsString}");
                 file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
                 file.WriteLine();
 
@@ -212,7 +214,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"Data;{rating.DateTimeRatingString}");
                 file.WriteLine($"Metoda MOS;{rating.PlaybackScale}");
                 file.WriteLine($"Kolejność;{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"Czas trwania badania;{rating.RatingTimeSpanString}");
+                file.WriteLine($"Czas trwania badania;{rating.DurationSecondsString}");
                 file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
                 file.WriteLine();
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
@@ -266,7 +268,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"<p>Data: <b>{rating.DateTimeRatingString}</b></p>");
                 file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackScale}</b></p>");
                 file.WriteLine($"<p>Kolejność: <b>{Helper.PlaybackModeToString(rating.PlaybackMode)}</b></p>");
-                file.WriteLine($"<p>Czas trwania: <b>{rating.RatingTimeSpanString}</b></p>");
+                file.WriteLine($"<p>Czas trwania: <b>{rating.DurationSecondsString}</b></p>");
                 file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
