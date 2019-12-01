@@ -16,18 +16,18 @@ namespace Sekwencjomat
         public static PlaybackScaleEnum CurrentPlaybackScale;
         public static PlaybackModeEnum CurrentPlaybackMode;
         public static bool IsInterfaceLocked = false;
+        public static string TmpFile;
 
 
-        public  static void AddUserRatingToGrid(Rating rating)
-        {
-            ((MainWindow)Application.Current.MainWindow).UserRatingControlObject.DG_Main.Items.Add(rating);
-        }
+        private static List<string> TmpFilesList = new List<string>();
+
+
 
         public static string ExecutionPath
         {
             get
             {
-                return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location).ToString();
+                return Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location).ToString();
             }
         }
 
@@ -42,6 +42,8 @@ namespace Sekwencjomat
                 ((MainWindow)Application.Current.MainWindow).SettingsControlObject.TextBox_RatingDelay.Text = value.ToString();
             }
         }
+
+
 
         public enum PlaybackScaleEnum
         {
@@ -67,6 +69,39 @@ namespace Sekwencjomat
             TXT,
             HTML,
             CSV,
+        }
+
+
+
+        public static string GetTemporaryFilePath(FileTypeEnum fileType)
+        {
+            TmpFile = Path.GetTempFileName();
+
+            string extension = fileType.ToString().ToLower();
+            string tmpFileWithExt = Path.ChangeExtension(TmpFile, extension);
+            File.Move(TmpFile, tmpFileWithExt);
+
+            if (!TmpFilesList.Contains(tmpFileWithExt))
+                TmpFilesList.Add(tmpFileWithExt);
+
+            if (!TmpFilesList.Contains(TmpFile))
+                TmpFilesList.Add(TmpFile);
+
+            return tmpFileWithExt;
+        }
+
+        public static void DeleteAllTemporaryFiles()
+        {
+            foreach (var item in TmpFilesList)
+            {
+                if (File.Exists(item))
+                    File.Delete(item);
+            }
+        }
+
+        public static void AddUserRatingToGrid(Rating rating)
+        {
+            ((MainWindow)Application.Current.MainWindow).UserRatingControlObject.DG_Main.Items.Add(rating);
         }
 
         public static string RandomString(int length, bool lowerCase)

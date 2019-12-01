@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sekwencjomat.Models;
+using Sekwencjomat.Views.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -6,8 +8,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using Sekwencjomat.Models;
-using Sekwencjomat.Views.Dialogs;
 
 namespace Sekwencjomat.Controls
 {
@@ -19,9 +19,9 @@ namespace Sekwencjomat.Controls
         public Helper.PlaybackScaleEnum PlayerPlaybackScale;
         public Helper.PlaybackModeEnum PlayerPlaybackMode;
 
-        private List<MediaFile> ListOfMediaFilesWithGrades = new List<MediaFile>();
+        private readonly List<MediaFile> ListOfMediaFilesWithGrades = new List<MediaFile>();
         private List<MediaFile> ListOfMediaFiles;
-        private Stopwatch TimeLeft = new Stopwatch();
+        private readonly Stopwatch TimeLeft = new Stopwatch();
         private int CurrentPlayingFileIndex = 0;
 
 
@@ -115,10 +115,14 @@ namespace Sekwencjomat.Controls
         public bool CheckBeforeStartPlaying()
         {
             if (Helper.CurrentPlaybackScale == Helper.PlaybackScaleEnum.ACR)
+            {
                 return true;
+            }
 
             if (File.Exists(FilesControlObject.TextBox_RefPath.Text))
+            {
                 return true;
+            }
             else
             {
                 FilesControlObject.TextBox_RefPath.Text = string.Empty;
@@ -138,7 +142,9 @@ namespace Sekwencjomat.Controls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (FilesControlObject.ListOfMediaFilsInGrid.Count < 1 || CheckBeforeStartPlaying() == false)
+            {
                 DP_Navigation.IsEnabled = false;
+            }
             else
             {
                 VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
@@ -154,8 +160,8 @@ namespace Sekwencjomat.Controls
 
             if (PlayerPlaybackScale == Helper.PlaybackScaleEnum.DCR && CurrentPlayingFileIndex % 2 == 0)
             {
-                Dispatcher.Invoke(() => 
-                { 
+                Dispatcher.Invoke(() =>
+                {
                     DCR_Dialog dialog = new DCR_Dialog();
                     dialog.ShowDialog();
                     MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex - 1] as MediaFile;
@@ -169,7 +175,7 @@ namespace Sekwencjomat.Controls
                 {
                     ACR_Dialog dialog = new ACR_Dialog();
                     dialog.ShowDialog();
-                    MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex-1] as MediaFile;
+                    MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex - 1] as MediaFile;
                     tempFile.UserGrade = dialog.Result;
                     ListOfMediaFilesWithGrades.Add(tempFile);
                     Console.WriteLine($"\n\nAdding {tempFile.Path}   Count: {ListOfMediaFilesWithGrades.Count}");
@@ -243,7 +249,7 @@ namespace Sekwencjomat.Controls
             PlayerPlaybackScale = Helper.CurrentPlaybackScale;
             PlayerPlaybackMode = Helper.CurrentPlaybackMode;
 
-            
+
 
             ThreadPool.QueueUserWorkItem(x =>
             {
@@ -264,9 +270,13 @@ namespace Sekwencjomat.Controls
                 MessageBoxResult mb = MessageBox.Show("Zatrzymać odtwarzanie sekwencji?", "", MessageBoxButton.YesNo);
 
                 if (mb == MessageBoxResult.Yes)
+                {
                     StopPlayer();
+                }
                 else
+                {
                     UnpausePlayer();
+                }
             }
         }
 

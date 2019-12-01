@@ -290,6 +290,7 @@ namespace Sekwencjomat
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Helper.DeleteAllTemporaryFiles();
             Environment.Exit(0);
         }
 

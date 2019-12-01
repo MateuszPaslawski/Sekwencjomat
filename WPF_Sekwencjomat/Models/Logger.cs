@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sekwencjomat.Models
 {
     public static class Logger
     {
         private static string nowDate { get { return DateTime.Now.ToString(@"dd-MM-yyyy"); } }
-        private static string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
-        private static string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
+        private static readonly string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
+        private static readonly string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
 
-        public static void LogRatingToTXT(Rating rating, string path)
+
+
+        public static void LogRatingToTXT(Rating rating, Helper.FileTypeEnum fileType)
         {
-            if (!File.Exists(path))
-                File.Create(path).Dispose();
+            string path = Helper.GetTemporaryFilePath(fileType);
 
             int lp_counter = 1;
 
@@ -30,7 +29,9 @@ namespace Sekwencjomat.Models
                 file.WriteLine();
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                {
                     file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
+                }
 
                 file.WriteLine($"{"lp",5} | {"Ocena",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
 
@@ -40,13 +41,17 @@ namespace Sekwencjomat.Models
                     lp_counter++;
                 }
             }
+            Process fileProc = new Process();
+            fileProc.EnableRaisingEvents = true;
+            fileProc.StartInfo.FileName = path;
+            fileProc.Start();
+
 
         }
 
-        public static void LogRatingToCSV(Rating rating, string path)
+        public static void LogRatingToCSV(Rating rating, Helper.FileTypeEnum fileType)
         {
-            if (!File.Exists(path))
-                File.Create(path).Dispose();
+            string path = Helper.GetTemporaryFilePath(fileType);
 
             int lp_counter = 1;
 
@@ -59,7 +64,9 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
                 file.WriteLine();
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                {
                     file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
+                }
 
                 file.WriteLine($"lp;Ocena;Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
 
@@ -69,13 +76,15 @@ namespace Sekwencjomat.Models
                     lp_counter++;
                 }
             }
-
+            Process fileProc = new Process();
+            fileProc.EnableRaisingEvents = true;
+            fileProc.StartInfo.FileName = path;
+            fileProc.Start();
         }
 
-        public static void LogRatingToHTML(Rating rating, string path)
+        public static void LogRatingToHTML(Rating rating, Helper.FileTypeEnum fileType)
         {
-            if (!File.Exists(path))
-                File.Create(path).Dispose();
+            string path = Helper.GetTemporaryFilePath(fileType);
 
             int lp_counter = 1;
 
@@ -102,7 +111,9 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                {
                     file.WriteLine($"<p>Plik referencyjny: <b>{rating.ReferenceVideoPath}</b></p>");
+                }
 
                 file.WriteLine("<table style=\"width: 100 %\">");
                 file.WriteLine("<tr>");
@@ -132,6 +143,11 @@ namespace Sekwencjomat.Models
                 file.WriteLine("</body>");
                 file.WriteLine("</html>");
             }
+
+            Process fileProc = new Process();
+            fileProc.EnableRaisingEvents = true;
+            fileProc.StartInfo.FileName = path;
+            fileProc.Start();
         }
 
 
@@ -152,15 +168,17 @@ namespace Sekwencjomat.Models
 
             using (StreamWriter file = new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
             {
-                file.WriteLine($"{"Data:", -20}{rating.DateTimeRatingString}");
-                file.WriteLine($"{"Metoda MOS:", -20}{rating.PlaybackScale}");
-                file.WriteLine($"{"Kolejność:", -20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"{"Czas trwania:", -20}{rating.RatingTimeSpanString}");
-                file.WriteLine($"{"Czas na ocenę [s]:", -20}{rating.RatingSeconds}");
+                file.WriteLine($"{"Data:",-20}{rating.DateTimeRatingString}");
+                file.WriteLine($"{"Metoda MOS:",-20}{rating.PlaybackScale}");
+                file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
+                file.WriteLine($"{"Czas trwania:",-20}{rating.RatingTimeSpanString}");
+                file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
                 file.WriteLine();
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
-                    file.WriteLine($"{"Plik referencyjny:", -20}{rating.ReferenceVideoPath}");
+                {
+                    file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
+                }
 
                 file.WriteLine($"{"lp",5} | {"Ocena",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
 
@@ -198,7 +216,9 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
                 file.WriteLine();
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                {
                     file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
+                }
 
                 file.WriteLine($"lp;Ocena;Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
 
@@ -250,7 +270,9 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                {
                     file.WriteLine($"<p>Plik referencyjny: <b>{rating.ReferenceVideoPath}</b></p>");
+                }
 
                 file.WriteLine("<table style=\"width: 100 %\">");
                 file.WriteLine("<tr>");

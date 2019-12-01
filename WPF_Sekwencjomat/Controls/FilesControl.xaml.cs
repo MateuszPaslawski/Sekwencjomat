@@ -1,36 +1,36 @@
-﻿using Microsoft.Win32;
+﻿using MediaToolkit;
+using Microsoft.Win32;
+using Sekwencjomat.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System;
-using MediaToolkit;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using Sekwencjomat.Models;
 
 namespace Sekwencjomat.Controls
 {
     public partial class FilesControl : UserControl
     {
-        public List<MediaFile> ListOfMediaFilsInGrid 
-        { 
-            get 
+        public List<MediaFile> ListOfMediaFilsInGrid
+        {
+            get
             {
                 List<MediaFile> tmplist = new List<MediaFile>();
-                foreach (var item in DG_Main.Items)
+                foreach (object item in DG_Main.Items)
                 {
                     tmplist.Add(item as MediaFile);
                 }
                 return tmplist;
-            } 
+            }
         }
         public List<string> ListOfPathsFilsInGrid
         {
             get
             {
                 List<string> tmplist = new List<string>();
-                foreach (var item in ListOfMediaFilsInGrid)
+                foreach (MediaFile item in ListOfMediaFilsInGrid)
                 {
                     tmplist.Add(item.Path);
                 }
@@ -42,9 +42,11 @@ namespace Sekwencjomat.Controls
         {
             if (DG_Main.SelectedItems.Count > 1)
             {
-                var dialog = MessageBox.Show($"Czy chcesz usunąć wszystkie zaznaczone pliki z tabeli?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult dialog = MessageBox.Show($"Czy chcesz usunąć wszystkie zaznaczone pliki z tabeli?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (dialog != MessageBoxResult.Yes)
+                {
                     return;
+                }
             }
 
             List<object> listToDelete = new List<object>();
@@ -53,7 +55,7 @@ namespace Sekwencjomat.Controls
                 MediaFile mf = item as MediaFile;
                 listToDelete.Add(item);
             }
-            foreach (var item in listToDelete)
+            foreach (object item in listToDelete)
             {
                 DG_Main.Items.Remove(item);
             }
@@ -63,9 +65,11 @@ namespace Sekwencjomat.Controls
         {
             if (DG_Main.SelectedItems.Count > 1)
             {
-                var dialog = MessageBox.Show($"Czy chcesz wskazać wszystkie pliki w eksploratorze?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult dialog = MessageBox.Show($"Czy chcesz wskazać wszystkie pliki w eksploratorze?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (dialog != MessageBoxResult.Yes)
+                {
                     return;
+                }
             }
 
             foreach (object item in DG_Main.SelectedItems)
@@ -79,9 +83,11 @@ namespace Sekwencjomat.Controls
         {
             if (DG_Main.SelectedItems.Count > 1)
             {
-                var dialog = MessageBox.Show($"Czy chcesz odtworzyć wszystkie zaznaczone pliki?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult dialog = MessageBox.Show($"Czy chcesz odtworzyć wszystkie zaznaczone pliki?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (dialog != MessageBoxResult.Yes)
+                {
                     return;
+                }
             }
 
             foreach (object item in DG_Main.SelectedItems)
@@ -98,9 +104,9 @@ namespace Sekwencjomat.Controls
             {
                 int itemCount = 0;
                 TimeSpan timeLeft = new TimeSpan();
-                var mediaInfoEngine = new Engine();
+                Engine mediaInfoEngine = new Engine();
 
-                foreach (var item in FilePathList)
+                foreach (string item in FilePathList)
                 {
                     if (ListOfPathsFilsInGrid.Contains(item) || !File.Exists(item)) { continue; }
 
@@ -162,7 +168,7 @@ namespace Sekwencjomat.Controls
             Helper.ResetStatusControl();
         }
 
-        
+
 
         public FilesControl()
         {
@@ -173,7 +179,7 @@ namespace Sekwencjomat.Controls
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog() { Multiselect = true, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg; *.mkv; *.flv" }; 
+            OpenFileDialog fd = new OpenFileDialog() { Multiselect = true, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg; *.mkv; *.flv" };
 
             if (fd.ShowDialog() == true)
             {
@@ -195,7 +201,9 @@ namespace Sekwencjomat.Controls
         {
             OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik Wideo |*.avi; *.mp4; *.mov; *.ogg, *.flv" };
             if (fd.ShowDialog() == true)
+            {
                 TextBox_RefPath.Text = fd.FileName;
+            }
         }
 
         private void Row_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -206,36 +214,36 @@ namespace Sekwencjomat.Controls
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            var bt = sender as Button;
-            var cm = bt.TemplatedParent as ContextMenu;
+            Button bt = sender as Button;
+            ContextMenu cm = bt.TemplatedParent as ContextMenu;
             cm.IsOpen = false;
             OpenFileFromDataGrid();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            var bt = sender as Button;
-            var cm = bt.TemplatedParent as ContextMenu;
+            Button bt = sender as Button;
+            ContextMenu cm = bt.TemplatedParent as ContextMenu;
             cm.IsOpen = false;
             OpenExplorerFromDataGrid();
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            var bt = sender as Button;
-            var cm = bt.TemplatedParent as ContextMenu;
+            Button bt = sender as Button;
+            ContextMenu cm = bt.TemplatedParent as ContextMenu;
             cm.IsOpen = false;
             RemoveRowFromDataGrid();
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
-            var bt = sender as Button;
-            var cm = bt.TemplatedParent as ContextMenu;
+            Button bt = sender as Button;
+            ContextMenu cm = bt.TemplatedParent as ContextMenu;
             cm.IsOpen = false;
-            var pp = cm.Parent as System.Windows.Controls.Primitives.Popup;
-            var dgr = pp.PlacementTarget as DataGridRow;
-            var mf = dgr.Item as MediaFile;
+            System.Windows.Controls.Primitives.Popup pp = cm.Parent as System.Windows.Controls.Primitives.Popup;
+            DataGridRow dgr = pp.PlacementTarget as DataGridRow;
+            MediaFile mf = dgr.Item as MediaFile;
 
             DG_Main.Items.Remove(mf);
             TextBox_RefPath.Text = mf.Path;

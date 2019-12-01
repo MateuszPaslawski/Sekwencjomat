@@ -1,13 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Sekwencjomat.Models;
 using Vlc.DotNet.Wpf;
 
 namespace Sekwencjomat.Controls
@@ -18,27 +15,45 @@ namespace Sekwencjomat.Controls
         private void SetHelperPlaybackScale(RadioButton rb)
         {
             if (rb.Name == "RadioButton_ACR")
+            {
                 Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.ACR;
+            }
             else if (rb.Name == "RadioButton_CCR")
+            {
                 Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.CCR;
+            }
             else if (rb.Name == "RadioButton_DCR")
+            {
                 Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCR;
+            }
             else if (rb.Name == "RadioButton_DCRmod")
+            {
                 Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCRmod;
+            }
         }
 
         public void SetHelperPlaybackMode(ComboBoxItem cbi)
         {
             if (cbi.Content.ToString().Contains("Mal"))
+            {
                 Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Descending;
+            }
             else if (cbi.Content.ToString().Contains("Ros"))
+            {
                 Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Ascending;
+            }
             else if (cbi.Content.ToString().Contains("Los"))
+            {
                 Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Random;
+            }
             else if (cbi.Content.ToString().Contains("Wyp"))
+            {
                 Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Convex;
+            }
             else if (cbi.Content.ToString().Contains("Wkl"))
+            {
                 Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Concave;
+            }
         }
 
         public void HelperPlaybackPropetiesToControls()
@@ -91,10 +106,12 @@ namespace Sekwencjomat.Controls
             }
         }
 
-        public  bool CheckVLCFolderDLLs(string path)
+        public bool CheckVLCFolderDLLs(string path)
         {
             if (!Directory.Exists(path))
+            {
                 return false;
+            }
 
             try
             {
@@ -129,7 +146,7 @@ namespace Sekwencjomat.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if (!CheckVLCFolderDLLs(dialog.SelectedPath))
@@ -142,31 +159,41 @@ namespace Sekwencjomat.Controls
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (sender != null)
+            {
                 SetHelperPlaybackScale(sender as RadioButton);
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if ((ComboBoxItem)((ComboBox)sender).SelectedItem != null)
+            {
                 SetHelperPlaybackMode((ComboBoxItem)((ComboBox)sender).SelectedItem);
+            }
         }
 
         private void ComboBox_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((ComboBoxItem)((ComboBox)sender).SelectedItem != null)
+            {
                 SetHelperPlaybackMode((ComboBoxItem)((ComboBox)sender).SelectedItem);
+            }
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, "[^0-9.-]+"))
+            {
                 e.Handled = true;
+            }
         }
 
         private void TextBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Paste)
+            {
                 e.Handled = true;
+            }
         }
         #endregion
     }

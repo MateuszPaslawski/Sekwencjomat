@@ -1,19 +1,8 @@
 ﻿using Sekwencjomat.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace Sekwencjomat.Controls
 {
@@ -26,30 +15,29 @@ namespace Sekwencjomat.Controls
         {
             if (DG_Main.SelectedItems.Count > 1)
             {
-                var dialog = MessageBox.Show($"Czy chcesz odtworzyć wszystkie zaznaczone pliki?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult dialog = MessageBox.Show($"Czy chcesz odtworzyć wszystkie zaznaczone pliki?\nIlość plików: {DG_Main.SelectedItems.Count}", "Otwieranie eksploratora", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (dialog != MessageBoxResult.Yes)
+                {
                     return;
+                }
             }
 
             foreach (object item in DG_Main.SelectedItems)
             {
                 Rating r = item as Rating;
-                string tmpFile = Path.ChangeExtension(Path.GetTempFileName(), fileType.ToString().ToLower());
 
                 switch (fileType)
                 {
                     case Helper.FileTypeEnum.TXT:
-                        Logger.LogRatingToTXT(r, tmpFile);
+                        Logger.LogRatingToTXT(r, fileType);
                         break;
                     case Helper.FileTypeEnum.HTML:
-                        Logger.LogRatingToHTML(r, tmpFile);
+                        Logger.LogRatingToHTML(r, fileType);
                         break;
                     case Helper.FileTypeEnum.CSV:
-                        Logger.LogRatingToCSV(r, tmpFile);
+                        Logger.LogRatingToCSV(r, fileType);
                         break;
                 }
-
-                Process.Start(tmpFile);
             }
         }
 

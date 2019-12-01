@@ -14,7 +14,7 @@ namespace MediaToolkit.Util
 {
     public static class Extensions
     {
-        private const int BUFF_SIZE = 16*1024;
+        private const int BUFF_SIZE = 16 * 1024;
 
         internal static void CopyTo(this Stream input, Stream output)
         {
@@ -32,7 +32,8 @@ namespace MediaToolkit.Util
                     ? string.Empty
                     : string.Format(CultureInfo.InvariantCulture, value, args);
             }
-            catch (FormatException ex) {
+            catch
+            {
                 return value;
             }
         }
@@ -57,9 +58,15 @@ namespace MediaToolkit.Util
 
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
-            if (action == null) throw new ArgumentNullException("action");
+            if (action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
 
-            foreach (T t in collection) action(t);
+            foreach (T t in collection)
+            {
+                action(t);
+            }
         }
     }
 }

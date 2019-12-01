@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Sekwencjomat.Models;
 
 namespace Sekwencjomat.Views.Dialogs
 {
@@ -34,9 +23,11 @@ namespace Sekwencjomat.Views.Dialogs
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (Counter != 0)
+            {
                 return;
+            }
 
-            foreach (var item in UniformGrid_Main.Children)
+            foreach (object item in UniformGrid_Main.Children)
             {
                 if (item is RadioButton && ((RadioButton)item).IsChecked == true)
                 {
@@ -56,7 +47,7 @@ namespace Sekwencjomat.Views.Dialogs
 
                 await Task.Run(() =>
                 {
-                    
+
                     while (Counter > 0)
                     {
 
@@ -70,7 +61,7 @@ namespace Sekwencjomat.Views.Dialogs
                         --Counter;
                     }
 
-                    Dispatcher.Invoke(() => 
+                    Dispatcher.Invoke(() =>
                     {
                         Label_Counter.Visibility = Visibility.Collapsed;
                         Image_Completed.Visibility = Visibility.Visible;

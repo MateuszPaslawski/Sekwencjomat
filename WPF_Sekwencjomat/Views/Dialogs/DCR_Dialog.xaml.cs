@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Sekwencjomat.Views.Dialogs
 {
@@ -27,7 +16,7 @@ namespace Sekwencjomat.Views.Dialogs
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in UniformGrid_Main.Children)
+            foreach (object item in UniformGrid_Main.Children)
             {
                 if (item is RadioButton && ((RadioButton)item).IsChecked == true)
                 {
