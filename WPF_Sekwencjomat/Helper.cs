@@ -19,7 +19,6 @@ namespace Sekwencjomat
         public static bool IsInterfaceLocked = false;
         public static string TmpFile;
 
-
         private static List<string> TmpFilesList = new List<string>();
 
 
@@ -43,6 +42,8 @@ namespace Sekwencjomat
                 ((MainWindow)Application.Current.MainWindow).SettingsControlObject.TextBox_RatingDelay.Text = value.ToString();
             }
         }
+
+
 
         [Serializable]
         [XmlRoot(ElementName = "PlaybackScaleEnum")]

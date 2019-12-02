@@ -10,18 +10,36 @@
         <DockPanel LastChildFill="True">
             <DockPanel DockPanel.Dock="Bottom">
                 <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Click="Button_Click_Serialize">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding Items.Count, ElementName=DG_Main, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                 <Setter Property="IsEnabled" Value="False"/>
+                             </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <StackPanel>
-                        <Image Source="/Sekwencjomat;component/Resources/UI/HDD_ArrowTo-32.png" Stretch="None"/>
+                        <Image Source="/Sekwencjomat;component/Resources/UI/HDDin_32.png" Stretch="None"/>
                         <Label Content="Zapisz XML"/>
                     </StackPanel>
                 </Button>
                 <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Click="Button_Click_Deserialize">
                     <StackPanel>
-                        <Image Source="/Sekwencjomat;component/Resources/UI/HDD_ArrowFrom-32.png" Stretch="None"/>
+                        <Image Source="/Sekwencjomat;component/Resources/UI/HDDout_32.png" Stretch="None"/>
                         <Label Content="Wczytaj XML"/>
                     </StackPanel>
                 </Button>
                 <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" HorizontalAlignment="Right" Click="Button_Click_DownloadPackage">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding Items.Count, ElementName=DG_Main, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                                 <Setter Property="IsEnabled" Value="False"/>
+                             </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <StackPanel>
                         <Image Source="/Sekwencjomat;component/Resources/UI/box-32.png" Stretch="None"/>
                         <Label Content="Pobierz wszystko"/>

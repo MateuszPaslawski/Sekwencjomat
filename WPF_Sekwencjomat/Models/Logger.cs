@@ -1,21 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Sekwencjomat.Models
 {
     public static class Logger
     {
-        private static string nowDate { get { return DateTime.Now.ToString(@"dd-MM-yyyy"); } }
-        private static readonly string LoggingDir = Path.Combine(Helper.ExecutionPath, "Sekwencjomat-Wyniki");
-        private static readonly string LoggingDirWithDate = Path.Combine(LoggingDir, nowDate);
+        private static string nowDate
+        {
+            get
+            {
+                return DateTime.Now.ToString(@"dd-MM-yyyy");
+            }
+        }
 
-        //TODO
-        //Logging every format to one directory
-        //Overload with Rating[]
 
-        public static void LogRatingToTXT(Rating rating, Helper.FileTypeEnum fileType)
+        public static void SerializeToFile(List<Rating> listRating, string fileName)
+        {
+            Type[] Types = { typeof(MediaFile), typeof(Rating) };
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            serializer.Serialize(fs, listRating);
+            fs.Close();
+        }
+
+        public static List<Rating> DeserializeFromFile(string fileName)
+        {
+            Type[] Types = { typeof(MediaFile), typeof(Rating) };
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
+            FileStream fs = new FileStream(fileName, FileMode.Open);
+            List<Rating> list = (List<Rating>)serializer.Deserialize(fs);
+            serializer.Serialize(Stream.Null, list);
+
+            return list;
+        }
+
+
+
+        public static void TemporaryRatingToTXT(Rating rating, Helper.FileTypeEnum fileType)
         {
             string path = Helper.GetTemporaryFilePath(fileType);
 
@@ -35,7 +60,7 @@ namespace Sekwencjomat.Models
                     file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
                 }
 
-                file.WriteLine($"{"lp",5} | {"Ocena",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
+                file.WriteLine($"{"Lp.",5} | {"Ocena [1-5]",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
 
                 foreach (MediaFile mf in rating.FilesListWithGrades)
                 {
@@ -51,7 +76,7 @@ namespace Sekwencjomat.Models
 
         }
 
-        public static void LogRatingToCSV(Rating rating, Helper.FileTypeEnum fileType)
+        public static void TemporaryRatingToCSV(Rating rating, Helper.FileTypeEnum fileType)
         {
             string path = Helper.GetTemporaryFilePath(fileType);
 
@@ -70,7 +95,7 @@ namespace Sekwencjomat.Models
                     file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
                 }
 
-                file.WriteLine($"lp;Ocena;Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
+                file.WriteLine($"lp;Ocena [1-5];Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
 
                 foreach (MediaFile mf in rating.FilesListWithGrades)
                 {
@@ -84,7 +109,7 @@ namespace Sekwencjomat.Models
             fileProc.Start();
         }
 
-        public static void LogRatingToHTML(Rating rating, Helper.FileTypeEnum fileType)
+        public static void TemporaryRatingToHTML(Rating rating, Helper.FileTypeEnum fileType)
         {
             string path = Helper.GetTemporaryFilePath(fileType);
 
@@ -120,7 +145,7 @@ namespace Sekwencjomat.Models
                 file.WriteLine("<table style=\"width: 100 %\">");
                 file.WriteLine("<tr>");
                 file.WriteLine("<th>lp</th>");
-                file.WriteLine("<th>Ocena</th>");
+                file.WriteLine("<th>Ocena [1-5]</th>");
                 file.WriteLine("<th>Bitrate [kB/s]</th>");
                 file.WriteLine("<th>Rozdzielczosc</th>");
                 file.WriteLine("<th>FPS</th>");
@@ -154,157 +179,144 @@ namespace Sekwencjomat.Models
 
 
 
-        public static void LogRatingToTXT(Rating rating)
+        public static void LogRatingToFile(Rating rating, Helper.FileTypeEnum fileType, string saveDirectory)
         {
-            int i = 1;
+            string file_name = $"{rating.PlaybackScale}.{fileType.ToString().ToLower()}";
+            string path = Path.Combine(saveDirectory, file_name);
+
+            Directory.CreateDirectory(saveDirectory);
+
             int lp_counter = 1;
-            string extension = ".txt";
-            string scale = rating.PlaybackScale.ToString();
-
-            Directory.CreateDirectory(LoggingDirWithDate);
-
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
+            switch (fileType)
             {
-                i++;
+                case Helper.FileTypeEnum.TXT:
+                    using (StreamWriter file = new StreamWriter(path, false, Encoding.UTF8))
+                    {
+                        file.WriteLine($"{"Data:",-20}{rating.DateTimeRatingString}");
+                        file.WriteLine($"{"Metoda MOS:",-20}{rating.PlaybackScale}");
+                        file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
+                        file.WriteLine($"{"Czas trwania:",-20}{rating.DurationSecondsString}");
+                        file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
+
+                        if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                        {
+                            file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
+                        }
+
+                        file.WriteLine();
+                        file.WriteLine($"{"Lp.",5} | {"Ocena [1-5]",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
+
+                        foreach (MediaFile mf in rating.FilesListWithGrades)
+                        {
+                            file.WriteLine($"{lp_counter,5} | {mf.UserGrade,5} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
+                            lp_counter++;
+                        }
+                    }
+                    break;
+                case Helper.FileTypeEnum.HTML:
+                    using (StreamWriter file = new StreamWriter(path, false, Encoding.UTF8))
+                    {
+                        file.WriteLine("<html>");
+                        file.WriteLine("<head>");
+                        file.WriteLine("<style>");
+                        file.WriteLine("table, th, td { border: 1px solid black; }");
+                        file.WriteLine("th, td { padding: 10px; text-align:center }");
+                        file.WriteLine("tr:nth-child(even) {background-color: #f2f2f2;}");
+                        file.WriteLine("body {font: normal 14px Verdana}");
+                        file.WriteLine("</style>");
+                        file.WriteLine("</head>");
+
+
+                        file.WriteLine("<body>");
+                        file.WriteLine("<h1><center>Wyniki pomiarów : Sekwencjomat</center></h1>");
+
+                        file.WriteLine($"<p>Data: <b>{rating.DateTimeRatingString}</b></p>");
+                        file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackScale}</b></p>");
+                        file.WriteLine($"<p>Kolejność: <b>{Helper.PlaybackModeToString(rating.PlaybackMode)}</b></p>");
+                        file.WriteLine($"<p>Czas trwania: <b>{rating.DurationSecondsString}</b></p>");
+                        file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
+
+                        if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                        {
+                            file.WriteLine($"<p>Plik referencyjny: <b>{rating.ReferenceVideoPath}</b></p>");
+                        }
+
+                        file.WriteLine("<table style=\"width: 100 %\">");
+                        file.WriteLine("<tr>");
+                        file.WriteLine("<th>lp</th>");
+                        file.WriteLine("<th>Ocena [1-5]</th>");
+                        file.WriteLine("<th>Bitrate [kB/s]</th>");
+                        file.WriteLine("<th>Rozdzielczosc</th>");
+                        file.WriteLine("<th>FPS</th>");
+                        file.WriteLine("<th>Rozmiar</th>");
+                        file.WriteLine("<th>Ścieżka Pliku</th>");
+                        file.WriteLine("</tr>");
+
+                        foreach (MediaFile mf in rating.FilesListWithGrades)
+                        {
+                            file.WriteLine("<tr>");
+                            file.WriteLine($"<td>{lp_counter}</td>");
+                            file.WriteLine($"<td>{mf.UserGrade}</td>");
+                            file.WriteLine($"<td>{mf.Bitrate}</td>");
+                            file.WriteLine($"<td>{mf.FrameSize}</td>");
+                            file.WriteLine($"<td>{mf.FPS}</td>");
+                            file.WriteLine($"<td>{mf.Size}</td>");
+                            file.WriteLine($"<td>{mf.Path}</td>");
+                            file.WriteLine("</tr>");
+                            lp_counter++;
+                        }
+                        file.WriteLine("</table>");
+                        file.WriteLine("</body>");
+                        file.WriteLine("</html>");
+                    }
+                    break;
+                case Helper.FileTypeEnum.CSV:
+                    using (StreamWriter file = new StreamWriter(path, false, Encoding.UTF8))
+                    {
+                        file.WriteLine($"Data;{rating.DateTimeRatingString}");
+                        file.WriteLine($"Metoda MOS;{rating.PlaybackScale}");
+                        file.WriteLine($"Kolejność;{Helper.PlaybackModeToString(rating.PlaybackMode)}");
+                        file.WriteLine($"Czas trwania badania;{rating.DurationSecondsString}");
+                        file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
+                        file.WriteLine();
+                        if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
+                        {
+                            file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
+                        }
+
+                        file.WriteLine($"lp;Ocena [1-5];Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
+
+                        foreach (MediaFile mf in rating.FilesListWithGrades)
+                        {
+                            file.WriteLine($"{lp_counter};{mf.UserGrade};{mf.Bitrate};{mf.FrameSize};{mf.FPS};{mf.Size};{mf.Path}");
+                            lp_counter++;
+                        }
+                    }
+                    break;
             }
-
-            using (StreamWriter file = new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
-            {
-                file.WriteLine($"{"Data:",-20}{rating.DateTimeRatingString}");
-                file.WriteLine($"{"Metoda MOS:",-20}{rating.PlaybackScale}");
-                file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"{"Czas trwania:",-20}{rating.DurationSecondsString}");
-                file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
-                file.WriteLine();
-
-                if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
-                {
-                    file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
-                }
-
-                file.WriteLine($"{"lp",5} | {"Ocena",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
-
-                foreach (MediaFile mf in rating.FilesListWithGrades)
-                {
-                    file.WriteLine($"{lp_counter,5} | {mf.UserGrade,5} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
-                    lp_counter++;
-                }
-            }
-
         }
 
-        public static void LogRatingToCSV(Rating rating)
+        public static void LogRatingToPackage(List<Rating> ratingList, string rootDirectory)
         {
-            Directory.CreateDirectory(LoggingDirWithDate);
+            rootDirectory = Path.Combine(rootDirectory, $"{nowDate}-Sekwencjomat");
 
-            int i = 1;
-            int lp_counter = 1;
-            string extension = ".csv";
-            string scale = rating.PlaybackScale.ToString();
+            int packages_couter = 0;
 
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
+            foreach (Rating rating_item in ratingList)
             {
-                i++;
+                packages_couter++;
+                string package_directory = Path.Combine(rootDirectory, packages_couter.ToString());
+                LogRatingToFile(rating_item, Helper.FileTypeEnum.TXT, package_directory);
+                LogRatingToFile(rating_item, Helper.FileTypeEnum.CSV, package_directory);
+                LogRatingToFile(rating_item, Helper.FileTypeEnum.HTML, package_directory);
+
             }
-
-
-            using (StreamWriter file =
-            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
-            {
-                file.WriteLine($"Data;{rating.DateTimeRatingString}");
-                file.WriteLine($"Metoda MOS;{rating.PlaybackScale}");
-                file.WriteLine($"Kolejność;{Helper.PlaybackModeToString(rating.PlaybackMode)}");
-                file.WriteLine($"Czas trwania badania;{rating.DurationSecondsString}");
-                file.WriteLine($"Czas na ocenę [s];{rating.RatingSeconds}");
-                file.WriteLine();
-                if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
-                {
-                    file.WriteLine($"Plik referencyjny;;{rating.ReferenceVideoPath}");
-                }
-
-                file.WriteLine($"lp;Ocena;Bitrate [kB/s];Rozdzielczosc;FPS;Rozmiar;Ścieżka Pliku");
-
-                foreach (MediaFile mf in rating.FilesListWithGrades)
-                {
-                    file.WriteLine($"{lp_counter};{mf.UserGrade};{mf.Bitrate};{mf.FrameSize};{mf.FPS};{mf.Size};{mf.Path}");
-                    lp_counter++;
-                }
-            }
-
-        }
-
-        public static void LogRatingToHTML(Rating rating)
-        {
-            Directory.CreateDirectory(LoggingDirWithDate);
-
-            int i = 1;
-            int lp_counter = 1;
-            string extension = ".html";
-            string scale = rating.PlaybackScale.ToString();
-
-            while (File.Exists(Path.Combine(LoggingDirWithDate, $"{scale}_{i}{extension}")))
-            {
-                i++;
-            }
-
-
-            using (StreamWriter file =
-            new StreamWriter(Path.Combine(LoggingDirWithDate, $"{rating.PlaybackScale.ToString()}_{i}{extension}"), false, Encoding.UTF8))
-            {
-                file.WriteLine("<html>");
-                file.WriteLine("<head>");
-                file.WriteLine("<style>");
-                file.WriteLine("table, th, td { border: 1px solid black; }");
-                file.WriteLine("th, td { padding: 10px; text-align:center }");
-                file.WriteLine("tr:nth-child(even) {background-color: #f2f2f2;}");
-                file.WriteLine("body {font: normal 14px Verdana}");
-                file.WriteLine("</style>");
-                file.WriteLine("</head>");
-
-
-                file.WriteLine("<body>");
-                file.WriteLine("<h1><center>Wyniki pomiarów : Sekwencjomat</center></h1>");
-
-                file.WriteLine($"<p>Data: <b>{rating.DateTimeRatingString}</b></p>");
-                file.WriteLine($"<p>Metoda MOS: <b>{rating.PlaybackScale}</b></p>");
-                file.WriteLine($"<p>Kolejność: <b>{Helper.PlaybackModeToString(rating.PlaybackMode)}</b></p>");
-                file.WriteLine($"<p>Czas trwania: <b>{rating.DurationSecondsString}</b></p>");
-                file.WriteLine($"<p>Czas na ocenę [s]: <b>{rating.RatingSeconds}</b></p>");
-
-                if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
-                {
-                    file.WriteLine($"<p>Plik referencyjny: <b>{rating.ReferenceVideoPath}</b></p>");
-                }
-
-                file.WriteLine("<table style=\"width: 100 %\">");
-                file.WriteLine("<tr>");
-                file.WriteLine("<th>lp</th>");
-                file.WriteLine("<th>Ocena</th>");
-                file.WriteLine("<th>Bitrate [kB/s]</th>");
-                file.WriteLine("<th>Rozdzielczosc</th>");
-                file.WriteLine("<th>FPS</th>");
-                file.WriteLine("<th>Rozmiar</th>");
-                file.WriteLine("<th>Ścieżka Pliku</th>");
-                file.WriteLine("</tr>");
-
-                foreach (MediaFile mf in rating.FilesListWithGrades)
-                {
-                    file.WriteLine("<tr>");
-                    file.WriteLine($"<td>{lp_counter}</td>");
-                    file.WriteLine($"<td>{mf.UserGrade}</td>");
-                    file.WriteLine($"<td>{mf.Bitrate}</td>");
-                    file.WriteLine($"<td>{mf.FrameSize}</td>");
-                    file.WriteLine($"<td>{mf.FPS}</td>");
-                    file.WriteLine($"<td>{mf.Size}</td>");
-                    file.WriteLine($"<td>{mf.Path}</td>");
-                    file.WriteLine("</tr>");
-                    lp_counter++;
-                }
-                file.WriteLine("</table>");
-                file.WriteLine("</body>");
-                file.WriteLine("</html>");
-            }
-
+            SerializeToFile(ratingList, Path.Combine(rootDirectory, "PlikSerializacji.xml"));
+            Process.Start(rootDirectory);
+            //Process fileProc = new Process(rootDirectory);
+            //fileProc.EnableRaisingEvents = true;
+            //fileProc.StartInfo.FileName = path;
+            //fileProc.Start();
         }
     }
 }

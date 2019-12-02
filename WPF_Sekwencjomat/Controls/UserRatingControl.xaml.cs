@@ -3,6 +3,7 @@ using Sekwencjomat.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,20 +16,8 @@ namespace Sekwencjomat.Controls
     /// </summary>
     public partial class UserRatingControl : UserControl
     {
-        private void SerializeToFile(string fileName)
-        {
-            List<Rating> list = new List<Rating>();
 
-            foreach (Rating item in DG_Main.Items)
-                list.Add(item);
-
-            Type[] Types = { typeof(MediaFile), typeof(Rating) };
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
-            FileStream fs = new FileStream(fileName, FileMode.Create);
-            serializer.Serialize(fs, list);
-            fs.Close();
-        }
-
+        
         public void OpenFileFromDataGrid(Helper.FileTypeEnum fileType)
         {
             if (DG_Main.SelectedItems.Count > 1)
@@ -47,17 +36,18 @@ namespace Sekwencjomat.Controls
                 switch (fileType)
                 {
                     case Helper.FileTypeEnum.TXT:
-                        Logger.LogRatingToTXT(r, fileType);
+                        Logger.TemporaryRatingToTXT(r, fileType);
                         break;
                     case Helper.FileTypeEnum.HTML:
-                        Logger.LogRatingToHTML(r, fileType);
+                        Logger.TemporaryRatingToHTML(r, fileType);
                         break;
                     case Helper.FileTypeEnum.CSV:
-                        Logger.LogRatingToCSV(r, fileType);
+                        Logger.TemporaryRatingToCSV(r, fileType);
                         break;
                 }
             }
         }
+
         private void RemoveRowFromDataGrid()
         {
             if (DG_Main.SelectedItems.Count > 1)
@@ -129,22 +119,17 @@ namespace Sekwencjomat.Controls
         {
             SaveFileDialog fd = new SaveFileDialog() { Filter = "Plik XML | *.xml", FileName = "WynikiOceny-Sekwencjomat" };
             if (fd.ShowDialog() == true)
-                SerializeToFile(fd.FileName);
+                Logger.SerializeToFile(DG_Main.Items.OfType<Rating>().ToList(), fd.FileName);
         }
 
         private void Button_Click_Deserialize(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fd = new OpenFileDialog() {Multiselect = false, Filter = "Plik XML | *.xml" };
+            OpenFileDialog fd = new OpenFileDialog() { Multiselect = false, Filter = "Plik XML | *.xml" };
             if (fd.ShowDialog() != true)
                 return;
 
-            Type[] Types = { typeof(MediaFile), typeof(Rating) };
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
-            FileStream fs = new FileStream(fd.FileName, FileMode.Open);
-            List<Rating> list = (List<Rating>)serializer.Deserialize(fs);
-            serializer.Serialize(Stream.Null, list);
-
-            foreach (Rating item in list)
+            DG_Main.Items.Clear();
+            foreach (Rating item in Logger.DeserializeFromFile(fd.FileName))
                 DG_Main.Items.Add(item);
         }
 
@@ -154,7 +139,8 @@ namespace Sekwencjomat.Controls
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                List<Rating> list = DG_Main.Items.OfType<Rating>().ToList();
+                Logger.LogRatingToPackage(list, dialog.SelectedPath);
             }
         }
     }
