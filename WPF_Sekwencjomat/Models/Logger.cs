@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace Sekwencjomat.Models
@@ -29,13 +30,22 @@ namespace Sekwencjomat.Models
 
         public static List<Rating> DeserializeFromFile(string fileName)
         {
-            Type[] Types = { typeof(MediaFile), typeof(Rating) };
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
-            FileStream fs = new FileStream(fileName, FileMode.Open);
-            List<Rating> list = (List<Rating>)serializer.Deserialize(fs);
-            serializer.Serialize(Stream.Null, list);
+            try
+            {
+                Type[] Types = { typeof(MediaFile), typeof(Rating) };
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Rating>), Types);
+                FileStream fs = new FileStream(fileName, FileMode.Open);
+                List<Rating> list = (List<Rating>)serializer.Deserialize(fs);
+                serializer.Serialize(Stream.Null, list);
+                return list;
 
-            return list;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show($"Błąd wczytywania pliku XML\n\n{exc.Message}", string.Empty, MessageBoxButton.OK, MessageBoxImage.Error);
+                return new List<Rating>();
+            }
+
         }
 
 
@@ -300,12 +310,23 @@ namespace Sekwencjomat.Models
         {
             rootDirectory = Path.Combine(rootDirectory, $"{nowDate}-Sekwencjomat");
 
+            string testDirectory = rootDirectory;
+            int dir_incerement = 1;
             int packages_couter = 0;
+
+            while (Directory.Exists(testDirectory))
+            {
+                testDirectory =  $"{rootDirectory} ({dir_incerement})";
+                dir_incerement++;
+            }
+
+            rootDirectory = testDirectory;
+
 
             foreach (Rating rating_item in ratingList)
             {
                 packages_couter++;
-                string package_directory = Path.Combine(rootDirectory, packages_couter.ToString());
+                string package_directory = Path.Combine(rootDirectory, $"Ocena-{packages_couter}" );
                 LogRatingToFile(rating_item, Helper.FileTypeEnum.TXT, package_directory);
                 LogRatingToFile(rating_item, Helper.FileTypeEnum.CSV, package_directory);
                 LogRatingToFile(rating_item, Helper.FileTypeEnum.HTML, package_directory);

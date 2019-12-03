@@ -46,7 +46,7 @@
                     </StackPanel>
                 </Button>
             </DockPanel>
-            <DataGrid x:Name="DG_Main" DockPanel.Dock="Top" ScrollViewer.CanContentScroll="True" BeginningEdit="DG_Main_BeginningEdit">
+            <DataGrid x:Name="DG_Main" DockPanel.Dock="Top" ScrollViewer.CanContentScroll="True" BeginningEdit="DG_Main_BeginningEdit" RowHeaderWidth="0">
              <DataGrid.Resources>
                  <ContextMenu x:Key="DG_Main_Rows_ContextMenu" FontSize="14">
                      <ContextMenu.Template>
