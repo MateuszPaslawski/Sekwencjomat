@@ -63,18 +63,20 @@ namespace Sekwencjomat.Models
                 file.WriteLine($"{"Kolejność:",-20}{Helper.PlaybackModeToString(rating.PlaybackMode)}");
                 file.WriteLine($"{"Czas trwania:",-20}{rating.DurationSecondsString}");
                 file.WriteLine($"{"Czas na ocenę [s]:",-20}{rating.RatingSeconds}");
-                file.WriteLine();
 
                 if (rating.PlaybackScale == Helper.PlaybackScaleEnum.DCR)
                 {
                     file.WriteLine($"{"Plik referencyjny:",-20}{rating.ReferenceVideoPath}");
                 }
 
-                file.WriteLine($"{"Lp.",5} | {"Ocena [1-5]",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
+                file.WriteLine();
+                string table_header = $"{"Lp.",5} | {"Ocena [1-5]",12} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}";
+                file.WriteLine(table_header);
+                file.WriteLine(new string('=', table_header.Length));
 
                 foreach (MediaFile mf in rating.FilesListWithGrades)
                 {
-                    file.WriteLine($"{lp_counter,5} | {mf.UserGrade,5} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
+                    file.WriteLine($"{lp_counter,5} | {mf.UserGrade,12} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
                     lp_counter++;
                 }
             }
@@ -214,11 +216,13 @@ namespace Sekwencjomat.Models
                         }
 
                         file.WriteLine();
-                        file.WriteLine($"{"Lp.",5} | {"Ocena [1-5]",5} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}");
+                        string table_header = $"{"Lp.",5} | {"Ocena [1-5]",12} | {"Bitrate [kB/s]",15} | {"Rozdzielczość",15} | {"FPS",5} | {"Rozmiar",10} | {"Ścieżka pliku",-10}";
+                        file.WriteLine(table_header);
+                        file.WriteLine(new string('=', table_header.Length));
 
                         foreach (MediaFile mf in rating.FilesListWithGrades)
                         {
-                            file.WriteLine($"{lp_counter,5} | {mf.UserGrade,5} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
+                            file.WriteLine($"{lp_counter,5} | {mf.UserGrade,12} | {mf.Bitrate,15} | {mf.FrameSize,15} | {mf.FPS,5} | {mf.Size,10} | {mf.Path,-10}");
                             lp_counter++;
                         }
                     }
