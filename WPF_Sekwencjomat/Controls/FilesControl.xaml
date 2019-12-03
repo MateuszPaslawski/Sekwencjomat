@@ -105,11 +105,10 @@
                 <DataGridTextColumn Binding="{Binding FrameSize}" Header="Rozdzielczość"/>
                 <DataGridTextColumn Binding="{Binding Duration}" Header="Długość"/>
                 <DataGridTextColumn Binding="{Binding FPS}" Header="FPS"/>
-                <DataGridTextColumn Binding="{Binding FrameSize}" Header="Rozdzielczość"/>
                 <DataGridTextColumn Binding="{Binding Extension}" Header="Kontener"/>
                 <DataGridTextColumn Binding="{Binding Format}" Header="Format"/>
                 <DataGridTextColumn Binding="{Binding ColorGamut}" Header="Profil Koloru"/>
-                <DataGridTextColumn Binding="{Binding Path}" Header="Ścieżka"/>
+                <DataGridTextColumn Binding="{Binding Path}" Header="Ścieżka Pliku"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
