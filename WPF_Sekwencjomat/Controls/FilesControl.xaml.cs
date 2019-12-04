@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace Sekwencjomat.Controls
 {
@@ -37,6 +39,8 @@ namespace Sekwencjomat.Controls
                 return tmplist;
             }
         }
+
+        public string[] ListOfAllowedExtensions = { ".avi", ".mp4", ".mov", ".ogg", ".mkv", ".flv" };
 
         public void RemoveRowFromDataGrid()
         {
@@ -96,7 +100,6 @@ namespace Sekwencjomat.Controls
                 Process.Start(mf.Path);
             }
         }
-
 
         public async Task FileDataToGrid(string[] FilePathList)
         {
@@ -247,6 +250,38 @@ namespace Sekwencjomat.Controls
 
             DG_Main.Items.Remove(mf);
             TextBox_RefPath.Text = mf.Path;
+        }
+
+        private void UserControl_PreviewDragEnter(object sender, DragEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(200)));
+            Border_DragnDrop.BeginAnimation(OpacityProperty, da);
+            Border_DragnDrop.IsHitTestVisible = true;
+        }
+
+        private void UserControl_PreviewDragLeave(object sender, DragEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+            Border_DragnDrop.BeginAnimation(OpacityProperty, da);
+            Border_DragnDrop.IsHitTestVisible = false;
+        }
+
+        private async void UserControl_PreviewDrop(object sender, DragEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(200)));
+            Border_DragnDrop.BeginAnimation(OpacityProperty, da);
+            Border_DragnDrop.IsHitTestVisible = false;
+
+            string[] drop_items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            List<string> files = new List<string>();
+
+            foreach (var item in drop_items)
+            {
+                if (ListOfAllowedExtensions.Contains(Path.GetExtension(item)))
+                    files.Add(item);
+            }
+
+            await FileDataToGrid(files.ToArray());
         }
     }
 }

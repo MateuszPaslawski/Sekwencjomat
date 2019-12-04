@@ -281,10 +281,6 @@ namespace Sekwencjomat
                 case Key.F12:
                     SwitchFullScreen(false);
                     break;
-
-                case Key.Escape:
-                    SwitchFullScreen(true);
-                    break;
             }
         }
 
