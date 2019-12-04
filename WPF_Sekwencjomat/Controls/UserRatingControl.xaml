@@ -9,7 +9,7 @@
     <Grid>
         <DockPanel LastChildFill="True">
             <DockPanel DockPanel.Dock="Bottom">
-                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Click="Button_Click_Serialize">
+                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Click="Button_Click_Serialize" Background="Transparent" BorderBrush="Transparent">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>
@@ -24,13 +24,13 @@
                         <Label Content="Zapisz XML"/>
                     </StackPanel>
                 </Button>
-                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Click="Button_Click_Deserialize">
+                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" Background="Transparent" BorderBrush="Transparent" Click="Button_Click_Deserialize">
                     <StackPanel>
                         <Image Source="/Sekwencjomat;component/Resources/UI/HDDout_32.png" Stretch="None"/>
                         <Label Content="Wczytaj XML"/>
                     </StackPanel>
                 </Button>
-                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" HorizontalAlignment="Right" Click="Button_Click_DownloadPackage">
+                <Button Template="{StaticResource ButtonBaseControlTemplate_Blank}" HorizontalAlignment="Right" Click="Button_Click_DownloadPackage" Background="Transparent" BorderBrush="Transparent">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Style.Triggers>

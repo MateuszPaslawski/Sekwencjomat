@@ -88,6 +88,12 @@
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                     <Setter Property="ContextMenu" Value="{StaticResource DG_Main_Rows_ContextMenu}"/>
+                    <Setter Property="Background" Value="White"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
+                    </Trigger>
+                </Style.Triggers>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
