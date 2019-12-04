@@ -42,40 +42,40 @@
                                 </Border>
                                 <Border Margin="5">
                                     <StackPanel Orientation="Vertical">
-                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_4" Height="34">
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_4" Height="36">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                     <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/drag-list-up-24.png" Stretch="None"/>
-                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                                                    <Label Content="Oznacz jako plik referencyjny"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="24"/>
+                                                    <Label Content="Oznacz jako plik referencyjny" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
-                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_1" Height="34">
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_1" Height="36">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                     <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/play-32.png" Stretch="None"/>
-                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                                                    <Label Content="Odtwórz plik"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="24"/>
+                                                    <Label Content="Odtwórz plik" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
-                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_2" Height="34">
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_2" Height="36">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/folder-16.png" Stretch="None"/>
-                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                                                    <Label Content="Otwórz folder nadrzędny"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="24"/>
+                                                    <Label Content="Otwórz folder nadrzędny" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
                                         <Separator Margin="5"/>
-                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_3" Height="34">
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_3" Height="36">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                     <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/Delete_32x32.png" Stretch="None"/>
-                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                                                    <Label Content="Usuń zaznaczone elementy"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Height="24"/>
+                                                    <Label Content="Usuń zaznaczone elementy" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </Button.Content>
                                         </Button>
