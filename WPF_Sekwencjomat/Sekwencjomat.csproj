@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\filetype\html-64.png" />
+    <Resource Include="Resources\UI\decline-256.png" />
     <Resource Include="Resources\UI\fit-to-width-16.png" />
   </ItemGroup>
   <ItemGroup>

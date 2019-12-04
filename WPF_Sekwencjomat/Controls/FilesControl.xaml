@@ -28,11 +28,11 @@
                 </DockPanel>
             </UniformGrid>
         </DockPanel>
-        
+
         <DataGrid x:Name="DG_Main" Grid.Row="1" ScrollViewer.CanContentScroll="True" BeginningEdit="DG_Main_BeginningEdit" RowHeaderWidth="0">
-             <DataGrid.Resources>
-                 <ContextMenu x:Key="DG_Main_Rows_ContextMenu" >
-                     <ContextMenu.Template>
+            <DataGrid.Resources>
+                <ContextMenu x:Key="DG_Main_Rows_ContextMenu" >
+                    <ContextMenu.Template>
                         <ControlTemplate>
                             <Grid>
                                 <Border Margin="5" Background="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
@@ -41,46 +41,46 @@
                                     </Border.Effect>
                                 </Border>
                                 <Border Margin="5">
-                                <StackPanel Orientation="Vertical">
-                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_4" Height="34">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/drag-list-up-24.png" Stretch="None"/>
-                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
-                                                <Label Content="Oznacz jako plik referencyjny"/>
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_1" Height="34">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/play-32.png" Stretch="None"/>
-                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />            
-                                                <Label Content="Odtwórz plik"/>
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_2" Height="34">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/folder-16.png" Stretch="None"/>
-                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
-                                                <Label Content="Otwórz folder nadrzędny"/>
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                    <Separator Margin="5"/>
-                                    <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_3" Height="34">
-                                        <Button.Content>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                                <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/Delete_32x32.png" Stretch="None"/>
-                                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />   
-                                                <Label Content="Usuń zaznaczone elementy"/>
-                                            </StackPanel>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
-                            </Border>
+                                    <StackPanel Orientation="Vertical">
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_4" Height="34">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/drag-list-up-24.png" Stretch="None"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                                    <Label Content="Oznacz jako plik referencyjny"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_1" Height="34">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/play-32.png" Stretch="None"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                                    <Label Content="Odtwórz plik"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_2" Height="34">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/folder-16.png" Stretch="None"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                                    <Label Content="Otwórz folder nadrzędny"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                        <Separator Margin="5"/>
+                                        <Button Template="{StaticResource ButtonBaseControlTemplate_Blank_MenuItemLike}" BorderThickness="0" Background="Transparent" Click="MenuItem_Click_3" Height="34">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <Image Width="32" Source="/Sekwencjomat;component/Resources/UI/Delete_32x32.png" Stretch="None"/>
+                                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                                    <Label Content="Usuń zaznaczone elementy"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </Border>
                             </Grid>
                         </ControlTemplate>
                     </ContextMenu.Template>
@@ -89,11 +89,11 @@
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                     <Setter Property="ContextMenu" Value="{StaticResource DG_Main_Rows_ContextMenu}"/>
                     <Setter Property="Background" Value="White"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
-                    </Trigger>
-                </Style.Triggers>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -104,7 +104,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                
+
                 <DataGridTextColumn Binding="{Binding Name}" Header="Nazwa"/>
                 <DataGridTextColumn Binding="{Binding Size}" Header="Rozmiar"/>
                 <DataGridTextColumn Binding="{Binding Bitrate}" Header="Bitrate (kB/s)"/>
@@ -117,9 +117,12 @@
                 <DataGridTextColumn Binding="{Binding Path}" Header="Ścieżka Pliku"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Border x:Name="Border_DragnDrop" Background="#CCFFFFFF" Grid.RowSpan="2" Grid.Row="0" Opacity="0" IsHitTestVisible="False">
-            <Image Stretch="None" Source="/Sekwencjomat;component/Resources/UI/accept-256.png" IsHitTestVisible="False"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image x:Name="Image_DragnDrop" Stretch="None" Source="/Sekwencjomat;component/Resources/UI/decline-256.png" IsHitTestVisible="False"/>
+                <Label x:Name="Label_DragnDropCount" FontSize="72" Content="x / x" HorizontalAlignment="Center" FontWeight="Bold" FontFamily="Consolas" Background="Transparent" Foreground="{DynamicResource ButtonBase.Static.IsChecked}"/>
+            </StackPanel>
         </Border>
     </Grid>
 </UserControl>

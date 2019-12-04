@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 
 namespace Sekwencjomat.Controls
 {
@@ -254,6 +255,19 @@ namespace Sekwencjomat.Controls
 
         private void UserControl_PreviewDragEnter(object sender, DragEventArgs e)
         {
+            string[] drop_items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            List<string> files = new List<string>();
+
+            foreach (var item in drop_items)
+                if (ListOfAllowedExtensions.Contains(Path.GetExtension(item)))
+                    files.Add(item);
+            
+            if(files.Count == 0)
+                Image_DragnDrop.Source = new BitmapImage(new Uri(@"/Sekwencjomat;component/Resources/UI/decline-256.png", UriKind.Relative));
+            else
+                Image_DragnDrop.Source = new BitmapImage(new Uri(@"/Sekwencjomat;component/Resources/UI/accept-256.png", UriKind.Relative));
+
+            Label_DragnDropCount.Content = $"{files.Count}/{drop_items.Count()}";
             DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(200)));
             Border_DragnDrop.BeginAnimation(OpacityProperty, da);
             Border_DragnDrop.IsHitTestVisible = true;
