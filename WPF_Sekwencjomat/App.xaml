@@ -28,7 +28,7 @@
         </Style>
         
         <ControlTemplate x:Key="ButtonBaseControlTemplate_Blank" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" BorderBrush="Transparent" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
@@ -37,20 +37,16 @@
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsMouseOver}"/>
-                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#993C7FB1"/>-->
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsPressed}"/>
-                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#FF226FA8"/>-->
                 </Trigger>
                 <Trigger Property="ToggleButton.IsChecked" Value="True">
                     <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBase.Static.IsChecked}"/>
-                    <!--<Setter Property="BorderBrush" TargetName="border" Value="#99245A83"/>-->
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <!--<Setter Property="Background" TargetName="border" Value="{x:Null}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>-->
-                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" TargetName="border" Value="{x:Null}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
                     <Setter Property="Opacity" Value="0.3"/>
                 </Trigger>
             </ControlTemplate.Triggers>
