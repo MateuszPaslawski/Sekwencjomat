@@ -215,7 +215,7 @@ namespace Sekwencjomat.Controls
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
+                    Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {Helper.PlaybackModeToString(PlayerPlaybackMode)} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
                 });
 
                 ThreadPool.QueueUserWorkItem(x =>
@@ -259,7 +259,7 @@ namespace Sekwencjomat.Controls
             });
 
             TimeLeft.Restart();
-            Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {PlayerPlaybackMode} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
+            Helper.ChangeStatusControl($"Metoda MOS: {PlayerPlaybackScale.ToString()} | Kolejność: {Helper.PlaybackModeToString(PlayerPlaybackMode)} | Plik: {ListOfMediaFiles[CurrentPlayingFileIndex].Path}", false);
             Helper.DisableNavigationButtons();
         }
 
