@@ -3,6 +3,8 @@ using Sekwencjomat.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -221,6 +223,8 @@ namespace Sekwencjomat
         public MainWindow()
         {
             InitializeComponent();
+            string architecture = Assembly.GetEntryAssembly().GetName().ProcessorArchitecture.ToString();
+            Title += $" (x{Regex.Match(architecture, @"\d.").ToString()})";
         }
 
 
