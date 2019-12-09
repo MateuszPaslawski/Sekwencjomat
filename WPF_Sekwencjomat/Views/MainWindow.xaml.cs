@@ -28,15 +28,26 @@ namespace Sekwencjomat
             get
             {
                 List<string> searchList = new List<string>();
+                string ProgramFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                string ProgramFilesX86Path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+
+                searchList.Add(Path.Combine(ProgramFilesPath, @"VLC"));
+                searchList.Add(Path.Combine(ProgramFilesPath, @"VideoLAN"));
+                searchList.Add(Path.Combine(ProgramFilesPath, @"VideoLAN\VLC"));
+
+                searchList.Add(Path.Combine(ProgramFilesX86Path, @"VLC"));
+                searchList.Add(Path.Combine(ProgramFilesX86Path, @"VideoLAN"));
+                searchList.Add(Path.Combine(ProgramFilesX86Path, @"VideoLAN\VLC"));
 
                 foreach (DriveInfo item in DriveInfo.GetDrives())
                 {
-                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
+
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VLC"));
-                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN"));
-                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files (x86)\VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"Program Files\VLC"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN"));
+                    searchList.Add(Path.Combine(item.ToString(), @"Program Files\VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"VideoLAN\VLC"));
                     searchList.Add(Path.Combine(item.ToString(), @"VideoLAN"));
                     searchList.Add(Path.Combine(item.ToString(), @"VLC"));
@@ -113,6 +124,9 @@ namespace Sekwencjomat
             {
                 foreach (string item in VLC_DLL_SearchList)
                 {
+                    if (!Directory.Exists(item))
+                        continue;
+
                     if (SettingsControlObject.CheckVLCFolderDLLs(item))
                     {
                         PlayerControlObject.VLC_Control.SourceProvider.CreatePlayer(new DirectoryInfo(item));
