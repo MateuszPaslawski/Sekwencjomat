@@ -17,7 +17,10 @@
         /// <summary>   Used for locking the FFmpeg process to one thread. </summary>
         private const string LockName = "MediaToolkit.Engine.LockName";
 
+        //private string DefaultFFmpegFilePath = Path.GetDirectoryName(Path.GetTempPath());
+        //private string DefaultFFmpegFilePath = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
         private const string DefaultFFmpegFilePath = @"/MediaToolkit/ffmpeg.exe";
+
 
         /// <summary>   Full pathname of the FFmpeg file. </summary>
         protected readonly string FFmpegFilePath;
@@ -104,12 +107,12 @@
             {
                 throw new Exception(Resources.Exceptions_Null_FFmpeg_Gzip_Stream);
             }
-
             using (FileStream fileStream = new FileStream(path, FileMode.Create))
             using (GZipStream compressedStream = new GZipStream(compressedFFmpegStream, CompressionMode.Decompress))
             {
                 compressedStream.CopyTo(fileStream);
             }
+
         }
 
 

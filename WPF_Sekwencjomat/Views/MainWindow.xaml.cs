@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -213,6 +214,14 @@ namespace Sekwencjomat
             catch { }
         }
 
+        private async Task WarmupMediaInfoEngine()
+        {
+            await Task.Run(() =>
+            {
+                new MediaToolkit.Engine();
+            });
+        }
+
         public void SaveUserSettings()
         {
             try
@@ -255,16 +264,14 @@ namespace Sekwencjomat
 
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
-
+            await WarmupMediaInfoEngine();
             await SearchForVLCDLL();
             await LoadUserSettings();
 
             startupWindow.Close();
 
             if (WindowState == WindowState.Minimized)
-            {
                 WindowState = WindowState.Normal;
-            }
 
             Activate();
         }
