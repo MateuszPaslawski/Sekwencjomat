@@ -193,7 +193,7 @@ namespace Sekwencjomat.Controls
                 {
                     Rating tmpRating = new Rating
                     {
-                        DurationSeconds = TimeLeft.Elapsed.Seconds,
+                        DurationSeconds = (int)TimeLeft.Elapsed.TotalSeconds,
                         RatingSeconds = Helper.RatingDelay,
                         ReferenceVideoPath = FilesControlObject.TextBox_RefPath.Text,
                         PlaybackMode = Helper.CurrentPlaybackMode,
