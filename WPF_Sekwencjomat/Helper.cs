@@ -254,7 +254,7 @@ namespace Sekwencjomat
 
         public static List<MediaFile> ACR_Concave(List<MediaFile> inputList)
         {
-            List<MediaFile> first = DescendingBitrate(inputList);
+            List<MediaFile> first = AscendingBitrate(inputList);
             List<MediaFile> second = new List<MediaFile>(first);
             second.Reverse();
             second.RemoveAt(0);
@@ -265,7 +265,7 @@ namespace Sekwencjomat
 
         public static List<MediaFile> ACR_Convex(List<MediaFile> inputList)
         {
-            List<MediaFile> first = AscendingBitrate(inputList);
+            List<MediaFile> first = DescendingBitrate(inputList);
             List<MediaFile> second = new List<MediaFile>(first);
             second.Reverse();
             second.RemoveAt(0);
@@ -299,7 +299,7 @@ namespace Sekwencjomat
 
         public static List<MediaFile> DCR_Concave(List<MediaFile> inputList, string referencePath)
         {
-            List<MediaFile> first = DescendingBitrate(inputList);
+            List<MediaFile> first = AscendingBitrate(inputList);
             List<MediaFile> second = new List<MediaFile>(first);
             second.Reverse();
             second.RemoveAt(0);
@@ -317,7 +317,7 @@ namespace Sekwencjomat
         
         public static List<MediaFile> DCR_Convex(List<MediaFile> inputList, string referencePath)
         {
-            List<MediaFile> first = AscendingBitrate(inputList);
+            List<MediaFile> first = DescendingBitrate(inputList);
             List<MediaFile> second = new List<MediaFile>(first);
             second.Reverse();
             second.RemoveAt(0);
