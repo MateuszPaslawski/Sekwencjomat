@@ -112,11 +112,15 @@ namespace Sekwencjomat
 
         public static void DeleteAllTemporaryFiles()
         {
-            foreach (var item in TmpFilesList)
+            try
             {
-                if (File.Exists(item))
-                    File.Delete(item);
+                foreach (var item in TmpFilesList)
+                {
+                    if (File.Exists(item))
+                        File.Delete(item);
+                }
             }
+            catch { }
         }
 
         public static void AddUserRatingToGrid(Rating rating)
