@@ -114,6 +114,17 @@ namespace Sekwencjomat.Controls
 
         public bool CheckBeforeStartPlaying()
         {
+            try
+            {
+                VLC_Control.SourceProvider.MediaPlayer.EndReached -= MediaPlayer_EndReached;
+                VLC_Control.SourceProvider.MediaPlayer.EndReached += MediaPlayer_EndReached;
+            }
+            catch
+            {
+                MessageBox.Show("Wystąpił błąd uruchamiania odtwarzacza. Upewnij się, że wersja aplikacji odpowiada wersji programu VLC (32bit / 64bit).", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
             if (Helper.CurrentPlaybackScale == Helper.PlaybackScaleEnum.ACR)
             {
                 return true;
