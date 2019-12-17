@@ -151,65 +151,68 @@ namespace Sekwencjomat
                 //Check if saved VLC Path is valid
                 await Task.Run(() =>
                 {
-                    SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
+                    Dispatcher.Invoke(() => 
+                    {
+
+                        //Window Location and State
+                        if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
+                        {
+                            Top = settings.WINDOW_LOCATION.Top;
+                            Left = settings.WINDOW_LOCATION.Left;
+                            Width = settings.WINDOW_LOCATION.Width;
+                            Height = settings.WINDOW_LOCATION.Height;
+                        }
+
+                        WindowState = settings.WINDOW_STATE;
+
+                        //Reference video path
+                        if (File.Exists(settings.REFVIDEO_PATH))
+                            FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
+
+                        //RatingDelay
+                        Helper.RatingDelay = settings.RATING_DELAY;
+                        SettingsControlObject.CheckVLCFolderDLLs(settings.VLC_DLL_PATH);
+                
+
+                        //Fill DataGrid with all files
+                        FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
+
+
+                        //PlaybackScale
+                        switch (settings.PLAYBACK_TECHNIQUE.ToLower())
+                        {
+                            case "acr":
+                                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.ACR;
+                                break;
+                            case "dcr":
+                                Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCR;
+                                break;
+                        }
+
+                        //PlaybackMode
+                        switch (settings.PLAYBACK_MODE.ToLower())
+                        {
+                            case "ascending":
+                                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Ascending;
+                                break;
+                            case "descending":
+                                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Descending;
+                                break;
+                            case "random":
+                                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Random;
+                                break;
+                            case "convex":
+                                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Convex;
+                                break;
+                            case "concave":
+                                Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Concave;
+                                break;
+                        }
+
+                        //Set different controls propeties from settings
+                        SettingsControlObject.HelperPlaybackPropetiesToControls();
+                    });
                 });
-
-                //Window Location and State
-                if (settings.WINDOW_LOCATION.Top < SystemParameters.WorkArea.Height && settings.WINDOW_LOCATION.Left < SystemParameters.WorkArea.Width)
-                {
-                    Top = settings.WINDOW_LOCATION.Top;
-                    Left = settings.WINDOW_LOCATION.Left;
-                    Width = settings.WINDOW_LOCATION.Width;
-                    Height = settings.WINDOW_LOCATION.Height;
-                }
-
-                WindowState = settings.WINDOW_STATE;
-
-                //Reference video path
-                if (File.Exists(settings.REFVIDEO_PATH))
-                {
-                    FilesControlObject.TextBox_RefPath.Text = settings.REFVIDEO_PATH;
-                }
-
-                //Fill DataGrid with all files
-                await FilesControlObject.FileDataToGrid(settings.LIST_OF_FILES.ToArray());
-
-                //RatingDelay
-                Helper.RatingDelay = settings.RATING_DELAY;
-
-                //PlaybackScale
-                switch (settings.PLAYBACK_TECHNIQUE.ToLower())
-                {
-                    case "acr":
-                        Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.ACR;
-                        break;
-                    case "dcr":
-                        Helper.CurrentPlaybackScale = Helper.PlaybackScaleEnum.DCR;
-                        break;
-                }
-
-                //PlaybackMode
-                switch (settings.PLAYBACK_MODE.ToLower())
-                {
-                    case "ascending":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Ascending;
-                        break;
-                    case "descending":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Descending;
-                        break;
-                    case "random":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Random;
-                        break;
-                    case "convex":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Convex;
-                        break;
-                    case "concave":
-                        Helper.CurrentPlaybackMode = Helper.PlaybackModeEnum.Concave;
-                        break;
-                }
-
-                //Set different controls propeties from settings
-                SettingsControlObject.HelperPlaybackPropetiesToControls();
             }
             catch { }
         }
@@ -265,9 +268,11 @@ namespace Sekwencjomat
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
             await WarmupMediaInfoEngine();
+            Console.WriteLine(1);
             await SearchForVLCDLL();
+            Console.WriteLine(2);
             await LoadUserSettings();
-
+            Console.WriteLine(3);
             startupWindow.Close();
 
             if (WindowState == WindowState.Minimized)

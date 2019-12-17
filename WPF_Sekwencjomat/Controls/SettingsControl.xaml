@@ -6,15 +6,11 @@
              xmlns:local="clr-namespace:Sekwencjomat"
              mc:Ignorable="d"  FontFamily="Google Sans" FontSize="13" 
              Loaded="UserControl_Loaded">
-    <Grid>
+    <Grid Width="457">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
         
         <GroupBox Margin="5" Grid.Row="1" Header="Opcje odtwarzania metodą MOS">
             <StackPanel Margin="5" Orientation="Vertical">
@@ -27,7 +23,7 @@
                             </ToolTip.Effect>
                             <StackPanel>
                                 <Label Content="ACR (Absolute Category Rating)" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-                                <Image Source="/Sekwencjomat;component/Resources/diagrams/ACR_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                                <Image Source="/Sekwencjomat;component/Resources/diagrams/ACRv2_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                             </StackPanel>
                         </ToolTip>
                     </RadioButton.ToolTip>
@@ -115,7 +111,7 @@
                             </ToolTip.Effect>
                             <StackPanel>
                                 <Label Content="DCR (Degradation Category Rating)" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-                                <Image Source="/Sekwencjomat;component/Resources/diagrams/DCR_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                                <Image Source="/Sekwencjomat;component/Resources/diagrams/DCRv2_120.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
                             </StackPanel>
                         </ToolTip>
                     </RadioButton.ToolTip>
@@ -209,7 +205,7 @@
                     <Label Content="Ścieżka programu VLC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </StackPanel>
             </GroupBox.Header>
-            <DockPanel Margin="10" LastChildFill="True">
+            <DockPanel Margin="10">
                 <Button Click="Button_Click" Margin="-1,0" Template="{DynamicResource ButtonBaseControlTemplate_Blank}" BorderBrush="#FFABADB3" Background="{x:Null}">
                     <Image Source="/Sekwencjomat;component/Resources/UI/vlc-24.png" Stretch="None"/>
                 </Button>
