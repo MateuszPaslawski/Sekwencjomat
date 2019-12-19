@@ -268,11 +268,8 @@ namespace Sekwencjomat
             SV_MainDisplay.Content = FilesControlObject;
             MakeButtonPressedOnLeft(Button_FileControl);
             await WarmupMediaInfoEngine();
-            Console.WriteLine(1);
             await SearchForVLCDLL();
-            Console.WriteLine(2);
             await LoadUserSettings();
-            Console.WriteLine(3);
             startupWindow.Close();
 
             if (WindowState == WindowState.Minimized)

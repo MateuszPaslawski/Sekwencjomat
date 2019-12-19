@@ -112,7 +112,6 @@ namespace Sekwencjomat.Controls
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             Rating item = ((DataGridRow)sender).Item as Rating;
-            Console.WriteLine(item.DateTimeRatingString);
         }
 
         private void Button_Click_Serialize(object sender, RoutedEventArgs e)

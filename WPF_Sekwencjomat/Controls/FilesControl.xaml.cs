@@ -113,7 +113,6 @@ namespace Sekwencjomat.Controls
                 foreach (string item in FilePathList)
                 {
                     if (ListOfPathsFilsInGrid.Contains(item) || !File.Exists(item)) { continue; }
-
                     Stopwatch sw = new Stopwatch();
                     sw.Start();
 
@@ -122,26 +121,23 @@ namespace Sekwencjomat.Controls
                         Helper.ChangeStatusControl($"Przetwarzanie pliku {++itemCount} / {FilePathList.Length} ({timeLeft.Seconds}s {timeLeft.Milliseconds}ms)", true);
                     });
 
+
+
                     FileInfo fi = new FileInfo(item);
                     MediaToolkit.Model.MediaFile mf = new MediaToolkit.Model.MediaFile() { Filename = item };
 
                     using (mediaInfoEngine)
-                    {
                         mediaInfoEngine.GetMetadata(mf);
-                    }
 
                     MediaFile mf2 = new MediaFile();
 
                     try
                     {
                         if (mf.Metadata.VideoData.BitRateKbs != null)
-                        {
                             mf2.Bitrate = mf.Metadata.VideoData.BitRateKbs.Value;
-                        }
                         else
-                        {
-                            mf2.Bitrate = 0;
-                        }
+                            mf2.Bitrate = Helper.GetAltBitrate(item);
+
                         mf2.Name = fi.Name;
                         mf2.Path = fi.FullName;
                         mf2.Extension = fi.Extension;
@@ -159,7 +155,6 @@ namespace Sekwencjomat.Controls
                     }
                     catch (Exception exc)
                     {
-                        MessageBox.Show("Błąd!", $"Nastąpił nieoczekiwany błąd\n\n{exc.Message}", MessageBoxButton.OK, MessageBoxImage.Error);
                         continue;
                     }
                     finally
@@ -213,7 +208,6 @@ namespace Sekwencjomat.Controls
         private void Row_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             MediaFile item = ((DataGridRow)sender).Item as MediaFile;
-            Console.WriteLine(item.Path);
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

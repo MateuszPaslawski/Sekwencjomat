@@ -189,7 +189,6 @@ namespace Sekwencjomat.Controls
                     MediaFile tempFile = ListOfMediaFiles[CurrentPlayingFileIndex - 1] as MediaFile;
                     tempFile.UserGrade = dialog.Result;
                     ListOfMediaFilesWithGrades.Add(tempFile);
-                    Console.WriteLine($"\n\nAdding {tempFile.Path}   Count: {ListOfMediaFilesWithGrades.Count}");
                 });
             }
 

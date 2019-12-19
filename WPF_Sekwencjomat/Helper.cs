@@ -1,9 +1,11 @@
 ﻿using Sekwencjomat.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,10 +20,45 @@ namespace Sekwencjomat
         public static PlaybackModeEnum CurrentPlaybackMode;
         public static bool IsInterfaceLocked = false;
         public static string TmpFile;
+        public const string FFmpegFilePath = @"/MediaToolkit/ffmpeg.exe";
 
         private static List<string> TmpFilesList = new List<string>();
 
 
+
+        public static int GetAltBitrate(string path)
+        {
+            Process ffmpeg = new Process
+            {
+                StartInfo = 
+                {
+                    FileName = Path.GetFullPath(FFmpegFilePath),
+                    Arguments = $"-i \"{path}\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                }
+            };
+
+            ffmpeg.EnableRaisingEvents = true;
+            ffmpeg.Start();
+            ffmpeg.WaitForExit();
+
+            var firstString = Regex.Match(ffmpeg.StandardError.ReadToEnd().ToLower(), @"([0-9]*)\s*kb/s").Value;
+            var secondString = Regex.Replace(firstString, @"\D", "");
+            return int.Parse(secondString);
+        }
+
+        private static void Ffmpeg_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void Ffmpeg_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         public static string ExecutionPath
         {
