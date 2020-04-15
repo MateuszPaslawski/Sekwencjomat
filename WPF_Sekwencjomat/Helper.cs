@@ -26,7 +26,7 @@ namespace Sekwencjomat
 
 
 
-        public static int GetAltBitrate(string path)
+        public static int GetBitrateFromFFMPEG(string path)
         {
             Process ffmpeg = new Process
             {

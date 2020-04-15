@@ -133,11 +133,8 @@ namespace Sekwencjomat.Controls
 
                     try
                     {
-                        if (mf.Metadata.VideoData.BitRateKbs != null)
-                            mf2.Bitrate = mf.Metadata.VideoData.BitRateKbs.Value;
-                        else
-                            mf2.Bitrate = Helper.GetAltBitrate(item);
 
+                        mf2.Bitrate = Helper.GetBitrateFromFFMPEG(item);
                         mf2.Name = fi.Name;
                         mf2.Path = fi.FullName;
                         mf2.Extension = fi.Extension;
